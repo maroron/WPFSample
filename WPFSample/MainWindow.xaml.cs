@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFSample.Sample1;
 
 namespace WPFSample
 {
@@ -27,7 +28,82 @@ namespace WPFSample
 
         private void Sample1_Click(object sender, RoutedEventArgs e)
         {
+            var sample = new ProgressTest();
+            sample.Show();
+        }
 
+        private void Sample2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Sample3_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Sample4_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Sample5_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Sample6_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Sample7_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Sample8_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Sample9_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Sample10_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Sample11_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Sample12_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Sample13_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Sample14_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Sample15_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Sample16_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }
