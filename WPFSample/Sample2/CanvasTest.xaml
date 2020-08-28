@@ -1,0 +1,27 @@
+﻿<Window x:Class="WPFSample.Sample2.CanvasTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSample.Sample2"
+        mc:Ignorable="d"
+        Title="CanvasTest" Height="800" Width="800">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/> 
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" 
+                BorderThickness="2"
+                BorderBrush="Black"
+                >
+            <Canvas/>
+        </Border>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+            <Button Margin="10" Width="80" Height="80">Add</Button>
+            <Button Margin="10" Width="80" Height="80">Move</Button>
+            <Button Margin="10" Width="80" Height="80">Delete</Button>
+        </StackPanel>
+    </Grid>
+</Window>

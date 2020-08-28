@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFSample.Sample1;
+using WPFSample.Sample2;
 
 namespace WPFSample
 {
@@ -34,7 +35,8 @@ namespace WPFSample
 
         private void Sample2_Click(object sender, RoutedEventArgs e)
         {
-
+            var sample = new CanvasTest();
+            sample.Show();
         }
 
         private void Sample3_Click(object sender, RoutedEventArgs e)
