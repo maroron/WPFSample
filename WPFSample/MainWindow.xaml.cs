@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFSample.Sample1;
 using WPFSample.Sample2;
+using WPFSample.Sample3;
 
 namespace WPFSample
 {
@@ -41,7 +42,8 @@ namespace WPFSample
 
         private void Sample3_Click(object sender, RoutedEventArgs e)
         {
-
+            var sample = new HowToUseList();
+            sample.Show();
         }
 
         private void Sample4_Click(object sender, RoutedEventArgs e)

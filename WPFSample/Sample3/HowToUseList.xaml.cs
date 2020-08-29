@@ -19,9 +19,28 @@ namespace WPFSample.Sample3
     /// </summary>
     public partial class HowToUseList : Window
     {
+        private List<string> list = new List<string>
+        {
+            "Tokyo",
+            "New Delhi",
+            "Bangkok",
+            "London",
+            "Paris",
+            "Berlin",
+            "Canberra",
+            "Hong Kong",
+        };
+
         public HowToUseList()
         {
             InitializeComponent();
+
+            var builder = new StringBuilder();
+            foreach (var item in list)
+            {
+                builder.AppendLine(item);
+            }
+            inputData.Text = builder.ToString();
         }
     }
 }
