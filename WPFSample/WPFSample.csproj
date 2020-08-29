@@ -61,6 +61,9 @@
     <Compile Include="Sample2\CanvasTest.xaml.cs">
       <DependentUpon>CanvasTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sample3\HowToUseList.xaml.cs">
+      <DependentUpon>HowToUseList.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,6 +81,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sample2\CanvasTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sample3\HowToUseList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
