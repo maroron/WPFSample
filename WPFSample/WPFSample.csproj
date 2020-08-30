@@ -70,6 +70,9 @@
     <Compile Include="Sample5\WindowLifeTime.xaml.cs">
       <DependentUpon>WindowLifeTime.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sample6\ControlTest.xaml.cs">
+      <DependentUpon>ControlTest.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,6 +102,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sample5\WindowLifeTime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sample6\ControlTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
