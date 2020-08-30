@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using WPFSample.Sample1;
 using WPFSample.Sample2;
 using WPFSample.Sample3;
+using WPFSample.Sample4;
 
 namespace WPFSample
 {
@@ -31,24 +32,25 @@ namespace WPFSample
         private void Sample1_Click(object sender, RoutedEventArgs e)
         {
             var sample = new ProgressTest();
-            sample.Show();
+            sample.ShowDialog();
         }
 
         private void Sample2_Click(object sender, RoutedEventArgs e)
         {
             var sample = new CanvasTest();
-            sample.Show();
+            sample.ShowDialog();
         }
 
         private void Sample3_Click(object sender, RoutedEventArgs e)
         {
             var sample = new HowToUseList();
-            sample.Show();
+            sample.ShowDialog();
         }
 
         private void Sample4_Click(object sender, RoutedEventArgs e)
         {
-
+            var sample = new DialogTest();
+            sample.ShowDialog();
         }
 
         private void Sample5_Click(object sender, RoutedEventArgs e)
