@@ -35,7 +35,7 @@ namespace WPFSample.Sample3
         {
             InitializeComponent();
 
-            inputData.Text = CreateDispString();
+            inputData.Text = CreateDispString(list);
         }
 
         private void ClearText()
@@ -43,10 +43,10 @@ namespace WPFSample.Sample3
             resultData.Text = "";
         }
 
-        private string CreateDispString()
+        private string CreateDispString(List<string> dispstrings)
         {
             var builder = new StringBuilder();
-            foreach (var item in list)
+            foreach (var item in dispstrings)
             {
                 builder.AppendLine(item);
             }
@@ -75,6 +75,15 @@ namespace WPFSample.Sample3
 
             var index = list.FindIndex(s => s == "Berlin");
             resultData.Text = "FindIndex(s => s == \"Berlin\") -> " + index;
+        }
+
+        private void FindAll_Click(object sender, RoutedEventArgs e)
+        {
+            ClearText();
+
+            var names = list.FindAll(s => s.Length <= 5);
+            resultData.Text = "FindAll(s => s.Length <= 5) -> \n\n";
+            resultData.Text += CreateDispString(names);
         }
     }
 }
