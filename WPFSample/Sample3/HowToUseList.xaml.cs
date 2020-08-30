@@ -85,5 +85,15 @@ namespace WPFSample.Sample3
             resultData.Text = "FindAll(s => s.Length <= 5) -> \n\n";
             resultData.Text += CreateDispString(names);
         }
+
+        private void RemoveAll_Click(object sender, RoutedEventArgs e)
+        {
+            ClearText();
+
+            // 元のデータは残したいので別のインスタンスを作る
+            var removelist = new List<string>(list);
+            var removedConunt = removelist.RemoveAll(s => s.Contains("on"));
+            resultData.Text = "RemoveAll(s => s.Contains(\"on\")) -> " + removedConunt;
+        }
     }
 }
