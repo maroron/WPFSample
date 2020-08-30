@@ -95,5 +95,14 @@ namespace WPFSample.Sample3
             var removedConunt = removelist.RemoveAll(s => s.Contains("on"));
             resultData.Text = "RemoveAll(s => s.Contains(\"on\")) -> " + removedConunt;
         }
+
+        private void ConvertAll_Click(object sender, RoutedEventArgs e)
+        {
+            ClearText();
+
+            var lowerList = list.ConvertAll(s => s.ToLower());
+            resultData.Text = "ConertAll s => s.ToLower() -> \n\n";
+            resultData.Text += CreateDispString(lowerList);
+        }
     }
 }

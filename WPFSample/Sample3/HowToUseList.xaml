@@ -28,7 +28,7 @@
             <Button Margin="10" Height="40" Name="FindIndex" Click="FindIndex_Click">FindIndex s == "Berlin"</Button>
             <Button Margin="10" Height="40" Name="FindAll" Click="FindAll_Click">FindAll s.Length &lt;= 5</Button>
             <Button Margin="10" Height="40" Name="RemoveAll" Click="RemoveAll_Click">RemoveAll s.Contains("on")</Button>
-            <Button Margin="10" Height="40" Name="ForEach">ForEach</Button>
+            <Button Margin="10" Height="40" Name="ConvertAll" Click="ConvertAll_Click">ConvertAll s => s.ToLower()</Button>
         </StackPanel>
     </Grid>
 </Window>
