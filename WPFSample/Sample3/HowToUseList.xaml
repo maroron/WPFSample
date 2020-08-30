@@ -25,7 +25,7 @@
         <StackPanel Grid.Row="0" Grid.Column="1" Margin="10">
             <Button Margin="10" Height="40" Name="Exists" Click="Exists_Click">Exists s[0] == 'A'</Button>
             <Button Margin="10" Height="40" Name="Find" Click="Find_Click">Find s.Kength == 6</Button>
-            <Button Margin="10" Height="40" Name="FindIndex">FindIndex</Button>
+            <Button Margin="10" Height="40" Name="FindIndex" Click="FindIndex_Click">FindIndex s == "Berlin"</Button>
             <Button Margin="10" Height="40" Name="FindAll">FindAll</Button>
             <Button Margin="10" Height="40" Name="RemoveAll">RemoveAll</Button>
             <Button Margin="10" Height="40" Name="ForEach">ForEach</Button>

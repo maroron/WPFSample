@@ -68,5 +68,13 @@ namespace WPFSample.Sample3
             var name = list.Find(s => s.Length == 6);
             resultData.Text = "Find(s => s.Length == 6) -> " + name;
         }
+
+        private void FindIndex_Click(object sender, RoutedEventArgs e)
+        {
+            ClearText();
+
+            var index = list.FindIndex(s => s == "Berlin");
+            resultData.Text = "FindIndex(s => s == \"Berlin\") -> " + index;
+        }
     }
 }
