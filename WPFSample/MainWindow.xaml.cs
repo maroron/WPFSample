@@ -16,6 +16,7 @@ using WPFSample.Sample1;
 using WPFSample.Sample2;
 using WPFSample.Sample3;
 using WPFSample.Sample4;
+using WPFSample.Sample5;
 
 namespace WPFSample
 {
@@ -55,7 +56,8 @@ namespace WPFSample
 
         private void Sample5_Click(object sender, RoutedEventArgs e)
         {
-            
+            var sample = new WindowLifeTime();
+            sample.ShowDialog();
         }
 
         private void Sample6_Click(object sender, RoutedEventArgs e)

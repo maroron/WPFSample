@@ -67,6 +67,9 @@
     <Compile Include="Sample4\DialogTest.xaml.cs">
       <DependentUpon>DialogTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sample5\WindowLifeTime.xaml.cs">
+      <DependentUpon>WindowLifeTime.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -92,6 +95,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sample4\DialogTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sample5\WindowLifeTime.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
