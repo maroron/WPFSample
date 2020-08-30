@@ -38,14 +38,6 @@ namespace WPFSample.Sample3
             inputData.Text = CreateDispString();
         }
 
-        private void Exists_Click(object sender, RoutedEventArgs e)
-        {
-            ClearText();
-
-            var exists = list.Exists(s => s[0] == 'A');
-            resultData.Text = "Exists(s => s[0] == 'A') -> " + exists;
-        }
-
         private void ClearText()
         {
             resultData.Text = "";
@@ -59,6 +51,22 @@ namespace WPFSample.Sample3
                 builder.AppendLine(item);
             }
             return builder.ToString();
+        }
+
+        private void Exists_Click(object sender, RoutedEventArgs e)
+        {
+            ClearText();
+
+            var exists = list.Exists(s => s[0] == 'A');
+            resultData.Text = "Exists(s => s[0] == 'A') -> " + exists;
+        }
+
+        private void Find_Click(object sender, RoutedEventArgs e)
+        {
+            ClearText();
+
+            var name = list.Find(s => s.Length == 6);
+            resultData.Text = "Find(s => s.Length == 6) -> " + name;
         }
     }
 }
