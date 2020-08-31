@@ -20,6 +20,20 @@
         <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
             <Label FontSize="16">ListBox</Label>
             <ListBox Height="140" ItemsSource="{Binding Fruits}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+                            <Rectangle Grid.Column="1" Width="40"/>
+                            <TextBlock Grid.Column="2" Text="{Binding Count}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
 

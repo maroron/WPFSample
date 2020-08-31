@@ -22,8 +22,8 @@ namespace WPFSample.Sample7
         public DataBindingTest()
         {
             InitializeComponent();
-            //DataContext = new FruitsManager();
-            DataContext = new Point() { X = 100, Y = 200 };
+            DataContext = new FruitsManager();
+            //DataContext = new Point() { X = 100, Y = 200 };
         }
     }
 
