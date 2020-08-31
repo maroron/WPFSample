@@ -19,9 +19,39 @@ namespace WPFSample.Sample2
     /// </summary>
     public partial class CanvasTest : Window
     {
+        private enum ButtonState
+        {
+            None,
+            Add,
+            Select,
+            Delete,
+        }
+
+        private ButtonState currentButtonState = ButtonState.None;
+
         public CanvasTest()
         {
             InitializeComponent();
+        }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Point clickedPoint = e.GetPosition(this);
+
+            switch (currentButtonState)
+            {
+                case ButtonState.None:
+                    break;
+                case ButtonState.Add:
+                    break;
+                case ButtonState.Select:
+                    break;
+                case ButtonState.Delete:
+                    break;
+                default:
+                    break;
+            }
+
         }
     }
 }
