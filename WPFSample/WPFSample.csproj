@@ -73,6 +73,11 @@
     <Compile Include="Sample6\ControlTest.xaml.cs">
       <DependentUpon>ControlTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sample7\DataBindingTest.xaml.cs">
+      <DependentUpon>DataBindingTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sample7\Fruit.cs" />
+    <Compile Include="Sample7\FruitsManager.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -106,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sample6\ControlTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sample7\DataBindingTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

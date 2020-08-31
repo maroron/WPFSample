@@ -18,6 +18,7 @@ using WPFSample.Sample3;
 using WPFSample.Sample4;
 using WPFSample.Sample5;
 using WPFSample.Sample6;
+using WPFSample.Sample7;
 
 namespace WPFSample
 {
@@ -69,6 +70,8 @@ namespace WPFSample
 
         private void Sample7_Click(object sender, RoutedEventArgs e)
         {
+            var sample = new DataBindingTest();
+            sample.ShowDialog();
 
         }
 
