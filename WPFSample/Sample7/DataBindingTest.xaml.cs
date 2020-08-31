@@ -19,11 +19,27 @@ namespace WPFSample.Sample7
     /// </summary>
     public partial class DataBindingTest : Window
     {
+        private FruitsManager fm = new FruitsManager();
+
         public DataBindingTest()
         {
             InitializeComponent();
-            DataContext = new FruitsManager();
+            DataContext = fm;
             //DataContext = new Point() { X = 100, Y = 200 };
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            fm.Fruits.Add(new Fruit() { Name = "Grape", Count = 10 });
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            int index = fm.Fruits.Count - 1;
+            if (0 <= index)
+            {
+                fm.Fruits.RemoveAt(index);
+            }
         }
     }
 

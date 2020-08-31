@@ -19,7 +19,8 @@
         
         <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
             <Label FontSize="16">ListBox</Label>
-            <ListBox Height="140" ItemsSource="{Binding Fruits}">
+            <!-- DataContextをItemSourceに指定したければ、Bindingのみの記述でOK -->
+            <ListBox Height="100" ItemsSource="{Binding Fruits}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -35,6 +36,10 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <StackPanel>
+                <Button Margin="10, 5" Click="Add_Click">Add</Button>
+                <Button Margin="10, 5" Click="Delete_Click">Delete</Button>
+            </StackPanel>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1" Margin="10">
