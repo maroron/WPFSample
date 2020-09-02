@@ -19,13 +19,13 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" Margin="10" Click="Sample1_Click" Name="Sample1">Sample1</Button>
-        <Button Grid.Column="1" Grid.Row="0" Margin="10" Click="Sample2_Click" Name="Sample2">Sample2</Button>
-        <Button Grid.Column="2" Grid.Row="0" Margin="10" Click="Sample3_Click" Name="Sample3">Sample3</Button>
-        <Button Grid.Column="3" Grid.Row="0" Margin="10" Click="Sample4_Click" Name="Sample4">Sample4</Button>
-        <Button Grid.Column="0" Grid.Row="1" Margin="10" Click="Sample5_Click" Name="Sample5">Sample5</Button>
-        <Button Grid.Column="1" Grid.Row="1" Margin="10" Click="Sample6_Click" Name="Sample6">Sample6</Button>
-        <Button Grid.Column="2" Grid.Row="1" Margin="10" Click="Sample7_Click" Name="Sample7">Sample7</Button>
+        <Button Grid.Column="0" Grid.Row="0" Margin="10" Click="Sample1_Click" Name="Sample1">Progress</Button>
+        <Button Grid.Column="1" Grid.Row="0" Margin="10" Click="Sample2_Click" Name="Sample2">Canvas</Button>
+        <Button Grid.Column="2" Grid.Row="0" Margin="10" Click="Sample3_Click" Name="Sample3">HowToUseList</Button>
+        <Button Grid.Column="3" Grid.Row="0" Margin="10" Click="Sample4_Click" Name="Sample4">Dialog</Button>
+        <Button Grid.Column="0" Grid.Row="1" Margin="10" Click="Sample5_Click" Name="Sample5">WindowLifeTime</Button>
+        <Button Grid.Column="1" Grid.Row="1" Margin="10" Click="Sample6_Click" Name="Sample6">Control</Button>
+        <Button Grid.Column="2" Grid.Row="1" Margin="10" Click="Sample7_Click" Name="Sample7">DataBinding</Button>
         <Button Grid.Column="3" Grid.Row="1" Margin="10" Click="Sample8_Click" Name="Sample8">Sample8</Button>
         <Button Grid.Column="0" Grid.Row="2" Margin="10" Click="Sample9_Click" Name="Sample9">Sample9</Button>
         <Button Grid.Column="1" Grid.Row="2" Margin="10" Click="Sample10_Click" Name="Sample10">Sample10</Button>
