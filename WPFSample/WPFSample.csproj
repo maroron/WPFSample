@@ -78,6 +78,9 @@
     </Compile>
     <Compile Include="Sample7\Fruit.cs" />
     <Compile Include="Sample7\FruitsManager.cs" />
+    <Compile Include="Sample8\RooutedEventHandledTest.xaml.cs">
+      <DependentUpon>RooutedEventHandledTest.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -115,6 +118,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sample7\DataBindingTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sample8\RooutedEventHandledTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

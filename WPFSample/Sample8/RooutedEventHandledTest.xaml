@@ -1,0 +1,24 @@
+﻿<Window x:Class="WPFSample.Sample8.RooutedEventHandledTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSample.Sample8"
+        mc:Ignorable="d"
+        Title="RooutedEventHandledTest" Height="450" Width="800">
+    <Grid>
+        <DockPanel PreviewMouseRightButtonDown="DockPanel_PreviewMouseRightButtonDown"
+                   MouseRightButtonDown="DockPanel_MouseRightButtonDown">
+            <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        PreviewMouseRightButtonDown="StackPanel_PreviewMouseRightButtonDown"
+                        MouseRightButtonDown="StackPanel_MouseRightButtonDown"
+                        >
+                <Button MinHeight="60" MinWidth="200" 
+                        PreviewMouseRightButtonDown="Button_PreviewMouseRightButtonDown"
+                        MouseRightButtonDown="Button_MouseRightButtonDown"
+                        >Button</Button>
+            </StackPanel>
+        </DockPanel>
+        
+    </Grid>
+</Window>
