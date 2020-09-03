@@ -8,14 +8,26 @@
         Title="RooutedEventHandledTest" Height="450" Width="800">
     <Grid>
         <DockPanel PreviewMouseRightButtonDown="DockPanel_PreviewMouseRightButtonDown"
-                   MouseRightButtonDown="DockPanel_MouseRightButtonDown">
+                   MouseRightButtonDown="DockPanel_MouseRightButtonDown"
+                   PreviewMouseLeftButtonDown="DockPanel_PreviewMouseLeftButtonDown"
+                   MouseLeftButtonDown="DockPanel_MouseLeftButtonDown">
+            <TextBlock DockPanel.Dock="Top" Margin="10, 50, 10, 0" MinHeight="60"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontSize="20">
+                Button Right Click -> Tunneling &amp; Bubbling!<LineBreak/>
+                Button Left　Click -> Handled
+            </TextBlock>
             <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center"
                         PreviewMouseRightButtonDown="StackPanel_PreviewMouseRightButtonDown"
                         MouseRightButtonDown="StackPanel_MouseRightButtonDown"
+                        PreviewMouseLeftButtonDown="StackPanel_PreviewMouseLeftButtonDown"
+                        MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"
                         >
                 <Button MinHeight="60" MinWidth="200" 
                         PreviewMouseRightButtonDown="Button_PreviewMouseRightButtonDown"
                         MouseRightButtonDown="Button_MouseRightButtonDown"
+                        PreviewMouseLeftButtonDown="Button_PreviewMouseLeftButtonDown"
+                        MouseLeftButtonDown="Button_MouseLeftButtonDown"
                         >Button</Button>
             </StackPanel>
         </DockPanel>
