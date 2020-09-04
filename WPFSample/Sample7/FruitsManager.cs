@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,13 +30,13 @@ namespace WPFSample.Sample7
             set
             {
                 textSourceProperty = value;
-                NotifyChanged("TextSourceProperty");
+                NotifyChanged(nameof(textSourceProperty));
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void NotifyChanged(string property)
+        private void NotifyChanged([CallerMemberName] string property = null)
         {
             if (PropertyChanged != null)
             {
