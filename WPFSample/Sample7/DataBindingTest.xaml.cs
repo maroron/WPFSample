@@ -41,6 +41,12 @@ namespace WPFSample.Sample7
                 fm.Fruits.RemoveAt(index);
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // ソースプロパティを更新するだけでは値は通知されない
+            fm.TextSourceProperty = this.text1.Text;
+        }
     }
 
     public class Point
