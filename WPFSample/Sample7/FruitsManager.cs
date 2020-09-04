@@ -11,6 +11,9 @@ namespace WPFSample.Sample7
 {
     class FruitsManager : INotifyPropertyChanged
     {
+        // refernce
+        // https://qiita.com/soi/items/d0c83a0cc3a4b23237ef
+
         public ObservableCollection<Fruit> Fruits { get; set; }
 
         public FruitsManager()
