@@ -43,8 +43,8 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1" Margin="10">
-            <TextBlock Text="{Binding X}" MinHeight="40" FontSize="12"/>
-            <TextBlock Text="{Binding Y}" MinHeight="40" FontSize="12"/>
+            <TextBlock Text="{Binding Point.X}" MinHeight="40" FontSize="12"/>
+            <TextBlock Text="{Binding Point.Y}" MinHeight="40" FontSize="12"/>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="2" Margin="10">

@@ -48,10 +48,4 @@ namespace WPFSample.Sample7
             fm.TextSourceProperty = this.text1.Text;
         }
     }
-
-    public class Point
-    {
-        public int X { get; set; }
-        public int Y { get; set; }
-    }
 }

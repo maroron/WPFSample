@@ -34,11 +34,31 @@ namespace WPFSample.Sample7
             }
         }
 
+        private Point point = new Point() { X = 100, Y = 200 };
+        public Point Point
+        {
+            get { return point; }
+            set
+            {
+                if (point != value)
+                {
+                    point = value;
+                    NotifyChanged();
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyChanged([CallerMemberName] string property = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
+    }
+
+    public class Point
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
     }
 }
