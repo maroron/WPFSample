@@ -25,7 +25,6 @@ namespace WPFSample.Sample7
         {
             InitializeComponent();
             DataContext = fm;
-            //DataContext = new Point() { X = 100, Y = 200 };
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
