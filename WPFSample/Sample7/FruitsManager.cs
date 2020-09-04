@@ -30,7 +30,7 @@ namespace WPFSample.Sample7
             set
             {
                 textSourceProperty = value;
-                NotifyChanged(nameof(textSourceProperty));
+                NotifyChanged();
             }
         }
 
