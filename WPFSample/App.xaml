@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:WPFSample"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+    <!-- DataBinding Test -->
+        <SolidColorBrush x:Key="toShare">Purple</SolidColorBrush>
     </Application.Resources>
 </Application>
