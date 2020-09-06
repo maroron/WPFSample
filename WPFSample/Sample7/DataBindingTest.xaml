@@ -92,5 +92,9 @@
             <Button Margin="10" Background="{DynamicResource toShare}" Click="Button_Click_1">test button2</Button>
             <Button Margin="10" Click="Button_Click_1">Change Color</Button>
         </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="2" Margin="10">
+            <Button Style="{StaticResource ButtonStyle}">Style Test</Button>
+        </StackPanel>
     </Grid>
 </Window>

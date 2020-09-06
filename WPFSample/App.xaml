@@ -4,7 +4,17 @@
              xmlns:local="clr-namespace:WPFSample"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-    <!-- DataBinding Test -->
+        <!-- DataBinding Test Start -->
         <SolidColorBrush x:Key="toShare">Purple</SolidColorBrush>
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="MinHeight" Value="40"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="14pt"/>
+            <Setter Property="Background" Value="Aquamarine"/>
+            <Setter Property="Foreground" Value="Red"/>
+        </Style>
+        <!-- DataBinding Test End -->
+
     </Application.Resources>
 </Application>
