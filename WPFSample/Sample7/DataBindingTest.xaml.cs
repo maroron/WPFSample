@@ -46,5 +46,11 @@ namespace WPFSample.Sample7
             // ソースプロパティを更新するだけでは値は通知されない
             fm.TextSourceProperty = this.text1.Text;
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Brush newbrush = new SolidColorBrush(Colors.Aqua);
+            this.Resources["toShare"] = newbrush;
+        }
     }
 }

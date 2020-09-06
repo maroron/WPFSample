@@ -6,6 +6,12 @@
         xmlns:local="clr-namespace:WPFSample.Sample7"
         mc:Ignorable="d"
         Title="DataBindingTest" Height="450" Width="800">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="toShare">Yellow</SolidColorBrush>
+        <TextBox x:Key="sharedTextBox" Text="sharedTextBox"/>
+    </Window.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -68,6 +74,21 @@
                 <TextBlock MinHeight="20" TextWrapping="Wrap" Text="{Binding ElementName=text2, Path=Text}"/>
             </Border>
             <TextBox Margin="10" BorderThickness="2" MinHeight="10" Name="text2" Text="Hello world!"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="10">
+            <Button Margin="10" Background="{StaticResource toShare}">test button1</Button>
+            <StackPanel>
+                <StackPanel.Resources>
+                   <LinearGradientBrush x:Key="toShare">
+                       <GradientStop Offset="0" Color="sc# 1, 1, 1, 1"/>
+                       <GradientStop Offset="1" Color="sc# 1, .6, .6, .6"/>
+                   </LinearGradientBrush>
+               </StackPanel.Resources>
+               <Button Margin="10" Background="{StaticResource toShare}">test button2</Button>
+            </StackPanel>
+            <Button Margin="10" Background="{DynamicResource toShare}" Click="Button_Click_1">test button2</Button>
+            <Button Margin="10" Click="Button_Click_1">Change Color</Button>
         </StackPanel>
     </Grid>
 </Window>
