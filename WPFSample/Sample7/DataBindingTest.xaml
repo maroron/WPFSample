@@ -81,9 +81,11 @@
             <StackPanel>
                 <StackPanel.Resources>
                    <LinearGradientBrush x:Key="toShare">
-                       <GradientStop Offset="0" Color="sc# 1, 1, 1, 1"/>
-                       <GradientStop Offset="1" Color="sc# 1, .6, .6, .6"/>
-                   </LinearGradientBrush>
+                       <!--<GradientStop Offset="0" Color="sc# 1, 1, 1, 1"/>
+                       <GradientStop Offset="1" Color="sc# 1, .6, .6, .6"/>-->
+                       <GradientStop Offset="0" Color="White"/>
+                       <GradientStop Offset="1" Color="Aquamarine"/>
+                    </LinearGradientBrush>
                </StackPanel.Resources>
                <Button Margin="10" Background="{StaticResource toShare}">test button2</Button>
             </StackPanel>
