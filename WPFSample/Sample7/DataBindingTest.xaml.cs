@@ -21,6 +21,8 @@ namespace WPFSample.Sample7
     {
         private FruitsManager fm = new FruitsManager();
 
+        private bool isYellow = false;
+
         public DataBindingTest()
         {
             InitializeComponent();
@@ -49,8 +51,9 @@ namespace WPFSample.Sample7
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Brush newbrush = new SolidColorBrush(Colors.Aqua);
+            Brush newbrush = isYellow ? new SolidColorBrush(Colors.Aqua) : new SolidColorBrush(Colors.Yellow);
             this.Resources["toShare"] = newbrush;
+            isYellow = !isYellow;
         }
     }
 }
