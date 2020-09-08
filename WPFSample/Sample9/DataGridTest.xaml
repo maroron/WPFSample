@@ -7,10 +7,18 @@
         mc:Ignorable="d"
         Title="DataGridTest" Height="450" Width="800">
     <Grid>
-        <DataGrid Name="dataGrid" AutoGeneratingColumn="dataGrid_AutoGeneratingColumn">
-            <DataGrid.AlternatingRowBackground>
-                <SolidColorBrush Color="#FF99B4D1"/>
-            </DataGrid.AlternatingRowBackground>
-        </DataGrid>
+        <DockPanel>
+            <DataGrid Margin="10" MinWidth="380" DockPanel.Dock="Left" Name="dataGrid" AutoGeneratingColumn="dataGrid_AutoGeneratingColumn">
+                <DataGrid.AlternatingRowBackground>
+                    <SolidColorBrush Color="#FF99B4D1"/>
+                </DataGrid.AlternatingRowBackground>
+            </DataGrid>
+            <DataGrid Margin="10" MinWidth="380" Name="dataGrid2" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
+                    <DataGridCheckBoxColumn Header="認証済み" Binding="{Binding AuthMember}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
     </Grid>
 </Window>

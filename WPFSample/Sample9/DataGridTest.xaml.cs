@@ -24,6 +24,7 @@ namespace WPFSample.Sample9
         {
             InitializeComponent();
 
+            // Left Side DataGrid
             var data = new ObservableCollection<Person>(
                 Enumerable.Range(1, 100).Select(i => new Person
                 {
@@ -33,6 +34,16 @@ namespace WPFSample.Sample9
                     AuthMember = i % 5 == 0,
                 }));
             this.dataGrid.ItemsSource = data;
+
+            // Right Side DataGrid
+            var data2 = new ObservableCollection<Person>(
+                Enumerable.Range(1, 100).Select(i => new Person
+                {
+                    Name = "田中　太郎" + i,
+                    Gender = i % 2 == 0 ? Gender.Men : Gender.Women,
+                    AuthMember = i % 5 == 0,
+                }));
+            this.dataGrid2.ItemsSource = data2;
         }
 
         private void dataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
