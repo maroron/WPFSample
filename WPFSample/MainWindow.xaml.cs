@@ -20,6 +20,7 @@ using WPFSample.Sample5;
 using WPFSample.Sample6;
 using WPFSample.Sample7;
 using WPFSample.Sample8;
+using WPFSample.Sample9;
 
 namespace WPFSample
 {
@@ -84,7 +85,8 @@ namespace WPFSample
 
         private void Sample9_Click(object sender, RoutedEventArgs e)
         {
-            // DataGrid 
+            var sample = new DataGridTest();
+            sample.ShowDialog();
         }
 
         private void Sample10_Click(object sender, RoutedEventArgs e)
