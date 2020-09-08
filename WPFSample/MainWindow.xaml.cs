@@ -84,7 +84,7 @@ namespace WPFSample
 
         private void Sample9_Click(object sender, RoutedEventArgs e)
         {
-            
+            // DataGrid 
         }
 
         private void Sample10_Click(object sender, RoutedEventArgs e)
