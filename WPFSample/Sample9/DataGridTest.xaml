@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="DataGridTest" Height="450" Width="800">
     <Grid>
-        <DataGrid Name="dataGrid"/>
+        <DataGrid Name="dataGrid" AutoGeneratingColumn="dataGrid_AutoGeneratingColumn">
+            <DataGrid.AlternatingRowBackground>
+                <SolidColorBrush Color="#FF99B4D1"/>
+            </DataGrid.AlternatingRowBackground>
+        </DataGrid>
     </Grid>
 </Window>
