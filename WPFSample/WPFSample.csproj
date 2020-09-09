@@ -84,6 +84,7 @@
     <Compile Include="Sample9\DataGridTest.xaml.cs">
       <DependentUpon>DataGridTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sample9\GenderComboBoxItem.cs" />
     <Compile Include="Sample9\Person.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

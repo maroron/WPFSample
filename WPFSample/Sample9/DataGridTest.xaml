@@ -22,6 +22,18 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
                     <DataGridCheckBoxColumn Header="認証済み" Binding="{Binding AuthMember}"/>
+                    <DataGridComboBoxColumn Header="性別"
+                                            SelectedValueBinding="{Binding Gender}"
+                                            DisplayMemberPath="Label"
+                                            SelectedValuePath="Value">
+                        <DataGridComboBoxColumn.ItemsSource>
+                            <x:Array Type="{x:Type local:GenderComboBoxItem}">
+                                <local:GenderComboBoxItem Label="未選択" Value="None"/>
+                                <local:GenderComboBoxItem Label="男" Value="Men"/>
+                                <local:GenderComboBoxItem Label="女" Value="Women"/>
+                            </x:Array>
+                        </DataGridComboBoxColumn.ItemsSource>
+                    </DataGridComboBoxColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>
