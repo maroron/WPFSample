@@ -34,6 +34,40 @@
                             </x:Array>
                         </DataGridComboBoxColumn.ItemsSource>
                     </DataGridComboBoxColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="名前" />
+                                    <Separator />
+                                    <TextBlock Text="認証済み" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}"/>
+                                    <Separator />
+                                    <CheckBox IsEnabled="False" IsChecked="{Binding AuthMember}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}"/>
+                                    <Separator/>
+                                    <CheckBox IsChecked="{Binding AuthMember}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>
