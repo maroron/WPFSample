@@ -13,7 +13,12 @@
                     <SolidColorBrush Color="#FF99B4D1"/>
                 </DataGrid.AlternatingRowBackground>
             </DataGrid>
-            <DataGrid Margin="10" MinWidth="380" Name="dataGrid2" AutoGenerateColumns="False">
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                <Button Margin="10, 10" MinHeight="20" MinWidth="100" Click="GreaterThan30Age_Click">Age >= 30</Button>
+                <Button Margin="10, 10" MinHeight="20" MinWidth="100" Click="MenOnly_Click">Men only</Button>
+                <Button Margin="10, 10" MinHeight="20" MinWidth="100" Click="Reset_Click">Reset</Button>
+            </StackPanel>
+            <DataGrid Margin="10" MinWidth="380" DockPanel.Dock="Right" Name="dataGrid2" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
                     <DataGridCheckBoxColumn Header="認証済み" Binding="{Binding AuthMember}"/>

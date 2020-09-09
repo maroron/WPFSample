@@ -20,12 +20,19 @@ namespace WPFSample.Sample9
     /// </summary>
     public partial class DataGridTest : Window
     {
+
+        private ObservableCollection<Person> origindata;
+        private ObservableCollection<Person> data;
+
+        private ObservableCollection<Person> origindata2;
+        private ObservableCollection<Person> data2;
+
         public DataGridTest()
         {
             InitializeComponent();
 
             // Left Side DataGrid
-            var data = new ObservableCollection<Person>(
+            origindata = new ObservableCollection<Person>(
                 Enumerable.Range(1, 100).Select(i => new Person
                 {
                     Name = "田中　太郎" + i,
@@ -33,17 +40,17 @@ namespace WPFSample.Sample9
                     Age = 20 + i % 50,
                     AuthMember = i % 5 == 0,
                 }));
-            this.dataGrid.ItemsSource = data;
+            this.dataGrid.ItemsSource = data = origindata;
 
             // Right Side DataGrid
-            var data2 = new ObservableCollection<Person>(
+            origindata2 = new ObservableCollection<Person>(
                 Enumerable.Range(1, 100).Select(i => new Person
                 {
                     Name = "田中　太郎" + i,
                     Gender = i % 2 == 0 ? Gender.Men : Gender.Women,
                     AuthMember = i % 5 == 0,
                 }));
-            this.dataGrid2.ItemsSource = data2;
+            this.dataGrid2.ItemsSource = data2 = origindata2;
         }
 
         private void dataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -74,6 +81,22 @@ namespace WPFSample.Sample9
                 default:
                     throw new InvalidOperationException();
             }
+        }
+
+        // こういうことがしたい　今　うまく動かない
+        private void GreaterThan30Age_Click(object sender, RoutedEventArgs e)
+        {
+            data2 = new ObservableCollection<Person>(origindata2.Where(x => x.Age >= 30));
+        }
+
+        private void MenOnly_Click(object sender, RoutedEventArgs e)
+        {
+            data2 = new ObservableCollection<Person>(origindata2.Where(x => x.Gender == Gender.Men));
+        }
+
+        private void Reset_Click(object sender, RoutedEventArgs e)
+        {
+            data2 = origindata2;
         }
     }
 }
