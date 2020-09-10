@@ -19,11 +19,14 @@ namespace WPFSample.SampleA
                 new GreetingEvening(),
             };
 
+            StringBuilder sb = new StringBuilder();
             foreach (var obj in greetings)
             {
                 string msg = obj.GetMessage();
-                Console.WriteLine(msg);
+                sb.Append(msg)
+                  .Append(Environment.NewLine);
             }
+            TextProperty = sb.ToString();
         }
     }
 }
