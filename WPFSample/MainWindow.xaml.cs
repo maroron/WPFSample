@@ -21,6 +21,7 @@ using WPFSample.Sample6;
 using WPFSample.Sample7;
 using WPFSample.Sample8;
 using WPFSample.Sample9;
+using WPFSample.SampleA;
 
 namespace WPFSample
 {
@@ -91,7 +92,8 @@ namespace WPFSample
 
         private void Sample10_Click(object sender, RoutedEventArgs e)
         {
-
+            var sample = new OOPTest();
+            sample.ShowDialog();
         }
 
         private void Sample11_Click(object sender, RoutedEventArgs e)
