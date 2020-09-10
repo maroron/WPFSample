@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace WPFSample.SampleA
 {
-    class GreetingEvening : GreetingBase
+    class GreetingEvening : GreetingBase, IGreeting
     {
+        public string GetGreeting()
+        {
+            return "Evening Good";
+        }
+
         public override string GetMessage()
         {
             return "Good Evening";

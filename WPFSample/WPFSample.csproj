@@ -90,6 +90,7 @@
     <Compile Include="SampleA\GreetingBase.cs" />
     <Compile Include="SampleA\GreetingEvening.cs" />
     <Compile Include="SampleA\GreetingMorning.cs" />
+    <Compile Include="SampleA\IGreeting.cs" />
     <Compile Include="SampleA\OOPTest.xaml.cs">
       <DependentUpon>OOPTest.xaml</DependentUpon>
     </Compile>

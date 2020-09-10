@@ -26,6 +26,16 @@ namespace WPFSample.SampleA
                 sb.Append(msg)
                   .Append(Environment.NewLine);
             }
+
+            sb.Append(Environment.NewLine);
+
+            foreach (IGreeting obj in greetings)
+            {
+                string msg = obj.GetGreeting();
+                sb.Append(msg)
+                  .Append(Environment.NewLine);
+            }
+
             TextProperty = sb.ToString();
         }
     }
