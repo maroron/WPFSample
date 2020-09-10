@@ -12,5 +12,8 @@ namespace WPFSample.SampleA
         {
             return "";
         }
+
+        // abstract version
+        //public abstract string GetMessage();
     }
 }
