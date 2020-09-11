@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TextFileProcessor;
+using WPFSample.SampleA.TemplatePattern;
 
 namespace WPFSample.SampleA
 {
@@ -31,6 +32,11 @@ namespace WPFSample.SampleA
         private void button_Click(object sender, RoutedEventArgs e)
         {
             TextProcessor.Run<LineCounterProcessor>(this.textbox.Text);
+        }
+
+        private void templatePettern_Click(object sender, RoutedEventArgs e)
+        {
+            var sample = new ConcreteTemplateSample();
         }
     }
 }

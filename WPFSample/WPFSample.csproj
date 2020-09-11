@@ -96,6 +96,8 @@
       <DependentUpon>OOPTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="SampleA\OOPTestViewModel.cs" />
+    <Compile Include="SampleA\TemplatePattern\ConcreteTemplateSample.cs" />
+    <Compile Include="SampleA\TemplatePattern\TemplateSample.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
