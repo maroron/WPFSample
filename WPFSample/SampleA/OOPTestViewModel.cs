@@ -12,6 +12,12 @@ namespace WPFSample.SampleA
 
         public OOPTestViewModel()
         {
+            var greeting = InitializeGreeting();
+            TextProperty = greeting;
+        }
+
+        private string InitializeGreeting()
+        {
             var greetings = new List<GreetingBase>()
             {
                 new GreetingMorning(),
@@ -36,7 +42,7 @@ namespace WPFSample.SampleA
                   .Append(Environment.NewLine);
             }
 
-            TextProperty = sb.ToString();
+            return sb.ToString();
         }
     }
 }

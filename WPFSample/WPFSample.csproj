@@ -91,6 +91,7 @@
     <Compile Include="SampleA\GreetingEvening.cs" />
     <Compile Include="SampleA\GreetingMorning.cs" />
     <Compile Include="SampleA\IGreeting.cs" />
+    <Compile Include="SampleA\LineCounterProcessor.cs" />
     <Compile Include="SampleA\OOPTest.xaml.cs">
       <DependentUpon>OOPTest.xaml</DependentUpon>
     </Compile>
@@ -173,6 +174,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TextFileProcessor\TextFileProcessor.csproj">
+      <Project>{1a0d1e02-1c42-4fe1-b458-9809f5b0c7d2}</Project>
+      <Name>TextFileProcessor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
