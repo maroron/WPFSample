@@ -98,6 +98,9 @@
     <Compile Include="SampleA\OOPTestViewModel.cs" />
     <Compile Include="SampleA\TemplatePattern\ConcreteTemplateSample.cs" />
     <Compile Include="SampleA\TemplatePattern\TemplateSample.cs" />
+    <Compile Include="SampleB\HttpReader.xaml.cs">
+      <DependentUpon>HttpReader.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -147,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SampleA\OOPTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SampleB\HttpReader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
