@@ -1,0 +1,19 @@
+﻿<Window x:Class="WPFSample.SampleB.HttpReader"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSample.SampleB"
+        mc:Ignorable="d"
+        Title="HttpReader" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Name="textblock" TextWrapping="Wrap"></TextBlock>
+        <StackPanel Grid.Column="1" Margin="10" Orientation="Vertical" VerticalAlignment="Center">
+            <Button Click="Button_Click">Get</Button>
+        </StackPanel>
+    </Grid>
+</Window>
