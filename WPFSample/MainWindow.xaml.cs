@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -22,6 +23,7 @@ using WPFSample.Sample7;
 using WPFSample.Sample8;
 using WPFSample.Sample9;
 using WPFSample.SampleA;
+using WPFSample.SampleB;
 
 namespace WPFSample
 {
@@ -98,7 +100,8 @@ namespace WPFSample
 
         private void Sample11_Click(object sender, RoutedEventArgs e)
         {
-
+            var sample = new HttpReader();
+            sample.ShowDialog();
         }
 
         private void Sample12_Click(object sender, RoutedEventArgs e)
