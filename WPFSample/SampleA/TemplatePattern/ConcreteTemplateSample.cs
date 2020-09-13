@@ -11,10 +11,6 @@ namespace WPFSample.SampleA.TemplatePattern
     // Template Method Pattern
     class ConcreteTemplateSample : TemplateSample
     {
-        public ConcreteTemplateSample(Window w) : base(w)
-        {
-        }
-
         protected override void Execute()
         {
             Console.WriteLine("sample1 Execute");
@@ -30,7 +26,7 @@ namespace WPFSample.SampleA.TemplatePattern
             Console.WriteLine("sample1 Terminate");
         }
 
-        protected override void KeyDown(object sender, KeyEventArgs e)
+        public override void KeyDown(object sender, KeyEventArgs e)
         {
             Console.WriteLine("sample1 : " + e.Key.ToString());
         }

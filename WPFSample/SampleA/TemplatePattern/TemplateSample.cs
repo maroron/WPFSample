@@ -13,26 +13,17 @@ namespace WPFSample.SampleA.TemplatePattern
     // Template Method Pattern
     abstract class TemplateSample
     {
-        private Window window;
-
-        protected TemplateSample(Window w)
+        protected TemplateSample()
         {
-            this.window = w;
             Initialize();
             Execute();
             Terminate();
-        }
-
-        public virtual void Run()
-        {
-            window.KeyDown -= KeyDown;
-            window.KeyDown += KeyDown;
         }
 
         protected abstract void Initialize();
         protected abstract void Execute();
         protected abstract void Terminate();
 
-        protected abstract void KeyDown(object sender, KeyEventArgs e);
+        public abstract void KeyDown(object sender, KeyEventArgs e);
     }
 }

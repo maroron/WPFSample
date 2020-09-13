@@ -27,6 +27,9 @@ namespace WPFSample.SampleA
         {
             InitializeComponent();
             this.DataContext = vm;
+
+            // Test Key Event
+            KeyEventFactory.Entry(this);
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -38,19 +41,7 @@ namespace WPFSample.SampleA
         {
             Button button = sender as Button;
 
-            TemplateSample sample;
-            switch(button.Name)
-            {
-                case "key1":
-                    sample = new ConcreteTemplateSample(this);
-                    break;
-                case "key2":
-                    sample = new ConcreteTemplateSample2(this);
-                    break;
-                default:
-                    throw new Exception();
-            };
-            sample.Run();
+            KeyEventFactory.SetKeyEvent(button.Name);
         }
     }
 }

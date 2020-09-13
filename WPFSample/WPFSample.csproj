@@ -98,6 +98,7 @@
     <Compile Include="SampleA\OOPTestViewModel.cs" />
     <Compile Include="SampleA\TemplatePattern\ConcreteTemplateSample.cs" />
     <Compile Include="SampleA\TemplatePattern\ConcreteTemplateSample2.cs" />
+    <Compile Include="SampleA\TemplatePattern\KeyEventFactory.cs" />
     <Compile Include="SampleA\TemplatePattern\TemplateSample.cs" />
     <Compile Include="SampleB\HttpReader.xaml.cs">
       <DependentUpon>HttpReader.xaml</DependentUpon>
