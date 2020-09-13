@@ -23,7 +23,8 @@
                 <TextBox x:Name="textbox">file path</TextBox>
             </Border>
             <Button x:Name="button" Click="button_Click" Margin="10">TextFileProcessor Run</Button>
-            <Button x:Name="MyTemplatePerttern" Click="templatePettern_Click" Margin="10">My Template</Button>
+            <Button x:Name="key1" Click="templatePettern_Click" Margin="10">Key Event1</Button>
+            <Button x:Name="key2" Click="templatePettern_Click" Margin="10">Key Event2</Button>
         </StackPanel>
     </Grid>
 </Window>

@@ -36,7 +36,20 @@ namespace WPFSample.SampleA
 
         private void templatePettern_Click(object sender, RoutedEventArgs e)
         {
-            var sample = new ConcreteTemplateSample(this);
+            Button button = sender as Button;
+
+            TemplateSample sample;
+            switch(button.Name)
+            {
+                case "key1":
+                    sample = new ConcreteTemplateSample(this);
+                    break;
+                case "key2":
+                    sample = new ConcreteTemplateSample2(this);
+                    break;
+                default:
+                    throw new Exception();
+            };
             sample.Run();
         }
     }

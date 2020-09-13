@@ -8,30 +8,30 @@ using System.Windows.Input;
 
 namespace WPFSample.SampleA.TemplatePattern
 {
-    class ConcreteTemplateSample : TemplateSample
+    class ConcreteTemplateSample2 : TemplateSample
     {
-        public ConcreteTemplateSample(Window w) : base(w)
+        public ConcreteTemplateSample2(Window w) : base(w)
         {
         }
 
         protected override void Execute()
         {
-            Console.WriteLine("sample1 Execute");
+            Console.WriteLine("sample2 Execute");
         }
 
         protected override void Initialize()
         {
-            Console.WriteLine("sample1 Initialize");
+            Console.WriteLine("sample2 Initialize");
         }
 
         protected override void Terminate()
         {
-            Console.WriteLine("sample1 Terminate");
+            Console.WriteLine("sample2 Terminate");
         }
 
         protected override void KeyDown(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("sample1 : " + e.Key.ToString());
+            Console.WriteLine("sample2 : " + e.Key.ToString());
         }
     }
 }

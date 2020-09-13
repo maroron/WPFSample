@@ -17,16 +17,15 @@ namespace WPFSample.SampleA.TemplatePattern
         protected TemplateSample(Window w)
         {
             this.window = w;
+            Initialize();
+            Execute();
+            Terminate();
         }
 
         public virtual void Run()
         {
-            Initialize();
-
+            window.KeyDown -= KeyDown;
             window.KeyDown += KeyDown;
-
-            Execute();
-            Terminate();
         }
 
         protected abstract void Initialize();
