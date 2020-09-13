@@ -8,6 +8,7 @@ using System.Windows.Input;
 
 namespace WPFSample.SampleA.TemplatePattern
 {
+    // Template Method Pattern
     class ConcreteTemplateSample2 : TemplateSample
     {
         public ConcreteTemplateSample2(Window w) : base(w)

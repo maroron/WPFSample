@@ -10,6 +10,7 @@ using System.Windows.Input;
 
 namespace WPFSample.SampleA.TemplatePattern
 {
+    // Template Method Pattern
     abstract class TemplateSample
     {
         private Window window;
