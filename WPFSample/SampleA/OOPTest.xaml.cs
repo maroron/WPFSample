@@ -36,7 +36,8 @@ namespace WPFSample.SampleA
 
         private void templatePettern_Click(object sender, RoutedEventArgs e)
         {
-            var sample = new ConcreteTemplateSample();
+            var sample = new ConcreteTemplateSample(this);
+            sample.Run();
         }
     }
 }
