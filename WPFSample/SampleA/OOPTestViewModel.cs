@@ -1,20 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace WPFSample.SampleA
 {
-    class OOPTestViewModel
+    class OOPTestViewModel : INotifyPropertyChanged
     {
-        public string TextProperty { get; set; }
+        private string textProperty;
+        public string TextProperty 
+        {
+            get { return textProperty; }
+            set 
+            {
+                if (value != textProperty)
+                {
+                    textProperty = value;
+                    NotifyChanged();
+                }
+            }
+        }
 
         public OOPTestViewModel()
         {
             var greeting = InitializeGreeting();
             TextProperty = greeting;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private string InitializeGreeting()
         {
@@ -41,8 +57,14 @@ namespace WPFSample.SampleA
                 sb.Append(msg)
                   .Append(Environment.NewLine);
             }
+            sb.Append(Environment.NewLine);
 
             return sb.ToString();
+        }
+
+        private void NotifyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }
