@@ -96,6 +96,7 @@
       <DependentUpon>OOPTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="SampleA\OOPTestViewModel.cs" />
+    <Compile Include="SampleA\Singleton.cs" />
     <Compile Include="SampleA\TemplatePattern\ConcreteTemplateSample.cs" />
     <Compile Include="SampleA\TemplatePattern\ConcreteTemplateSample2.cs" />
     <Compile Include="SampleA\TemplatePattern\KeyEventFactory.cs" />

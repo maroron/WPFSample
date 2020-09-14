@@ -43,5 +43,20 @@ namespace WPFSample.SampleA
 
             KeyEventFactory.SetKeyEvent(button.Name);
         }
+
+        private void Singleton_Click(object sender, RoutedEventArgs e)
+        {
+            var singleton1 = Singleton.GetInstance;
+            var singleton2 = Singleton.GetInstance;
+
+            if (Object.ReferenceEquals(singleton1, singleton2))
+            {
+                Console.WriteLine("singleton instance is same.");
+            }
+            else
+            {
+                Console.WriteLine("singleton instance is different.");
+            }
+        }
     }
 }

@@ -25,6 +25,7 @@
             <Button x:Name="button" Click="button_Click" Margin="10">TextFileProcessor Run</Button>
             <Button x:Name="key1" Click="templatePettern_Click" Margin="10">Key Event1</Button>
             <Button x:Name="key2" Click="templatePettern_Click" Margin="10">Key Event2</Button>
+            <Button x:Name="singleton" Click="Singleton_Click" Margin="10">Singleton</Button>
         </StackPanel>
     </Grid>
 </Window>
