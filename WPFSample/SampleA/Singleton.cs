@@ -8,7 +8,7 @@ namespace WPFSample.SampleA
 {
     class Singleton
     {
-        static public Singleton GetInstance { get; private set; } = new Singleton();
+        static public Singleton GetInstance { get; } = new Singleton();
 
         private Singleton() { }
     }
