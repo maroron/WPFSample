@@ -51,11 +51,11 @@ namespace WPFSample.SampleA
 
             if (Object.ReferenceEquals(singleton1, singleton2))
             {
-                Console.WriteLine("singleton instance is same.");
+                vm.TextProperty += "singleton instance is same." + Environment.NewLine;
             }
             else
             {
-                Console.WriteLine("singleton instance is different.");
+                vm.TextProperty += "singleton instance is different." + Environment.NewLine;
             }
         }
     }
