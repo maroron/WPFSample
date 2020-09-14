@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPFSample.SampleA
 {
-    class Singleton
+    sealed class Singleton
     {
         static public Singleton GetInstance { get; } = new Singleton();
 
