@@ -24,6 +24,17 @@ namespace WPFSample.SampleA.TemplatePattern
         protected abstract void Execute();
         protected abstract void Terminate();
 
-        public abstract void KeyDown(object sender, KeyEventArgs e);
+        public void KeyDown(object sender, KeyEventArgs e)
+        {
+            Key key = e.Key;
+            if (ValidKey(key))
+            {
+                Process(key);
+            }
+        }
+
+        protected abstract bool ValidKey(Key key);
+
+        protected abstract void Process(Key key);
     }
 }

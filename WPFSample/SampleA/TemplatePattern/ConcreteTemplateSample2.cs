@@ -26,9 +26,27 @@ namespace WPFSample.SampleA.TemplatePattern
             Console.WriteLine("sample2 Terminate");
         }
 
-        public override void KeyDown(object sender, KeyEventArgs e)
+        protected override bool ValidKey(Key key)
         {
-            Console.WriteLine("sample2 : " + e.Key.ToString());
+            bool isValid = false;
+            switch (key)
+            {
+                case Key.Left:
+                case Key.Up:
+                case Key.Right:
+                case Key.Down:
+                    isValid = true;
+                    break;
+                default:
+                    isValid = false;
+                    break;
+            }
+            return isValid;
+        }
+
+        protected override void Process(Key key)
+        {
+            Console.WriteLine("sample2 : " + key.ToString());
         }
     }
 }
