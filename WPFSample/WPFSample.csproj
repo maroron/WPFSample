@@ -86,6 +86,9 @@
     </Compile>
     <Compile Include="Sample9\GenderComboBoxItem.cs" />
     <Compile Include="Sample9\Person.cs" />
+    <Compile Include="SampleA\CompositePattern\Directory.cs" />
+    <Compile Include="SampleA\CompositePattern\Entry.cs" />
+    <Compile Include="SampleA\CompositePattern\File.cs" />
     <Compile Include="SampleA\GreetingAfternoon.cs" />
     <Compile Include="SampleA\GreetingBase.cs" />
     <Compile Include="SampleA\GreetingEvening.cs" />

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TextFileProcessor;
+using WPFSample.SampleA.CompositePattern;
 using WPFSample.SampleA.TemplatePattern;
 
 namespace WPFSample.SampleA
@@ -59,10 +60,32 @@ namespace WPFSample.SampleA
             }
         }
 
+        private int count = 0;
+        private Entry rootdir = new Directory("root"); 
+
         private void Composite_Click(object sender, RoutedEventArgs e)
         {
             // preparing composite code
-            vm.CompositeTextProperty = "test composite!";
+            //vm.CompositeTextProperty = "test composite!";
+
+            Entry item;
+
+            var button = sender as Button;
+            if (button.Name == "composite1")
+            {
+                item = new Directory("bin" + count++);
+            }
+            else if (button.Name == "composite2")
+            {
+                item = new Directory("tmp" + count++);
+            }
+            else
+            {
+                item = new File("vi" + count, 1000);
+            }
+            rootdir.Add(item);
+
+            rootdir.PrintList();
         }
     }
 }
