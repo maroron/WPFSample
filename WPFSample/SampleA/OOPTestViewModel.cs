@@ -24,6 +24,20 @@ namespace WPFSample.SampleA
             }
         }
 
+        private string compositeTextProperty;
+        public string CompositeTextProperty 
+        {
+            get { return compositeTextProperty; }
+            set 
+            {
+                if (value != compositeTextProperty)
+                {
+                    compositeTextProperty = value;
+                    NotifyChanged();
+                }
+            }
+        }
+
         public OOPTestViewModel()
         {
             var greeting = InitializeGreeting();

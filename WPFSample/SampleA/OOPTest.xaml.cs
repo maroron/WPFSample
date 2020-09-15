@@ -58,5 +58,11 @@ namespace WPFSample.SampleA
                 vm.TextProperty += "singleton instance is different." + Environment.NewLine;
             }
         }
+
+        private void Composite_Click(object sender, RoutedEventArgs e)
+        {
+            // preparing composite code
+            vm.CompositeTextProperty = "test composite!";
+        }
     }
 }

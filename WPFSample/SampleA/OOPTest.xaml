@@ -11,9 +11,14 @@
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
         
+        <!-- row1 -->
         <!--column2-->
-        <Border BorderBrush="Black" BorderThickness="2" Grid.Column="0">
+        <Border BorderBrush="Black" BorderThickness="2" Grid.Column="0" Margin="10">
             <TextBlock x:Name="textblock" Text="{Binding TextProperty}"/>
         </Border>
 
@@ -26,6 +31,18 @@
             <Button x:Name="key1" Click="templatePettern_Click" Margin="10">Key Event1</Button>
             <Button x:Name="key2" Click="templatePettern_Click" Margin="10">Key Event2</Button>
             <Button x:Name="singleton" Click="Singleton_Click" Margin="10">Singleton</Button>
+        </StackPanel>
+
+        <!-- row1 -->
+        <Border BorderBrush="Black" BorderThickness="2" Grid.Column="0" Grid.Row="1" Margin="10">
+            <TextBlock x:Name="row1Textblock" Text="{Binding CompositeTextProperty}"/>
+        </Border>
+
+        <!--column1-->
+        <StackPanel Orientation="Vertical" Margin="10" Grid.Column="1" VerticalAlignment="Center" Grid.Row="1">
+            <Button x:Name="composite1" Click="Composite_Click" Margin="10, 0">Composite Item1</Button>
+            <Button x:Name="composite2" Click="Composite_Click" Margin="10, 0">Composite Item2</Button>
+            <Button x:Name="composite3" Click="Composite_Click" Margin="10, 0">Composite Item3</Button>
         </StackPanel>
     </Grid>
 </Window>
