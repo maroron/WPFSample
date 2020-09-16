@@ -16,7 +16,8 @@
                 BorderThickness="2"
                 BorderBrush="Black"
                 >
-            <Canvas Name="canvas" PreviewMouseDown="Image_MouseDown"/>
+            <!-- 背景が透明だとクリックイベントが取れないので、透明に設定する -->
+            <Canvas Name="canvas" PreviewMouseDown="Image_MouseDown" Background="Transparent"/>
         </Border>
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
             <Border BorderBrush="Black" BorderThickness="2" Margin="10">
