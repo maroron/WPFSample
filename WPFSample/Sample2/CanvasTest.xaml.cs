@@ -53,7 +53,7 @@ namespace WPFSample.Sample2
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             bool isSelectedMode = false;
-            Point clickedPoint = e.GetPosition(this);
+            Point clickedPoint = e.GetPosition(this.canvas);
 
             switch (CurrentButtonState)
             {
@@ -61,12 +61,12 @@ namespace WPFSample.Sample2
                     break;
                 case ButtonState.Add:
                     SolidColorBrush stroke = isSelectedMode ? new SolidColorBrush(Color.FromRgb(255, 255, 0)) : new SolidColorBrush(Color.FromRgb(0, 170, 255));
-                    Rect rect = new Rect(clickedPoint.X - 20, clickedPoint.Y - 20, 40, 40);
+                    Rect rect = new Rect(clickedPoint.X - 50 , clickedPoint.Y - 50, 100, 100);
                     Path path = new Path
                     {
                         Data = new RectangleGeometry(rect),
                         Stroke = stroke,
-                        StrokeThickness = 6,
+                        StrokeThickness = 2,
                     };
                     this.canvas.Children.Add(path);
 
