@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,9 +19,9 @@ namespace WPFSample.Sample2
     /// <summary>
     /// CanvasTest.xaml の相互作用ロジック
     /// </summary>
-    public partial class CanvasTest : Window
+    public partial class CanvasTest : Window, INotifyPropertyChanged
     {
-        private enum ButtonState
+        public enum ButtonState
         {
             None,
             Add,
@@ -27,22 +29,47 @@ namespace WPFSample.Sample2
             Delete,
         }
 
-        private ButtonState currentButtonState = ButtonState.None;
+        private ButtonState buttonState = ButtonState.None;
+        public ButtonState CurrentButtonState
+        {
+            get { return buttonState; }
+            set
+            {
+                if (value != buttonState)
+                {
+                    buttonState = value;
+                    NotifyChanged();
+                }
+            }
+        }
 
         public CanvasTest()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
+
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            bool isSelectedMode = false;
             Point clickedPoint = e.GetPosition(this);
 
-            switch (currentButtonState)
+            switch (CurrentButtonState)
             {
                 case ButtonState.None:
                     break;
                 case ButtonState.Add:
+                    SolidColorBrush stroke = isSelectedMode ? new SolidColorBrush(Color.FromRgb(255, 255, 0)) : new SolidColorBrush(Color.FromRgb(0, 170, 255));
+                    Rect rect = new Rect(clickedPoint.X - 20, clickedPoint.Y - 20, 40, 40);
+                    Path path = new Path
+                    {
+                        Data = new RectangleGeometry(rect),
+                        Stroke = stroke,
+                        StrokeThickness = 6,
+                    };
+                    this.canvas.Children.Add(path);
+
                     break;
                 case ButtonState.Select:
                     break;
@@ -53,5 +80,49 @@ namespace WPFSample.Sample2
             }
 
         }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            if (CurrentButtonState != ButtonState.Add)
+            {
+                CurrentButtonState = ButtonState.Add;
+            }
+            else
+            {
+                CurrentButtonState = ButtonState.None;
+            }
+        }
+
+        private void Move_Click(object sender, RoutedEventArgs e)
+        {
+            if (CurrentButtonState != ButtonState.Select)
+            {
+                CurrentButtonState = ButtonState.Select;
+            }
+            else
+            {
+                CurrentButtonState = ButtonState.None;
+            }
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (CurrentButtonState != ButtonState.Delete)
+            {
+                CurrentButtonState = ButtonState.Delete;
+            }
+            else
+            {
+                CurrentButtonState = ButtonState.None;
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
     }
 }

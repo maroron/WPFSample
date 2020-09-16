@@ -16,12 +16,15 @@
                 BorderThickness="2"
                 BorderBrush="Black"
                 >
-            <Canvas/>
+            <Canvas Name="canvas" PreviewMouseDown="Image_MouseDown"/>
         </Border>
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
-            <Button Margin="10" Width="80" Height="80">Add</Button>
-            <Button Margin="10" Width="80" Height="80">Move</Button>
-            <Button Margin="10" Width="80" Height="80">Delete</Button>
+            <Border BorderBrush="Black" BorderThickness="2">
+                <TextBlock Text="{Binding CurrentButtonState}" HorizontalAlignment="Center" FontSize="16"/>
+            </Border>
+            <Button Margin="10" Width="80" Height="80" Click="Add_Click">Add</Button>
+            <Button Margin="10" Width="80" Height="80" Click="Move_Click">Move</Button>
+            <Button Margin="10" Width="80" Height="80" Click="Delete_Click">Delete</Button>
         </StackPanel>
     </Grid>
 </Window>
