@@ -28,7 +28,7 @@ namespace WPFSample.Sample2
             // タイマメソッドの中から安心してUIにアクセスできる。
             // その代わり、タイマメソッドで時間のかかる処理を単純に実行するとUIがフリーズしてしまう
             timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 0, 0, 300);
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 30);
             timer.Tick += new EventHandler(TimerMethod);
             timer.Start();
         }
@@ -44,7 +44,11 @@ namespace WPFSample.Sample2
             {
                 foreach (var path in paths)
                 {
-                    DisplayService.canvas.Children.Add(path);
+                    // Canvasの子に同じポリゴンを設定しようとするとエラーが発生するので、チェックする
+                    if (!canvas.Children.Contains(path))
+                    {
+                        DisplayService.canvas.Children.Add(path);
+                    }
                 }
             }
         }

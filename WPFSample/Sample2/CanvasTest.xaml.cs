@@ -64,6 +64,7 @@ namespace WPFSample.Sample2
         {
             InitializeComponent();
             this.DataContext = this;
+            DisplayService.Entry(this.canvas);
         }
 
 
@@ -85,7 +86,7 @@ namespace WPFSample.Sample2
                         Stroke = stroke,
                         StrokeThickness = 2,
                     };
-                    this.canvas.Children.Add(path);
+                    DisplayService.Add(path);
                     this.roiRectList.Add(rect);
 
                     break;
