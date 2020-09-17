@@ -43,6 +43,23 @@ namespace WPFSample.Sample2
             }
         }
 
+        // The part of the rectangle the mouse is over.
+        private enum HitType
+        {
+            None, Body, TopLeft, TopRight, BottomRight, BottomLeft, Top, Bottom, Left, Right
+        };
+
+        /// <summary>
+        /// BrightnessRoiリスト
+        /// </summary>
+        private List<Rect> roiRectList = new List<Rect>();
+
+        /// <summary>
+        /// コンボボックスから選択されたROIアウトラインを強調表示する
+        /// </summary>
+        private int selectedRoiIndex;
+
+
         public CanvasTest()
         {
             InitializeComponent();
@@ -69,6 +86,7 @@ namespace WPFSample.Sample2
                         StrokeThickness = 2,
                     };
                     this.canvas.Children.Add(path);
+                    this.roiRectList.Add(rect);
 
                     break;
                 case ButtonState.Select:
@@ -117,12 +135,101 @@ namespace WPFSample.Sample2
             }
         }
 
+        /// <summary>
+        /// Resize range select rectangle
+        /// </summary>
+        /// <param name="point">マウスポインターの座標</param>
+        private HitType SetHitType(Point point)
+        {
+            point = new Point(Math.Round(point.X, 1), Math.Round(point.Y, 1));
+            //anchorPoint = point;
+
+            Rect moveRect = this.roiRectList.ElementAt(selectedRoiIndex);
+            // Return a HitType value to indicate what is at the point.
+            double left = Math.Round(moveRect.X, 1);
+            double top = Math.Round(moveRect.Y, 1);
+            double right = left + moveRect.Width;
+            double bottom = top + moveRect.Height;
+            double widthMiddle = Math.Round(left + (moveRect.Width / 2), 1);
+            double heightMiddle = Math.Round(top + (moveRect.Height / 2), 1);
+
+            const int GAP = 10;
+            if (Math.Abs(point.X - left) < GAP)
+            {
+                // Left edge.
+                if (Math.Abs(point.Y - top) < GAP)
+                {
+                    return HitType.TopLeft;
+                }
+                else if (Math.Abs(bottom - point.Y) < GAP)
+                {
+                    return HitType.BottomLeft;
+                }
+                // Left middle point
+                else if (Math.Abs(point.Y - heightMiddle) < GAP)
+                {
+                    return HitType.Left;
+                }
+                else
+                {
+                    // Not implemented
+                }
+            }
+            else if (Math.Abs(point.X - right) < GAP)
+            {
+                // Right edge.
+                if (Math.Abs(point.Y - top) < GAP)
+                {
+                    return HitType.TopRight;
+                }
+                else if (Math.Abs(bottom - point.Y) < GAP)
+                {
+                    return HitType.BottomRight;
+                }
+                // Right middle point
+                else if (Math.Abs(point.Y - heightMiddle) < GAP)
+                {
+                    return HitType.Right;
+                }
+                else
+                {
+                    // Not implemented
+                }
+            }
+            else if (Math.Abs(point.X - widthMiddle) < GAP)
+            {
+                // Top Bottom middle points
+                if (Math.Abs(point.Y - top) < GAP)
+                {
+                    return HitType.Top;
+                }
+                else if (Math.Abs(point.Y - bottom) < GAP)
+                {
+                    return HitType.Bottom;
+                }
+                else
+                {
+                    // Not implemented
+                }
+            }
+            else if (point.X > left && point.X < right &&
+                point.Y > top && point.Y < bottom)
+            {
+                return HitType.Body;
+            }
+            else
+            {
+                // Not implemented
+            }
+            return HitType.None;
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-
     }
 }
