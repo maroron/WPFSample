@@ -62,6 +62,8 @@
       <DependentUpon>CanvasTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sample2\DisplayService.cs" />
+    <Compile Include="Sample2\KeyEvent\KeyEventBase.cs" />
+    <Compile Include="Sample2\KeyEvent\RoiKeyEvent.cs" />
     <Compile Include="Sample3\HowToUseList.xaml.cs">
       <DependentUpon>HowToUseList.xaml</DependentUpon>
     </Compile>

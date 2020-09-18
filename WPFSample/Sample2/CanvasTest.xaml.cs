@@ -49,6 +49,14 @@ namespace WPFSample.Sample2
             None, Body, TopLeft, TopRight, BottomRight, BottomLeft, Top, Bottom, Left, Right
         };
 
+        // The part of the rectangle under the mouse.
+        private HitType MouseHitType = HitType.None;
+
+        /// <summary>
+        /// Roi選択および削除モードでmouseoverしたときにROI
+        /// </summary>
+        private Rect nearestRect = new Rect(0, 0, 0, 0);
+
         /// <summary>
         /// BrightnessRoiリスト
         /// </summary>
@@ -59,6 +67,15 @@ namespace WPFSample.Sample2
         /// </summary>
         private int selectedRoiIndex;
 
+        /// <summary>
+        /// Roi選択および削除モードでmouseoverしたときにROIを強調表示する
+        /// </summary>
+        private bool hasNearestRoiRect = false;
+
+        /// <summary>
+        /// ハイライトされたROIのインデックス
+        /// </summary>
+        private int indexNearestRect;
 
         public CanvasTest()
         {
@@ -79,7 +96,7 @@ namespace WPFSample.Sample2
                     break;
                 case ButtonState.Add:
                     SolidColorBrush stroke = isSelectedMode ? new SolidColorBrush(Color.FromRgb(255, 255, 0)) : new SolidColorBrush(Color.FromRgb(0, 170, 255));
-                    Rect rect = new Rect(clickedPoint.X - 50 , clickedPoint.Y - 50, 100, 100);
+                    Rect rect = new Rect(clickedPoint.X - 50, clickedPoint.Y - 50, 100, 100);
                     Path path = new Path
                     {
                         Data = new RectangleGeometry(rect),
@@ -98,6 +115,93 @@ namespace WPFSample.Sample2
                     break;
             }
 
+        }
+
+        private void RoiMouseMove(object sender, MouseEventArgs e)
+        {
+            Point mousePoint = e.GetPosition(this);
+
+            bool isSelect = CurrentButtonState == ButtonState.Select;
+
+            this.ChangeColorBrightnessRoi(mousePoint, isSelect);
+        }
+
+        private void ChangeColorBrightnessRoi(Point mousePoint, bool isSelectMode)
+        {
+            // マウスが内部にあるroiRectを抽出
+            List<Rect> mouseContainRoiRect = new List<Rect>();
+            List<int> indexMouseContainRoiRect = new List<int>();
+            int index = 0;
+            foreach (Rect iRoiRect in roiRectList)
+            {
+                if (iRoiRect.Contains(mousePoint))
+                {
+                    mouseContainRoiRect.Add(iRoiRect);
+                    indexMouseContainRoiRect.Add(index);
+                }
+                else
+                {
+                    // Not implemented
+                }
+                index += 1;
+            }
+
+            //DrawRois();
+            this.hasNearestRoiRect = false;
+
+            if (mouseContainRoiRect.Count > 0)
+            {
+                this.nearestRect = mouseContainRoiRect[0];
+                indexNearestRect = indexMouseContainRoiRect[0];
+                int indexRect = 0;
+                foreach (Rect iRoiRect in mouseContainRoiRect)
+                {
+                    // iroiRectとマウスポイントとの距離
+                    Point centerRoi = new Point(iRoiRect.X + 0.5 * iRoiRect.Width, iRoiRect.Y + 0.5 * iRoiRect.Height);
+                    double distance = CalculateDistanceSquared(centerRoi, mousePoint);
+
+                    // nearestRectとマウスポイントとの距離
+                    Point centernearestRoi =
+                        new Point(this.nearestRect.X + 0.5 * this.nearestRect.Width, this.nearestRect.Y + 0.5 * this.nearestRect.Height);
+                    double distanceNearest = CalculateDistanceSquared(centernearestRoi, mousePoint);
+
+                    if (distance <= distanceNearest)
+                    {
+                        this.nearestRect = iRoiRect;
+                        indexNearestRect = indexMouseContainRoiRect[indexRect];
+                    }
+                    indexRect += 1;
+                }
+
+                Rect roi = new Rect(
+                    this.nearestRect.X,
+                    this.nearestRect.Y,
+                    this.nearestRect.Width,
+                    this.nearestRect.Height
+                    );
+
+                SolidColorBrush stroke = isSelectMode ? new SolidColorBrush(Color.FromRgb(255, 255, 0)) : new SolidColorBrush(Color.FromRgb(255, 82, 82));
+                Path path = new Path
+                {
+                    Data = new RectangleGeometry(roi),
+                    Stroke = stroke,
+                    StrokeThickness = 2,
+                };
+                DisplayService.Add(path);
+                this.roiRectList.Add(roi);
+
+                this.hasNearestRoiRect = true;
+            }
+            else
+            {
+                MouseHitType = HitType.None;
+                Mouse.OverrideCursor = Cursors.Arrow;
+            }
+        }
+
+        private double CalculateDistanceSquared(Point point1, Point point2)
+        {
+            return (point1.X - point2.X) * (point1.X - point2.X) + (point1.Y - point2.Y) * (point1.Y - point2.Y);
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
