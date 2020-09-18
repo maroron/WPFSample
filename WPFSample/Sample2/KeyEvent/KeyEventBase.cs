@@ -29,12 +29,12 @@ namespace WPFSample.Sample2.KeyEvent
             EndRegistEvent();
         }
 
-        protected abstract void StartRegistEvent();
+        protected virtual void StartRegistEvent() { }
 
         protected virtual bool IsValidKey(Key key) { return true; }
 
         protected abstract void Process(Key key);
 
-        protected abstract void EndRegistEvent();
+        protected virtual void EndRegistEvent() { }
     }
 }
