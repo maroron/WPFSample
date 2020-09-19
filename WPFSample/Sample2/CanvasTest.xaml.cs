@@ -68,6 +68,16 @@ namespace WPFSample.Sample2
         private int selectedRoiIndex;
 
         /// <summary>
+        /// ROIサイズ変更と移動ため
+        /// </summary>
+        private Rect selectedRoiRect = new Rect(0, 0, 0, 0);
+
+        /// <summary>
+        /// ROIのサイズ変更と移動を実行します。
+        /// </summary>
+        public bool hasSelectedRoi = false;
+
+        /// <summary>
         /// Roi選択および削除モードでmouseoverしたときにROIを強調表示する
         /// </summary>
         private bool hasNearestRoiRect = false;
@@ -87,7 +97,6 @@ namespace WPFSample.Sample2
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            bool isSelectedMode = false;
             Point clickedPoint = e.GetPosition(this.canvas);
 
             switch (CurrentButtonState)
@@ -95,19 +104,28 @@ namespace WPFSample.Sample2
                 case ButtonState.None:
                     break;
                 case ButtonState.Add:
-                    SolidColorBrush stroke = isSelectedMode ? new SolidColorBrush(Color.FromRgb(255, 255, 0)) : new SolidColorBrush(Color.FromRgb(0, 170, 255));
                     Rect rect = new Rect(clickedPoint.X - 50, clickedPoint.Y - 50, 100, 100);
-                    Path path = new Path
-                    {
-                        Data = new RectangleGeometry(rect),
-                        Stroke = stroke,
-                        StrokeThickness = 2,
-                    };
-                    DisplayService.Add(path);
+                    DrawRoi(rect);
                     this.roiRectList.Add(rect);
-
                     break;
                 case ButtonState.Select:
+                    int index = 0;
+                    selectedRoiIndex = -1;
+                    selectedRoiRect = new Rect(0, 0, 0, 0);
+
+                    foreach (Rect iRect in this.roiRectList)
+                    {
+                        this.hasSelectedRoi = false;
+                        if (iRect.Equals(this.nearestRect))
+                        {
+                            selectedRoiIndex = index;
+                            selectedRoiRect = iRect;
+                            hasSelectedRoi = true;
+
+                            break;
+                        }
+                        index += 1;
+                    }
                     break;
                 case ButtonState.Delete:
                     break;
@@ -119,7 +137,7 @@ namespace WPFSample.Sample2
 
         private void RoiMouseMove(object sender, MouseEventArgs e)
         {
-            Point mousePoint = e.GetPosition(this);
+            Point mousePoint = e.GetPosition(this.canvas);
 
             bool isSelect = CurrentButtonState == ButtonState.Select;
 
@@ -146,7 +164,7 @@ namespace WPFSample.Sample2
                 index += 1;
             }
 
-            //DrawRois();
+            DrawRois();
             this.hasNearestRoiRect = false;
 
             if (mouseContainRoiRect.Count > 0)
@@ -180,7 +198,7 @@ namespace WPFSample.Sample2
                     this.nearestRect.Height
                     );
 
-                SolidColorBrush stroke = isSelectMode ? new SolidColorBrush(Color.FromRgb(255, 255, 0)) : new SolidColorBrush(Color.FromRgb(255, 82, 82));
+                SolidColorBrush stroke = isSelectMode ? new SolidColorBrush(Colors.Green) : new SolidColorBrush(Color.FromRgb(255, 82, 82));
                 Path path = new Path
                 {
                     Data = new RectangleGeometry(roi),
@@ -202,6 +220,27 @@ namespace WPFSample.Sample2
         private double CalculateDistanceSquared(Point point1, Point point2)
         {
             return (point1.X - point2.X) * (point1.X - point2.X) + (point1.Y - point2.Y) * (point1.Y - point2.Y);
+        }
+
+        private void DrawRoi(Rect rect)
+        {
+            bool isSelectedMode = false;
+            SolidColorBrush stroke = isSelectedMode ? new SolidColorBrush(Color.FromRgb(255, 255, 0)) : new SolidColorBrush(Color.FromRgb(0, 170, 255));
+            Path path = new Path
+            {
+                Data = new RectangleGeometry(rect),
+                Stroke = stroke,
+                StrokeThickness = 2,
+            };
+            DisplayService.Add(path);
+        }
+
+        public void DrawRois()
+        {
+            foreach (Rect iRectRoi in roiRectList)
+            {
+                DrawRoi(iRectRoi);
+            }
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)

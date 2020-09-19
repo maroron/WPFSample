@@ -42,6 +42,7 @@ namespace WPFSample.Sample2
         {
             lock (lockobject)
             {
+                canvas.Children.Clear();
                 foreach (var path in paths)
                 {
                     // Canvasの子に同じポリゴンを設定しようとするとエラーが発生するので、チェックする
