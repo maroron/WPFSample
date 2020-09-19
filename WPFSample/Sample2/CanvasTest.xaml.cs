@@ -147,45 +147,36 @@ namespace WPFSample.Sample2
         private void ChangeColorBrightnessRoi(Point mousePoint, bool isSelectMode)
         {
             // マウスが内部にあるroiRectを抽出
-            List<Roi> mouseContainRoiRect = new List<Roi>();
-            List<int> indexMouseContainRoiRect = new List<int>();
-            int index = 0;
+            List<Roi> mouseContainRois = new List<Roi>();
             foreach (Roi roi in rois)
             {
                 if (roi.Rect.Contains(mousePoint))
                 {
-                    mouseContainRoiRect.Add(roi);
-                    indexMouseContainRoiRect.Add(index);
+                    mouseContainRois.Add(roi);
                 }
-                else
-                {
-                    // Not implemented
-                }
-                index += 1;
             }
 
             DrawRois();
             this.hasNearestRoiRect = false;
 
-            if (mouseContainRoiRect.Count > 0)
+            if (0 < mouseContainRois.Count)
             {
-                this.nearestRect = mouseContainRoiRect[0];
-                indexNearestRect = indexMouseContainRoiRect[0];
-                int indexRect = 0;
-                foreach (Roi iRoiRect in mouseContainRoiRect)
+                this.nearestRect = mouseContainRois[0];
+                indexNearestRect = 0;
+
+                foreach (Roi roi in mouseContainRois)
                 {
                     // iroiRectとマウスポイントとの距離
-                    double distance = CalculateDistanceSquared(iRoiRect.Center, mousePoint);
+                    double distance = CalculateDistanceSquared(roi.Center, mousePoint);
 
                     // nearestRectとマウスポイントとの距離
                     double distanceNearest = CalculateDistanceSquared(nearestRect.Center, mousePoint);
 
                     if (distance <= distanceNearest)
                     {
-                        this.nearestRect = iRoiRect;
-                        indexNearestRect = indexMouseContainRoiRect[indexRect];
+                        this.nearestRect = roi;
+                        indexNearestRect = rois.IndexOf(roi);
                     }
-                    indexRect += 1;
                 }
 
                 SolidColorBrush stroke = isSelectMode ? new SolidColorBrush(Colors.Green) : new SolidColorBrush(Color.FromRgb(255, 82, 82));
@@ -196,8 +187,7 @@ namespace WPFSample.Sample2
                     StrokeThickness = 2,
                 };
                 DisplayService.Replace(indexNearestRect, path);
-                this.rois.RemoveAt(indexNearestRect);
-                this.rois.Add(nearestRect);
+                this.rois[indexNearestRect] = nearestRect;
 
                 this.hasNearestRoiRect = true;
             }
