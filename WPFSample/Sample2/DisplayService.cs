@@ -61,5 +61,22 @@ namespace WPFSample.Sample2
                 DisplayService.paths.Add(path);
             }
         }
+
+        public static void Replace(int index, Path path)
+        {
+            lock (lockobject)
+            {
+                DisplayService.paths.RemoveAt(index);
+                DisplayService.paths.Add(path);
+            }
+        }
+
+        public static void Clear()
+        {
+            lock (lockobject)
+            {
+                DisplayService.paths.Clear();
+            }
+        }
     }
 }

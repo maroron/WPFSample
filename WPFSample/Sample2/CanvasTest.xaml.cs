@@ -205,7 +205,8 @@ namespace WPFSample.Sample2
                     Stroke = stroke,
                     StrokeThickness = 2,
                 };
-                DisplayService.Add(path);
+                DisplayService.Replace(indexNearestRect, path);
+                this.roiRectList.RemoveAt(indexNearestRect);
                 this.roiRectList.Add(roi);
 
                 this.hasNearestRoiRect = true;
@@ -237,6 +238,7 @@ namespace WPFSample.Sample2
 
         public void DrawRois()
         {
+            DisplayService.Clear();
             foreach (Rect iRectRoi in roiRectList)
             {
                 DrawRoi(iRectRoi);
