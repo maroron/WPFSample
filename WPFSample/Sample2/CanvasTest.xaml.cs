@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPFSample.Sample2.Data;
 
 namespace WPFSample.Sample2
 {
@@ -55,12 +56,12 @@ namespace WPFSample.Sample2
         /// <summary>
         /// Roi選択および削除モードでmouseoverしたときにROI
         /// </summary>
-        private Rect nearestRect = new Rect(0, 0, 0, 0);
+        private Roi nearestRect = new Roi(0, 0, 0, 0);
 
         /// <summary>
         /// BrightnessRoiリスト
         /// </summary>
-        private List<Rect> roiRectList = new List<Rect>();
+        private List<Roi> rois = new List<Roi>();
 
         /// <summary>
         /// コンボボックスから選択されたROIアウトラインを強調表示する
@@ -70,7 +71,7 @@ namespace WPFSample.Sample2
         /// <summary>
         /// ROIサイズ変更と移動ため
         /// </summary>
-        private Rect selectedRoiRect = new Rect(0, 0, 0, 0);
+        private Roi selectedRoiRect = new Roi(0, 0, 0, 0);
 
         /// <summary>
         /// ROIのサイズ変更と移動を実行します。
@@ -94,7 +95,6 @@ namespace WPFSample.Sample2
             DisplayService.Entry(this.canvas);
         }
 
-
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Point clickedPoint = e.GetPosition(this.canvas);
@@ -104,22 +104,22 @@ namespace WPFSample.Sample2
                 case ButtonState.None:
                     break;
                 case ButtonState.Add:
-                    Rect rect = new Rect(clickedPoint.X - 50, clickedPoint.Y - 50, 100, 100);
-                    DrawRoi(rect);
-                    this.roiRectList.Add(rect);
+                    Roi roi = new Roi(clickedPoint.X - 50, clickedPoint.Y - 50, 100, 100);
+                    DrawRoi(roi);
+                    this.rois.Add(roi);
                     break;
                 case ButtonState.Select:
                     int index = 0;
                     selectedRoiIndex = -1;
-                    selectedRoiRect = new Rect(0, 0, 0, 0);
+                    selectedRoiRect = new Roi(0, 0, 0, 0);
 
-                    foreach (Rect iRect in this.roiRectList)
+                    foreach (Roi roii in this.rois)
                     {
                         this.hasSelectedRoi = false;
-                        if (iRect.Equals(this.nearestRect))
+                        if (roii.Equals(this.nearestRect))
                         {
                             selectedRoiIndex = index;
-                            selectedRoiRect = iRect;
+                            selectedRoiRect = roii;
                             hasSelectedRoi = true;
 
                             break;
@@ -147,14 +147,14 @@ namespace WPFSample.Sample2
         private void ChangeColorBrightnessRoi(Point mousePoint, bool isSelectMode)
         {
             // マウスが内部にあるroiRectを抽出
-            List<Rect> mouseContainRoiRect = new List<Rect>();
+            List<Roi> mouseContainRoiRect = new List<Roi>();
             List<int> indexMouseContainRoiRect = new List<int>();
             int index = 0;
-            foreach (Rect iRoiRect in roiRectList)
+            foreach (Roi roi in rois)
             {
-                if (iRoiRect.Contains(mousePoint))
+                if (roi.Rect.Contains(mousePoint))
                 {
-                    mouseContainRoiRect.Add(iRoiRect);
+                    mouseContainRoiRect.Add(roi);
                     indexMouseContainRoiRect.Add(index);
                 }
                 else
@@ -172,16 +172,13 @@ namespace WPFSample.Sample2
                 this.nearestRect = mouseContainRoiRect[0];
                 indexNearestRect = indexMouseContainRoiRect[0];
                 int indexRect = 0;
-                foreach (Rect iRoiRect in mouseContainRoiRect)
+                foreach (Roi iRoiRect in mouseContainRoiRect)
                 {
                     // iroiRectとマウスポイントとの距離
-                    Point centerRoi = new Point(iRoiRect.X + 0.5 * iRoiRect.Width, iRoiRect.Y + 0.5 * iRoiRect.Height);
-                    double distance = CalculateDistanceSquared(centerRoi, mousePoint);
+                    double distance = CalculateDistanceSquared(iRoiRect.Center, mousePoint);
 
                     // nearestRectとマウスポイントとの距離
-                    Point centernearestRoi =
-                        new Point(this.nearestRect.X + 0.5 * this.nearestRect.Width, this.nearestRect.Y + 0.5 * this.nearestRect.Height);
-                    double distanceNearest = CalculateDistanceSquared(centernearestRoi, mousePoint);
+                    double distanceNearest = CalculateDistanceSquared(nearestRect.Center, mousePoint);
 
                     if (distance <= distanceNearest)
                     {
@@ -191,23 +188,16 @@ namespace WPFSample.Sample2
                     indexRect += 1;
                 }
 
-                Rect roi = new Rect(
-                    this.nearestRect.X,
-                    this.nearestRect.Y,
-                    this.nearestRect.Width,
-                    this.nearestRect.Height
-                    );
-
                 SolidColorBrush stroke = isSelectMode ? new SolidColorBrush(Colors.Green) : new SolidColorBrush(Color.FromRgb(255, 82, 82));
                 Path path = new Path
                 {
-                    Data = new RectangleGeometry(roi),
+                    Data = new RectangleGeometry(nearestRect.Rect),
                     Stroke = stroke,
                     StrokeThickness = 2,
                 };
                 DisplayService.Replace(indexNearestRect, path);
-                this.roiRectList.RemoveAt(indexNearestRect);
-                this.roiRectList.Add(roi);
+                this.rois.RemoveAt(indexNearestRect);
+                this.rois.Add(nearestRect);
 
                 this.hasNearestRoiRect = true;
             }
@@ -223,13 +213,13 @@ namespace WPFSample.Sample2
             return (point1.X - point2.X) * (point1.X - point2.X) + (point1.Y - point2.Y) * (point1.Y - point2.Y);
         }
 
-        private void DrawRoi(Rect rect)
+        private void DrawRoi(Roi roi)
         {
             bool isSelectedMode = false;
             SolidColorBrush stroke = isSelectedMode ? new SolidColorBrush(Color.FromRgb(255, 255, 0)) : new SolidColorBrush(Color.FromRgb(0, 170, 255));
             Path path = new Path
             {
-                Data = new RectangleGeometry(rect),
+                Data = new RectangleGeometry(roi.Rect),
                 Stroke = stroke,
                 StrokeThickness = 2,
             };
@@ -239,9 +229,9 @@ namespace WPFSample.Sample2
         public void DrawRois()
         {
             DisplayService.Clear();
-            foreach (Rect iRectRoi in roiRectList)
+            foreach (Roi roi in rois)
             {
-                DrawRoi(iRectRoi);
+                DrawRoi(roi);
             }
         }
 
@@ -290,14 +280,14 @@ namespace WPFSample.Sample2
             point = new Point(Math.Round(point.X, 1), Math.Round(point.Y, 1));
             //anchorPoint = point;
 
-            Rect moveRect = this.roiRectList.ElementAt(selectedRoiIndex);
+            Roi moveRect = this.rois.ElementAt(selectedRoiIndex);
             // Return a HitType value to indicate what is at the point.
-            double left = Math.Round(moveRect.X, 1);
-            double top = Math.Round(moveRect.Y, 1);
-            double right = left + moveRect.Width;
-            double bottom = top + moveRect.Height;
-            double widthMiddle = Math.Round(left + (moveRect.Width / 2), 1);
-            double heightMiddle = Math.Round(top + (moveRect.Height / 2), 1);
+            double left = Math.Round(moveRect.Rect.X, 1);
+            double top = Math.Round(moveRect.Rect.Y, 1);
+            double right = left + moveRect.Rect.Width;
+            double bottom = top + moveRect.Rect.Height;
+            double widthMiddle = Math.Round(left + (moveRect.Rect.Width / 2), 1);
+            double heightMiddle = Math.Round(top + (moveRect.Rect.Height / 2), 1);
 
             const int GAP = 10;
             if (Math.Abs(point.X - left) < GAP)
