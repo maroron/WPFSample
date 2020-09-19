@@ -179,7 +179,7 @@ namespace WPFSample.Sample2
                     }
                 }
 
-                SolidColorBrush stroke = isSelectMode ? new SolidColorBrush(Colors.Green) : new SolidColorBrush(Color.FromRgb(255, 82, 82));
+                SolidColorBrush stroke = isSelectMode ? new SolidColorBrush(Colors.Green) : new SolidColorBrush(Colors.OrangeRed);
                 Path path = new Path
                 {
                     Data = new RectangleGeometry(nearestRect.Rect),
@@ -206,7 +206,7 @@ namespace WPFSample.Sample2
         private void DrawRoi(Roi roi)
         {
             bool isSelectedMode = false;
-            SolidColorBrush stroke = isSelectedMode ? new SolidColorBrush(Color.FromRgb(255, 255, 0)) : new SolidColorBrush(Color.FromRgb(0, 170, 255));
+            SolidColorBrush stroke = isSelectedMode ? new SolidColorBrush(Colors.Yellow) : new SolidColorBrush(Colors.Blue);
             Path path = new Path
             {
                 Data = new RectangleGeometry(roi.Rect),
