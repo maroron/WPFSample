@@ -95,8 +95,9 @@ namespace WPFSample.Sample2
                     break;
                 case ButtonState.Add:
                     Roi clickedRoi = new Roi(clickedPoint.X - 50, clickedPoint.Y - 50, 100, 100);
-                    DrawRoi(clickedRoi);
+                    this.nearestRect = clickedRoi;
                     this.rois.Add(clickedRoi);
+                    DrawRoi(clickedRoi);
                     break;
                 case ButtonState.Select:
                     int index = 0;
@@ -137,8 +138,6 @@ namespace WPFSample.Sample2
         private void ChangeColorBrightnessRoi(Point mousePoint, bool isSelectMode)
         {
             int indexNearestRect = 0;
-            bool hasNearestRoiRect = false;
-
             DrawRois();
 
             foreach (var roi in rois)
@@ -147,12 +146,9 @@ namespace WPFSample.Sample2
                 {
                     continue;
                 }
-                this.nearestRect = roi;
 
-                // iroiRectとマウスポイントとの距離
+                // マウスポイントと中心位置が一番近いROIを検索する
                 double distance = CalculateDistanceSquared(roi.Center, mousePoint);
-
-                // nearestRectとマウスポイントとの距離
                 double distanceNearest = CalculateDistanceSquared(this.nearestRect.Center, mousePoint);
 
                 if (distance <= distanceNearest)
@@ -160,9 +156,9 @@ namespace WPFSample.Sample2
                     this.nearestRect = roi;
                     indexNearestRect = rois.IndexOf(roi);
                 }
-                hasNearestRoiRect = true;
             }
 
+            bool hasNearestRoiRect = rois.Any(x => x.Rect.Contains(mousePoint));
             if (hasNearestRoiRect)
             {
                 var path = CreatePath(this.nearestRect.Rect, CreateColorBrush());
