@@ -73,11 +73,6 @@ namespace WPFSample.Sample2
         /// </summary>
         private Roi selectedRoiRect = new Roi(0, 0, 0, 0);
 
-        /// <summary>
-        /// ROIのサイズ変更と移動を実行します。
-        /// </summary>
-        public bool hasSelectedRoi = false;
-
         public CanvasTest()
         {
             InitializeComponent();
@@ -104,9 +99,9 @@ namespace WPFSample.Sample2
                     selectedRoiIndex = -1;
                     selectedRoiRect = new Roi(0, 0, 0, 0);
 
+                    var hasSelectedRoi = false;
                     foreach (Roi roi in this.rois)
                     {
-                        this.hasSelectedRoi = false;
                         if (roi.Equals(this.nearestRect))
                         {
                             selectedRoiIndex = index;
