@@ -179,7 +179,7 @@ namespace WPFSample.Sample2
                     }
                 }
 
-                SolidColorBrush stroke = isSelectMode ? new SolidColorBrush(Colors.Green) : new SolidColorBrush(Colors.OrangeRed);
+                var stroke = CreateColorBrush();
                 Path path = new Path
                 {
                     Data = new RectangleGeometry(nearestRect.Rect),
@@ -205,8 +205,7 @@ namespace WPFSample.Sample2
 
         private void DrawRoi(Roi roi)
         {
-            bool isSelectedMode = false;
-            SolidColorBrush stroke = isSelectedMode ? new SolidColorBrush(Colors.Yellow) : new SolidColorBrush(Colors.Blue);
+            var stroke = new SolidColorBrush(Colors.Blue);
             Path path = new Path
             {
                 Data = new RectangleGeometry(roi.Rect),
@@ -223,6 +222,30 @@ namespace WPFSample.Sample2
             {
                 DrawRoi(roi);
             }
+        }
+
+        private SolidColorBrush CreateColorBrush()
+        {
+            SolidColorBrush stroke;
+            switch (CurrentButtonState)
+            {
+                case ButtonState.None:
+                    stroke = new SolidColorBrush(Colors.Blue);
+                    break;
+                case ButtonState.Add:
+                    stroke = new SolidColorBrush(Colors.Blue);
+                    break;
+                case ButtonState.Select:
+                    stroke = new SolidColorBrush(Colors.Green);
+                    break;
+                case ButtonState.Delete:
+                    stroke = new SolidColorBrush(Colors.OrangeRed);
+                    break;
+                default:
+                    stroke = new SolidColorBrush(Colors.Blue);
+                    break;
+            }
+            return stroke;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
