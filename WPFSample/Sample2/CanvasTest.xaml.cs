@@ -225,38 +225,17 @@ namespace WPFSample.Sample2
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            if (CurrentButtonState != ButtonState.Add)
-            {
-                CurrentButtonState = ButtonState.Add;
-            }
-            else
-            {
-                CurrentButtonState = ButtonState.None;
-            }
+            CurrentButtonState = CurrentButtonState == ButtonState.Add ? ButtonState.None : ButtonState.Add;
         }
 
         private void Move_Click(object sender, RoutedEventArgs e)
         {
-            if (CurrentButtonState != ButtonState.Select)
-            {
-                CurrentButtonState = ButtonState.Select;
-            }
-            else
-            {
-                CurrentButtonState = ButtonState.None;
-            }
+            CurrentButtonState = CurrentButtonState == ButtonState.Select ? ButtonState.None : ButtonState.Select;
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            if (CurrentButtonState != ButtonState.Delete)
-            {
-                CurrentButtonState = ButtonState.Delete;
-            }
-            else
-            {
-                CurrentButtonState = ButtonState.None;
-            }
+            CurrentButtonState = CurrentButtonState == ButtonState.Delete ? ButtonState.None : ButtonState.Delete;
         }
 
         /// <summary>
