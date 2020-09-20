@@ -165,13 +165,7 @@ namespace WPFSample.Sample2
 
             if (hasNearestRoiRect)
             {
-                var stroke = CreateColorBrush();
-                Path path = new Path
-                {
-                    Data = new RectangleGeometry(this.nearestRect.Rect),
-                    Stroke = stroke,
-                    StrokeThickness = 2,
-                };
+                var path = CreatePath(this.nearestRect.Rect, CreateColorBrush());
                 DisplayService.Replace(indexNearestRect, path);
                 this.rois[indexNearestRect] = this.nearestRect;
             }
@@ -184,13 +178,7 @@ namespace WPFSample.Sample2
 
         private void DrawRoi(Roi roi)
         {
-            var stroke = new SolidColorBrush(Colors.Blue);
-            Path path = new Path
-            {
-                Data = new RectangleGeometry(roi.Rect),
-                Stroke = stroke,
-                StrokeThickness = 2,
-            };
+            var path = CreatePath(roi.Rect, new SolidColorBrush(Colors.Blue));
             DisplayService.Add(path);
         }
 
@@ -201,6 +189,17 @@ namespace WPFSample.Sample2
             {
                 DrawRoi(roi);
             }
+        }
+
+        private Path CreatePath(Rect rect, Brush stroke)
+        {
+            Path path = new Path
+            {
+                Data = new RectangleGeometry(rect),
+                Stroke = stroke,
+                StrokeThickness = 2,
+            };
+            return path;
         }
 
         private SolidColorBrush CreateColorBrush()
