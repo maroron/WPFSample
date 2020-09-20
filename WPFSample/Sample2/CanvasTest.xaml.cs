@@ -130,12 +130,13 @@ namespace WPFSample.Sample2
         {
             Point mousePoint = e.GetPosition(this.canvas);
 
-            bool isSelect = CurrentButtonState == ButtonState.Select;
-
-            this.ChangeColorBrightnessRoi(mousePoint, isSelect);
+            if (CurrentButtonState == ButtonState.Select)
+            {
+                this.ChangeColorBrightnessRoi(mousePoint);
+            }
         }
 
-        private void ChangeColorBrightnessRoi(Point mousePoint, bool isSelectMode)
+        private void ChangeColorBrightnessRoi(Point mousePoint)
         {
             int indexNearestRect = 0;
             DrawRois();
