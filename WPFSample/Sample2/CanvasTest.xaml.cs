@@ -146,39 +146,35 @@ namespace WPFSample.Sample2
 
         private void ChangeColorBrightnessRoi(Point mousePoint, bool isSelectMode)
         {
-            // マウスが内部にあるroiRectを抽出
-            List<Roi> mouseContainRois = new List<Roi>();
-            foreach (Roi roi in rois)
-            {
-                if (roi.Rect.Contains(mousePoint))
-                {
-                    mouseContainRois.Add(roi);
-                }
-            }
-
             DrawRois();
             this.hasNearestRoiRect = false;
 
-            if (0 < mouseContainRois.Count)
+            foreach (var roi in rois)
             {
-                this.nearestRect = mouseContainRois[0];
+                if (!roi.Rect.Contains(mousePoint))
+                {
+                    continue;
+                }
+                this.nearestRect = roi;
                 indexNearestRect = 0;
 
-                foreach (Roi roi in mouseContainRois)
+                // iroiRectとマウスポイントとの距離
+                double distance = CalculateDistanceSquared(roi.Center, mousePoint);
+
+                // nearestRectとマウスポイントとの距離
+                double distanceNearest = CalculateDistanceSquared(nearestRect.Center, mousePoint);
+
+                if (distance <= distanceNearest)
                 {
-                    // iroiRectとマウスポイントとの距離
-                    double distance = CalculateDistanceSquared(roi.Center, mousePoint);
-
-                    // nearestRectとマウスポイントとの距離
-                    double distanceNearest = CalculateDistanceSquared(nearestRect.Center, mousePoint);
-
-                    if (distance <= distanceNearest)
-                    {
-                        this.nearestRect = roi;
-                        indexNearestRect = rois.IndexOf(roi);
-                    }
+                    this.nearestRect = roi;
+                    indexNearestRect = rois.IndexOf(roi);
                 }
 
+                this.hasNearestRoiRect = true;
+            }
+
+            if (hasNearestRoiRect)
+            {
                 var stroke = CreateColorBrush();
                 Path path = new Path
                 {
@@ -188,13 +184,6 @@ namespace WPFSample.Sample2
                 };
                 DisplayService.Replace(indexNearestRect, path);
                 this.rois[indexNearestRect] = nearestRect;
-
-                this.hasNearestRoiRect = true;
-            }
-            else
-            {
-                MouseHitType = HitType.None;
-                Mouse.OverrideCursor = Cursors.Arrow;
             }
         }
 
