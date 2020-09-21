@@ -73,6 +73,20 @@ namespace WPFSample.Sample2
         /// </summary>
         private Roi selectedRoiRect = new Roi(0, 0, 0, 0);
 
+        /// <summary>
+        /// ROIのサイズ変更と移動を実行します。
+        /// </summary>
+        public bool hasSelectedRoi = false;
+
+        /// <summary>
+        /// マウスドラッグ中ならtrue
+        /// </summary>
+        private bool _inDrag = false;
+        /// <summary>
+        /// ROI drawとresize中ならtrue
+        /// </summary>
+        private bool _inDraw = false;
+
         public CanvasTest()
         {
             InitializeComponent();
@@ -98,8 +112,10 @@ namespace WPFSample.Sample2
                     int index = 0;
                     selectedRoiIndex = -1;
                     selectedRoiRect = new Roi(0, 0, 0, 0);
+                    this.PreviewMouseMove -= RoiMouseMove;
+                    this.PreviewMouseMove += Image_MouseMove;
 
-                    var hasSelectedRoi = false;
+                    this.hasSelectedRoi = false;
                     foreach (Roi roi in this.rois)
                     {
                         if (roi.Equals(this.nearestRect))
@@ -119,6 +135,67 @@ namespace WPFSample.Sample2
                     break;
             }
 
+        }
+
+        public void Image_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point clickedPoint = e.GetPosition(this.canvas);
+
+            if (CurrentButtonState == ButtonState.Select && this.hasSelectedRoi)
+            {
+                if (e.LeftButton == MouseButtonState.Pressed)
+                {
+                    this.PreviewMouseMove -= RoiMouseMove;
+                    if (!_inDraw)
+                    {
+                        Roi moveRect = this.rois.ElementAt(selectedRoiIndex);
+                        Roi roi = new Roi(clickedPoint.X - 50, clickedPoint.Y - 50, 100, 100);
+
+                        this.rois[selectedRoiIndex] = roi;
+
+                        DrawRois();
+                    }
+                    // resize ROI
+                    //else if (_inDraw && !_inDrag)
+                    //{
+                    //    this.ResizeSelectedRoi(clickedPoint);
+                    //}
+                    //else
+                    //{
+                    //    // Not implemented
+                    //}
+                    //anchorPoint = clickedPoint;
+                }
+                else
+                {
+                    // change mouse point when mouse is on the selected ROI
+                    //if (indexNearestRect == selectedRoiIndex)
+                    //{
+                    //    MouseHitType = SetHitType(clickedPoint);
+                    //    SetMouseCursor();
+                    //    if (MouseHitType == HitType.Body)
+                    //    {
+                    //        _inDrag = true;
+                    //        _inDraw = false;
+                    //    }
+                    //    else if (MouseHitType != HitType.None)
+                    //    {
+                    //        _inDrag = false;
+                    //        _inDraw = true;
+                    //    }
+                    //    else
+                    //    {
+                    //        _inDrag = false;
+                    //        _inDraw = false;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    MouseHitType = HitType.None;
+                    //    Mouse.OverrideCursor = Cursors.Arrow;
+                    //}
+                }
+            }
         }
 
         private void RoiMouseMove(object sender, MouseEventArgs e)
