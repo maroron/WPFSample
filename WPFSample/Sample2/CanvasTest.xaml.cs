@@ -97,6 +97,7 @@ namespace WPFSample.Sample2
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Point clickedPoint = e.GetPosition(this.canvas);
+            _inDrag = false;
 
             switch (CurrentButtonState)
             {
@@ -109,11 +110,11 @@ namespace WPFSample.Sample2
                     DrawRoi(clickedRoi);
                     break;
                 case ButtonState.Select:
+                    _inDrag = true;
+
                     int index = 0;
                     selectedRoiIndex = -1;
                     selectedRoiRect = new Roi(0, 0, 0, 0);
-                    this.PreviewMouseMove -= RoiMouseMove;
-                    this.PreviewMouseMove += Image_MouseMove;
 
                     this.hasSelectedRoi = false;
                     foreach (Roi roi in this.rois)
@@ -137,19 +138,61 @@ namespace WPFSample.Sample2
 
         }
 
-        public void Image_MouseMove(object sender, MouseEventArgs e)
+        private void RoiMouseMove(object sender, MouseEventArgs e)
         {
-            Point clickedPoint = e.GetPosition(this.canvas);
+            Point mousePoint = e.GetPosition(this.canvas);
 
+            if (CurrentButtonState == ButtonState.Select)
+            {
+                if (_inDrag)
+                {
+                    MoveRoi(mousePoint, e.LeftButton);
+                }
+                this.ChangeColorBrightnessRoi(mousePoint);
+            }
+        }
+
+        private void ChangeColorBrightnessRoi(Point mousePoint)
+        {
+            int indexNearestRect = 0;
+            DrawRois();
+
+            foreach (var roi in rois)
+            {
+                if (!roi.Rect.Contains(mousePoint))
+                {
+                    continue;
+                }
+
+                // マウスポイントと中心位置が一番近いROIを検索する
+                double distance = CalculateDistanceSquared(roi.Center, mousePoint);
+                double distanceNearest = CalculateDistanceSquared(this.nearestRect.Center, mousePoint);
+
+                if (distance <= distanceNearest)
+                {
+                    this.nearestRect = roi;
+                    indexNearestRect = rois.IndexOf(roi);
+                }
+            }
+
+            bool hasNearestRoiRect = rois.Any(x => x.Rect.Contains(mousePoint));
+            if (hasNearestRoiRect)
+            {
+                var path = CreatePath(this.nearestRect.Rect, CreateColorBrush());
+                DisplayService.Replace(indexNearestRect, path);
+                this.rois[indexNearestRect] = this.nearestRect;
+            }
+        }
+
+        private void MoveRoi(Point mousePoint, MouseButtonState leftButton)
+        {
             if (CurrentButtonState == ButtonState.Select && this.hasSelectedRoi)
             {
-                if (e.LeftButton == MouseButtonState.Pressed)
+                if (leftButton == MouseButtonState.Pressed)
                 {
-                    this.PreviewMouseMove -= RoiMouseMove;
-                    if (!_inDraw)
+                    if (!_inDraw && _inDrag)
                     {
-                        Roi moveRect = this.rois.ElementAt(selectedRoiIndex);
-                        Roi roi = new Roi(clickedPoint.X - 50, clickedPoint.Y - 50, 100, 100);
+                        Roi roi = new Roi(mousePoint.X - 50, mousePoint.Y - 50, 100, 100);
 
                         this.rois[selectedRoiIndex] = roi;
 
@@ -195,48 +238,6 @@ namespace WPFSample.Sample2
                     //    Mouse.OverrideCursor = Cursors.Arrow;
                     //}
                 }
-            }
-        }
-
-        private void RoiMouseMove(object sender, MouseEventArgs e)
-        {
-            Point mousePoint = e.GetPosition(this.canvas);
-
-            if (CurrentButtonState == ButtonState.Select)
-            {
-                this.ChangeColorBrightnessRoi(mousePoint);
-            }
-        }
-
-        private void ChangeColorBrightnessRoi(Point mousePoint)
-        {
-            int indexNearestRect = 0;
-            DrawRois();
-
-            foreach (var roi in rois)
-            {
-                if (!roi.Rect.Contains(mousePoint))
-                {
-                    continue;
-                }
-
-                // マウスポイントと中心位置が一番近いROIを検索する
-                double distance = CalculateDistanceSquared(roi.Center, mousePoint);
-                double distanceNearest = CalculateDistanceSquared(this.nearestRect.Center, mousePoint);
-
-                if (distance <= distanceNearest)
-                {
-                    this.nearestRect = roi;
-                    indexNearestRect = rois.IndexOf(roi);
-                }
-            }
-
-            bool hasNearestRoiRect = rois.Any(x => x.Rect.Contains(mousePoint));
-            if (hasNearestRoiRect)
-            {
-                var path = CreatePath(this.nearestRect.Rect, CreateColorBrush());
-                DisplayService.Replace(indexNearestRect, path);
-                this.rois[indexNearestRect] = this.nearestRect;
             }
         }
 
