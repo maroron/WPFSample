@@ -104,7 +104,7 @@ namespace WPFSample.Sample2
                 case ButtonState.None:
                     break;
                 case ButtonState.Add:
-                    Roi clickedRoi = new Roi(clickedPoint.X - 50, clickedPoint.Y - 50, 100, 100);
+                    Roi clickedRoi = CreateRoi(clickedPoint);
                     this.nearestRect = clickedRoi;
                     this.rois.Add(clickedRoi);
                     DrawRoi(clickedRoi);
@@ -191,7 +191,7 @@ namespace WPFSample.Sample2
                 {
                     if (!_inDraw && _inDrag)
                     {
-                        Roi roi = new Roi(mousePoint.X - 50, mousePoint.Y - 50, 100, 100);
+                        Roi roi = CreateRoi(mousePoint);
 
                         this.rois[selectedRoiIndex] = roi;
 
@@ -258,6 +258,14 @@ namespace WPFSample.Sample2
             {
                 DrawRoi(roi);
             }
+        }
+
+        private Roi CreateRoi(Point point)
+        {
+            var lefttopX = Math.Max(Math.Min(point.X + 50, canvas.ActualWidth) - 100, 0);
+            var lefttopY = Math.Max(Math.Min(point.Y + 50, canvas.ActualHeight) - 100, 0);
+            var roi = new Roi(lefttopX, lefttopY, 100, 100);
+            return roi;
         }
 
         private Path CreatePath(Rect rect, Brush stroke)
