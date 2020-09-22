@@ -135,7 +135,6 @@ namespace WPFSample.Sample2
                 default:
                     break;
             }
-
         }
 
         private void RoiMouseMove(object sender, MouseEventArgs e)
