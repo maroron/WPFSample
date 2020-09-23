@@ -26,10 +26,10 @@ namespace WPFSample.Sample2.KeyEvent
             bool isValid = false;
             switch (key)
             {
-                case Key.Left:
-                case Key.Up:
-                case Key.Right:
-                case Key.Down:
+                case Key.A:
+                case Key.W:
+                case Key.D:
+                case Key.S:
                     isValid = true;
                     break;
                 default:
@@ -61,16 +61,16 @@ namespace WPFSample.Sample2.KeyEvent
             var point = new Point();
             switch (key)
             {
-                case Key.Left:
+                case Key.A:
                     point = new Point(-10, 0);
                     break;
-                case Key.Up:
+                case Key.W:
                     point = new Point(0, -10);
                     break;
-                case Key.Right:
+                case Key.D:
                     point = new Point(10, 0);
                     break;
-                case Key.Down:
+                case Key.S:
                     point = new Point(0, 10);
                     break;
                 default:
