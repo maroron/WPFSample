@@ -46,7 +46,7 @@ namespace WPFSample.Sample2.KeyEvent
                 var rois = window.GetRois();
                 var roi = rois[window.selectedRoiIndex];
                 var step = ComputePoint(e.Key);
-                rois[window.selectedRoiIndex] = new Data.Roi(roi.Rect.X + step.X, roi.Rect.Y + step.Y, 100, 100);
+                rois[window.selectedRoiIndex] = window.CreateRoi(new Point(roi.Center.X + step.X, roi.Center.Y + step.Y));
 
                 window.DrawRois();
             }

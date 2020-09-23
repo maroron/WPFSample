@@ -262,7 +262,7 @@ namespace WPFSample.Sample2
             }
         }
 
-        private Roi CreateRoi(Point point)
+        public Roi CreateRoi(Point point)
         {
             var lefttopX = Math.Max(Math.Min(point.X + 50, canvas.ActualWidth) - 100, 0);
             var lefttopY = Math.Max(Math.Min(point.Y + 50, canvas.ActualHeight) - 100, 0);
