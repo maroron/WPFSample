@@ -67,7 +67,7 @@ namespace WPFSample.Sample2
         /// <summary>
         /// コンボボックスから選択されたROIアウトラインを強調表示する
         /// </summary>
-        private int selectedRoiIndex;
+        public int selectedRoiIndex { get; set; }
 
         /// <summary>
         /// ROIサイズ変更と移動ため
@@ -407,6 +407,11 @@ namespace WPFSample.Sample2
                 // Not implemented
             }
             return HitType.None;
+        }
+
+        public List<Roi> GetRois()
+        {
+            return rois;
         }
 
 

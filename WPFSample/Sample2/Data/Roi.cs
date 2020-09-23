@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace WPFSample.Sample2.Data
 {
-    class Roi
+    public class Roi
     {
         public Rect Rect { get; set; }
 

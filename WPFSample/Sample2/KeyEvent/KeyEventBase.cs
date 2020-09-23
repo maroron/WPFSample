@@ -24,7 +24,7 @@ namespace WPFSample.Sample2.KeyEvent
             StartRegistEvent();
             if (IsValidKey(key))
             {
-                Process(key);
+                Process(sender, e);
             }
             EndRegistEvent();
         }
@@ -33,7 +33,7 @@ namespace WPFSample.Sample2.KeyEvent
 
         protected virtual bool IsValidKey(Key key) { return true; }
 
-        protected abstract void Process(Key key);
+        protected abstract void Process(object sender, KeyEventArgs e);
 
         protected virtual void EndRegistEvent() { }
     }
