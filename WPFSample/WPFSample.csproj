@@ -64,6 +64,7 @@
     <Compile Include="Sample2\Data\Roi.cs" />
     <Compile Include="Sample2\DisplayService.cs" />
     <Compile Include="Sample2\KeyEvent\KeyEventBase.cs" />
+    <Compile Include="Sample2\KeyEvent\KeyEventService.cs" />
     <Compile Include="Sample2\KeyEvent\RoiKeyEvent.cs" />
     <Compile Include="Sample3\HowToUseList.xaml.cs">
       <DependentUpon>HowToUseList.xaml</DependentUpon>
