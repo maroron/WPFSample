@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace WPFSample.Sample2.KeyEvent
@@ -35,8 +34,7 @@ namespace WPFSample.Sample2.KeyEvent
 
         protected override void Process(Key key)
         {
-
-
+            Console.WriteLine("Process!!");
         }
     }
 }
