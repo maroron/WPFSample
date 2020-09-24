@@ -35,7 +35,7 @@ namespace WPFSample.Sample2.MouseEvent
 
         protected virtual void EndRegistMouseDown() { }
 
-        private void PreviewMouseMove(object sender, MouseEventArgs e)
+        public void PreviewMouseMove(object sender, MouseEventArgs e)
         {
             StartRegistMouseMove();
             if (IsValidMouseMove(sender, e))
