@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WPFSample.Sample2.Data;
 using WPFSample.Sample2.KeyEvent;
+using WPFSample.Sample2.MouseEvent;
 
 namespace WPFSample.Sample2
 {
@@ -94,6 +95,7 @@ namespace WPFSample.Sample2
             this.DataContext = this;
             DisplayService.Entry(this.canvas);
             KeyEventService.Entry(this);
+            MouseEventService.Entry(this);
         }
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
