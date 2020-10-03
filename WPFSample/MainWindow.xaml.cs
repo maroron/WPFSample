@@ -24,6 +24,7 @@ using WPFSample.Sample8;
 using WPFSample.Sample9;
 using WPFSample.SampleA;
 using WPFSample.SampleB;
+using WPFSample.SampleC;
 
 namespace WPFSample
 {
@@ -106,7 +107,8 @@ namespace WPFSample
 
         private void Sample12_Click(object sender, RoutedEventArgs e)
         {
-
+            var sample = new TreeViewTest();
+            sample.ShowDialog();
         }
 
         private void Sample13_Click(object sender, RoutedEventArgs e)
