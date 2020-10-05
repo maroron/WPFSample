@@ -69,6 +69,34 @@
                     <TreeViewItem Header="Item1-1-2" />
                     <TreeViewItem Header="Item1-1-3" />
                 </TreeViewItem> 
+                <TreeViewItem>
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Grid Margin="2.5">
+                                <Ellipse Width="20" Height="20" Stroke="Olive" StrokeThickness="2" />
+                                <TextBlock Text="↓" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="Olive" />
+                            </Grid>
+                            <TextBlock Text="下矢印" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem Header="Item1-1-1" />
+                    <TreeViewItem Header="Item1-1-2" />
+                    <TreeViewItem Header="Item1-1-3" />
+                </TreeViewItem>
+                <TreeViewItem>
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Grid Margin="2.5">
+                                <Ellipse Width="20" Height="20" Stroke="Olive" StrokeThickness="2" />
+                                <TextBlock Text="←" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="Olive" />
+                            </Grid>
+                            <TextBlock Text="左矢印" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem Header="Item1-1-1" />
+                    <TreeViewItem Header="Item1-1-2" />
+                    <TreeViewItem Header="Item1-1-3" />
+                </TreeViewItem>
             </TreeViewItem>
         </TreeView>
     </Grid>
