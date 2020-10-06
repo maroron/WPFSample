@@ -103,7 +103,7 @@
 
         <TreeView Grid.Column="2" Name="treeview">
             <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate DataType="local:Person">
+                <HierarchicalDataTemplate DataType="local:Person" ItemsSource="{Binding Children}">
                     <TextBlock Text="{Binding Name}"/>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
