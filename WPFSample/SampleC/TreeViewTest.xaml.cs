@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WPFSample.SampleC
@@ -22,6 +23,35 @@ namespace WPFSample.SampleC
         public TreeViewTest()
         {
             InitializeComponent();
+            treeview.ItemsSource = new List<Person>
+            {
+                new Person
+                {
+                    Name = "田中　太郎",
+                    Children = new List<Person>
+                    {
+                        new Person { Name = "田中　花子"},
+                        new Person { Name = "田中　一郎"},
+                        new Person
+                        {
+                            Name = "木村　貫太郎",
+                            Children = new List<Person>
+                            {
+                                new Person { Name = "木村　はな"},
+                                new Person { Name = "木村　梅"},
+                            }
+                        }
+                    }
+                },
+                new Person
+                {
+                    Name = "田中　次郎",
+                    Children = new List<Person>
+                    {
+                        new Person{ Name = "田中　三郎"}
+                    }
+                }
+            };
         }
     }
 }

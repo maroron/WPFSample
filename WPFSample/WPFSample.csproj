@@ -115,6 +115,7 @@
     <Compile Include="SampleB\HttpReader.xaml.cs">
       <DependentUpon>HttpReader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SampleC\Person.cs" />
     <Compile Include="SampleC\TreeViewTest.xaml.cs">
       <DependentUpon>TreeViewTest.xaml</DependentUpon>
     </Compile>

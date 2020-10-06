@@ -10,6 +10,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TreeView Grid.Column="0">
             <TreeViewItem Header="Item1">
@@ -98,6 +99,10 @@
                     <TreeViewItem Header="Item1-1-3" />
                 </TreeViewItem>
             </TreeViewItem>
+        </TreeView>
+
+        <TreeView Grid.Column="2" Name="treeview">
+            
         </TreeView>
     </Grid>
 </Window>
