@@ -34,7 +34,9 @@ namespace WPFSample.SampleD
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(this.calendar.SelectedDate.ToString());
+            var selected = string.Join(Environment.NewLine,
+                this.calendar.SelectedDates.Select(d => d.ToString()));
+            MessageBox.Show(selected);
         }
     }
 }
