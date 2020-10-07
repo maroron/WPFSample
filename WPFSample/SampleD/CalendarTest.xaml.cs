@@ -22,6 +22,14 @@ namespace WPFSample.SampleD
         public CalendarTest()
         {
             InitializeComponent();
+
+            // 今日より前は、選択不可能にする。
+            this.calendar.BlackoutDates.AddDatesInPast();
+            // 翌日から4日間も選択不可能にする
+            this.calendar.BlackoutDates.Add(
+                new CalendarDateRange(
+                    DateTime.Today.AddDays(1),
+                    DateTime.Today.AddDays(4)));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
