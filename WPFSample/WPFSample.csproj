@@ -119,6 +119,9 @@
     <Compile Include="SampleC\TreeViewTest.xaml.cs">
       <DependentUpon>TreeViewTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SampleD\CalendarTest.xaml.cs">
+      <DependentUpon>CalendarTest.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -176,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SampleC\TreeViewTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SampleD\CalendarTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

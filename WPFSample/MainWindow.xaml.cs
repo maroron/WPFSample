@@ -25,6 +25,7 @@ using WPFSample.Sample9;
 using WPFSample.SampleA;
 using WPFSample.SampleB;
 using WPFSample.SampleC;
+using WPFSample.SampleD;
 
 namespace WPFSample
 {
@@ -113,7 +114,8 @@ namespace WPFSample
 
         private void Sample13_Click(object sender, RoutedEventArgs e)
         {
-
+            var sample = new CalendarTest();
+            sample.ShowDialog();
         }
 
         private void Sample14_Click(object sender, RoutedEventArgs e)
