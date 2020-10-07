@@ -7,7 +7,12 @@
         mc:Ignorable="d"
         Title="CalendarTest" Height="450" Width="800">
     <Grid Margin="10">
-        <Calendar></Calendar>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Calendar x:Name="calendar"/>
+        <Button Grid.Row="1" Click="Button_Click">Show selected date</Button>
+
     </Grid>
 </Window>

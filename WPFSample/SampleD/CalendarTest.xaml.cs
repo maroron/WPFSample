@@ -23,5 +23,10 @@ namespace WPFSample.SampleD
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(this.calendar.SelectedDate.ToString());
+        }
     }
 }
