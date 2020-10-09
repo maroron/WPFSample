@@ -28,6 +28,7 @@
 
         <!-- Grid column 1 -->
         <StackPanel Grid.Column="1" Margin="10">
+            <TextBlock x:Name="textBlockSelectedDate"/>
             <Label Content="選択日付の書式指定1(Long)" />
             <DatePicker
                 SelectedDateFormat="Long"

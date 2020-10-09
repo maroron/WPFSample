@@ -38,5 +38,11 @@ namespace WPFSample.SampleD
                 this.calendar.SelectedDates.Select(d => d.ToString()));
             MessageBox.Show(selected);
         }
+
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var datePicker = (DatePicker)sender;
+            this.textBlockSelectedDate.Text = datePicker.SelectedDate.ToString();
+        }
     }
 }
