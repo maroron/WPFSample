@@ -10,7 +10,7 @@
         <Border Width="400" Height="400" Background="AliceBlue" BorderBrush="Black" BorderThickness="2">
             <Border.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="メニュー１"/>
+                    <MenuItem Header="メニュー１" Click="MenuItem_Click"/>
                     <MenuItem Header="メニュー２"/>
                     <MenuItem Header="メニュー３"/>
                     <MenuItem Header="メニュー４"/>

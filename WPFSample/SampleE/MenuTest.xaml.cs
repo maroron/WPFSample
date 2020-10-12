@@ -23,5 +23,10 @@ namespace WPFSample.SampleE
         {
             InitializeComponent();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("hello");
+        }
     }
 }
