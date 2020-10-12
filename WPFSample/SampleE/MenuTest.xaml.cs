@@ -28,5 +28,13 @@ namespace WPFSample.SampleE
         {
             MessageBox.Show("hello");
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!this.contextmenu.IsOpen)
+            {
+                this.contextmenu.IsOpen = true;
+            }
+        }
     }
 }
