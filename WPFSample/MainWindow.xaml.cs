@@ -26,6 +26,7 @@ using WPFSample.SampleA;
 using WPFSample.SampleB;
 using WPFSample.SampleC;
 using WPFSample.SampleD;
+using WPFSample.SampleE;
 
 namespace WPFSample
 {
@@ -120,7 +121,8 @@ namespace WPFSample
 
         private void Sample14_Click(object sender, RoutedEventArgs e)
         {
-
+            var sample = new MenuTest();
+            sample.ShowDialog();
         }
 
         private void Sample15_Click(object sender, RoutedEventArgs e)
