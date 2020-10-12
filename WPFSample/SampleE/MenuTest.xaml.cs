@@ -31,10 +31,7 @@ namespace WPFSample.SampleE
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!this.contextmenu.IsOpen)
-            {
-                this.contextmenu.IsOpen = true;
-            }
+            this.contextmenu.IsOpen = !this.contextmenu.IsOpen;
         }
     }
 }
