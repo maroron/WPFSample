@@ -7,7 +7,23 @@
         mc:Ignorable="d"
         Title="MenuTest" Height="450" Width="800">
     <Grid>
-        <DockPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <!-- MenuItemはHeaderプロパティに(_F)という書き方をするとAlt後にショートカットキー操作ができる -->
+            <MenuItem Header="ファイル(_F)"/>
+            <MenuItem Header="編集(_E)"/>
+            <MenuItem Header="オプション(_O)">
+                <MenuItem IsCheckable="True" Header="オプション１" />
+                <MenuItem IsCheckable="True" Header="オプション２" />
+                <MenuItem IsCheckable="True" Header="オプション３" />
+            </MenuItem>
+        </Menu>
+        
+        <DockPanel Grid.Row="1">
 
             <Rectangle Width="150"></Rectangle>
 
