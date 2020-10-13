@@ -15,7 +15,11 @@
                 <Border.ContextMenu>
                     <ContextMenu Name="contextmenu">
                         <MenuItem Header="メニュー１" Click="MenuItem_Click"/>
-                        <MenuItem Header="メニュー２"/>
+                        <MenuItem Header="メニュー２">
+                            <MenuItem Header="メニュー ２－１" />
+                            <MenuItem Header="メニュー ２－２" />
+                            <MenuItem Header="メニュー ２－３" />
+                        </MenuItem>
                         <MenuItem Header="メニュー３"/>
                         <MenuItem Header="メニュー４"/>
                     </ContextMenu>
