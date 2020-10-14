@@ -9,6 +9,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -22,12 +23,30 @@
                 <MenuItem IsCheckable="True" Header="オプション３" />
             </MenuItem>
         </Menu>
-        
-        <DockPanel Grid.Row="1">
+
+        <ToolBarTray Grid.Row="1">
+            <ToolBar>
+                <Button Content="item1" />
+                <Button Content="item2" />
+                <Button Content="item3" />
+                <Separator />
+                <Button Content="item4" />
+                <CheckBox Content="item5" />
+            </ToolBar>
+            <ToolBar>
+                <Button Content="item6" />
+                <Button Content="item7" />
+                <Button Content="item8" />
+                <Separator />
+                <ToggleButton Content="item9" />
+            </ToolBar>
+        </ToolBarTray>
+
+        <DockPanel Grid.Row="2">
 
             <Rectangle Width="150"></Rectangle>
 
-            <Border Width="380" Height="380" Background="AliceBlue" BorderBrush="Black" BorderThickness="2">
+            <Border Width="360" Height="360" Background="AliceBlue" BorderBrush="Black" BorderThickness="2">
                 <Border.ContextMenu>
                     <ContextMenu Name="contextmenu">
                         <MenuItem Header="メニュー１" Click="MenuItem_Click"/>
