@@ -25,7 +25,7 @@
         </Menu>
 
         <ToolBarTray Grid.Row="1">
-            <ToolBar>
+            <ToolBar Name="toolbar1">
                 <Button Content="item1" />
                 <Button Content="item2" />
                 <Button Content="item3" />
@@ -33,7 +33,7 @@
                 <Button Content="item4" />
                 <CheckBox Content="item5" />
             </ToolBar>
-            <ToolBar>
+            <ToolBar Name="toolbar2">
                 <Button Content="item6" />
                 <Button Content="item7" />
                 <Button Content="item8" />
@@ -61,7 +61,38 @@
                 </Border.ContextMenu>
             </Border>
 
-            <Button MaxHeight="100" MaxWidth="140" Click="Button_Click">Show ContextMenu</Button>
+            <StackPanel Orientation="Vertical">
+                <Label>Toolbar 1</Label>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="40"></Rectangle>
+                    <TextBlock>Band</TextBlock>
+                    <Rectangle Width="40"></Rectangle>
+                    <TextBlock Text="{Binding Path=Band, ElementName=toolbar1, Mode=TwoWay}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="40"></Rectangle>
+                    <TextBlock>BandIndex</TextBlock>
+                    <Rectangle Width="40"></Rectangle>
+                    <TextBlock Text="{Binding Path=BandIndex, ElementName=toolbar1, Mode=TwoWay}"/>
+                </StackPanel>
+                <Rectangle Height="40"></Rectangle>
+                <Label>Toolbar 2</Label>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="40"></Rectangle>
+                    <TextBlock>Band</TextBlock>
+                    <Rectangle Width="40"></Rectangle>
+                    <TextBlock Text="{Binding Path=Band, ElementName=toolbar2, Mode=TwoWay}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="40"></Rectangle>
+                    <TextBlock>BandIndex</TextBlock>
+                    <Rectangle Width="40"></Rectangle>
+                    <TextBlock Text="{Binding Path=BandIndex, ElementName=toolbar2, Mode=TwoWay}"/>
+                </StackPanel>
+                <Rectangle Height="40"></Rectangle>
+                
+                <Button MaxHeight="100" MaxWidth="140" Click="Button_Click">Show ContextMenu</Button>
+            </StackPanel>
 
         </DockPanel>
     </Grid>
