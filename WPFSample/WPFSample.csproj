@@ -125,6 +125,9 @@
     <Compile Include="SampleE\MenuTest.xaml.cs">
       <DependentUpon>MenuTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SampleF\SelectControlTest.xaml.cs">
+      <DependentUpon>SelectControlTest.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -190,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SampleE\MenuTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SampleF\SelectControlTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

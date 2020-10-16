@@ -1,0 +1,16 @@
+﻿<Window x:Class="WPFSample.SampleF.SelectControlTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSample.SampleF"
+        mc:Ignorable="d"
+        Title="SelectControlTest" Height="450" Width="800">
+    <Grid  Margin="10">
+        <StackPanel>
+            <CheckBox Content="オン" IsChecked="True"/>
+            <CheckBox Content="オフ" IsChecked="False"/>
+            <CheckBox Content="その他" IsChecked="{x:Null}" IsThreeState="True"/>
+        </StackPanel>
+    </Grid>
+</Window>
