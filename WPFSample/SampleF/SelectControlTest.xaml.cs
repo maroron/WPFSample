@@ -23,5 +23,20 @@ namespace WPFSample.SampleF
         {
             InitializeComponent();
         }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            this.textblock.Text = "ON";
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.textblock.Text = "OFF";
+        }
+
+        private void CheckBox_Indeterminate(object sender, RoutedEventArgs e)
+        {
+            this.textblock.Text = "Other";
+        }
     }
 }

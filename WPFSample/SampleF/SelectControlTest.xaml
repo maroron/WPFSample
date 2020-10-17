@@ -11,6 +11,17 @@
             <CheckBox Content="オン" IsChecked="True"/>
             <CheckBox Content="オフ" IsChecked="False"/>
             <CheckBox Content="その他" IsChecked="{x:Null}" IsThreeState="True"/>
+
+            <Rectangle Height="40"/>
+            <Label>Event test</Label>
+            <CheckBox Content="CheckBox"
+                      Checked="CheckBox_Checked"
+                      Unchecked="CheckBox_Unchecked"
+                      Indeterminate="CheckBox_Indeterminate"
+                      IsThreeState="True"/>
+            <Border BorderBrush="Black" BorderThickness="2">
+                <TextBlock x:Name="textblock" Text="OFF"/>
+            </Border>
         </StackPanel>
     </Grid>
 </Window>
