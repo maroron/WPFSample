@@ -22,6 +22,10 @@ namespace WPFSample.SampleF
         public SelectControlTest()
         {
             InitializeComponent();
+
+            var items = Enumerable.Range(1, 10).
+                Select(i => new Person { Name = "tanaka" + i, Age = 20 + i }).ToList();
+            this.comboBox.ItemsSource = items;
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)

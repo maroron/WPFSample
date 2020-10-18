@@ -125,6 +125,7 @@
     <Compile Include="SampleE\MenuTest.xaml.cs">
       <DependentUpon>MenuTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SampleF\Person.cs" />
     <Compile Include="SampleF\SelectControlTest.xaml.cs">
       <DependentUpon>SelectControlTest.xaml</DependentUpon>
     </Compile>

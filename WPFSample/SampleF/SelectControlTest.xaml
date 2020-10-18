@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         Title="SelectControlTest" Height="450" Width="800">
     <Grid  Margin="10">
-        <StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
             <CheckBox Content="オン" IsChecked="True"/>
             <CheckBox Content="オフ" IsChecked="False"/>
             <CheckBox Content="その他" IsChecked="{x:Null}" IsThreeState="True"/>
@@ -22,6 +26,19 @@
             <Border BorderBrush="Black" BorderThickness="2">
                 <TextBlock x:Name="textblock" Text="OFF"/>
             </Border>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10">
+            <ComboBox x:Name="comboBox">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" Margin="2.5"/>
+                            <TextBlock Text="{Binding Age}" Margin="2.5"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </StackPanel>
     </Grid>
 </Window>
