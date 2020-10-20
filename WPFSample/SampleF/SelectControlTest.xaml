@@ -52,6 +52,15 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+            <TextBlock Text="Selected Index"/>
+            <TextBlock Margin="40, 0" 
+                Text="{Binding ElementName=comboBoxEditable, Path=SelectedIndex}"/>
+            <TextBlock Text="Selected Item"/>
+            <TextBlock Margin="40, 0" 
+                Text="{Binding ElementName=comboBoxEditable, Path=SelectedItem}"/>
+            <TextBlock Text="Text"/>
+            <TextBlock Margin="40, 0"
+                Text="{Binding ElementName=comboBoxEditable, Path=Text}"/>
         </StackPanel>
     </Grid>
 </Window>
