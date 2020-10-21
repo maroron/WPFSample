@@ -10,6 +10,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
             <CheckBox Content="オン" IsChecked="True"/>
@@ -64,5 +65,15 @@
             <TextBlock Margin="40, 0"
                 Text="{Binding ElementName=comboBoxEditable, Path=Text}"/>
         </StackPanel>
+
+        <!-- ListBox -->
+        <ListBox x:Name="listBox" SelectionMode="Multiple" Grid.Column="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <!-- Name プロパティを持つPersonクラス用のテンプレート -->
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

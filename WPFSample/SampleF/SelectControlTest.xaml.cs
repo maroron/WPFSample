@@ -27,6 +27,7 @@ namespace WPFSample.SampleF
                 Select(i => new Person { Name = "tanaka" + i, Age = 20 + i }).ToList();
             this.comboBox.ItemsSource = items;
             this.comboBoxEditable.ItemsSource = items;
+            this.listBox.ItemsSource = items;
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
