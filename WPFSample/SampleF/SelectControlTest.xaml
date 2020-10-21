@@ -67,13 +67,21 @@
         </StackPanel>
 
         <!-- ListBox -->
-        <ListBox x:Name="listBox" SelectionMode="Multiple" Grid.Column="2">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <!-- Name プロパティを持つPersonクラス用のテンプレート -->
-                    <TextBlock Text="{Binding Name}" />
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <StackPanel Grid.Column="2">
+            <!-- SelectionMode にはSingle, Multiple, Extendedの３種類ある -->
+            <!-- MultipleはShiftを押さなくても複数選択可能 -->
+            <!-- ExtendedはShiftを押しながら複数選択可能 -->
+            <ListBox x:Name="listBox" SelectionMode="Multiple" TextSearch.TextPath="Name">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <!-- Name プロパティを持つPersonクラス用のテンプレート -->
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <TextBlock>SelectedItems</TextBlock>
+            <TextBlock x:Name="listboxtest"></TextBlock>
+            <Button Click="Button_Click">Display List</Button>
+        </StackPanel>
     </Grid>
 </Window>

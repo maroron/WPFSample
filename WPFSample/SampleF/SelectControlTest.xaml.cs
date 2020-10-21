@@ -44,5 +44,16 @@ namespace WPFSample.SampleF
         {
             this.textblock.Text = "Other";
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var items = this.listBox.SelectedItems;
+            StringBuilder sb = new StringBuilder();
+            foreach (Person item in items)
+            {
+                sb.Append(item.Name).Append(Environment.NewLine);
+            }
+            this.listboxtest.Text = sb.ToString();
+        }
     }
 }
