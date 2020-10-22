@@ -11,6 +11,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
             <CheckBox Content="オン" IsChecked="True"/>
@@ -83,5 +84,13 @@
             <TextBlock x:Name="listboxtest"></TextBlock>
             <Button Click="Button_Click">Display List</Button>
         </StackPanel>
+        <GroupBox Header="Group1" Grid.Column="3">
+            <StackPanel>
+                <RadioButton Content="Button1" Checked="RadioButton_Checked"/>
+                <RadioButton Content="Button2" Checked="RadioButton_Checked" />
+                <RadioButton Content="Button3" Checked="RadioButton_Checked"/>
+                <TextBlock x:Name="textBlockSelected" />
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </Window>

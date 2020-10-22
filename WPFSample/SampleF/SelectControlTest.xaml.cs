@@ -55,5 +55,11 @@ namespace WPFSample.SampleF
             }
             this.listboxtest.Text = sb.ToString();
         }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            var radioButton = (RadioButton)sender;
+            this.textBlockSelected.Text = radioButton.Content.ToString();
+        }
     }
 }
