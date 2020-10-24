@@ -13,6 +13,10 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
         <StackPanel Grid.Column="0">
             <CheckBox Content="オン" IsChecked="True"/>
             <CheckBox Content="オフ" IsChecked="False"/>
@@ -72,7 +76,8 @@
             <!-- SelectionMode にはSingle, Multiple, Extendedの３種類ある -->
             <!-- MultipleはShiftを押さなくても複数選択可能 -->
             <!-- ExtendedはShiftを押しながら複数選択可能 -->
-            <ListBox x:Name="listBox" SelectionMode="Multiple" TextSearch.TextPath="Name">
+            <ListBox x:Name="listBox" SelectionMode="Multiple" TextSearch.TextPath="Name"
+                     MaxHeight="100">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <!-- Name プロパティを持つPersonクラス用のテンプレート -->
@@ -81,7 +86,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
             <TextBlock>SelectedItems</TextBlock>
-            <TextBlock x:Name="listboxtest"></TextBlock>
+            <TextBlock x:Name="listboxtest" MaxHeight="40"></TextBlock>
             <Button Click="Button_Click">Display List</Button>
         </StackPanel>
         <StackPanel Grid.Column="3">
@@ -103,6 +108,11 @@
                     <RadioButton GroupName="group2" Content="Button2-3" />
                 </StackPanel>
             </GroupBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="5">
+            <Slider x:Name="slider" />
+            <TextBlock Text="{Binding Value, ElementName=slider}" />
         </StackPanel>
     </Grid>
 </Window>
