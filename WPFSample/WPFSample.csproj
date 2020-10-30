@@ -132,6 +132,9 @@
     <Compile Include="SampleF\SelectControlTest.xaml.cs">
       <DependentUpon>SelectControlTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TabControlSample.xaml.cs">
+      <DependentUpon>TabControlSample.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -205,6 +208,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SampleF\SelectControlTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TabControlSample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

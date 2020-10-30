@@ -26,7 +26,8 @@ namespace WPFSample
 
         private void Sample1_Click(object sender, RoutedEventArgs e)
         {
-
+            var sample = new TabControlSample();
+            sample.ShowDialog();
         }
 
         private void Sample2_Click(object sender, RoutedEventArgs e)
