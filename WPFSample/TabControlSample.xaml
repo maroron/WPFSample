@@ -7,17 +7,6 @@
         mc:Ignorable="d"
         Title="TabControlSample" Height="450" Width="800">
     <Grid>
-        <!--<TabControl>
-            <TabItem Header="TabItem1">
-                <TextBlock Text="TabItem1 Content" />
-            </TabItem>
-            <TabItem Header="TabItem2">
-                <TextBlock Text="TabItem2 Content" />
-            </TabItem>
-            <TabItem Header="TabItem3">
-                <TextBlock Text="TabItem3 Content" />
-            </TabItem>
-        </TabControl>-->
         <TabControl x:Name="tabControl">
             <TabControl.ItemTemplate>
                 <DataTemplate>
