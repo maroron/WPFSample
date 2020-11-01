@@ -19,13 +19,13 @@ namespace WPFSample
     /// </summary>
     public partial class TabControlSample : Window
     {
+        TabControlViewModel vm = new TabControlViewModel();
+
         public TabControlSample()
         {
             InitializeComponent();
 
-            var source = Enumerable.Range(1, 10).
-                Select(i => new Person { Name = "さとう" + i, Age = 20 + i });
-            this.tabControl.ItemsSource = source;
+            this.DataContext = vm;
         }
     }
 

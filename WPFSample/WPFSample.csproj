@@ -135,6 +135,7 @@
     <Compile Include="TabControlSample.xaml.cs">
       <DependentUpon>TabControlSample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TabControlViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
