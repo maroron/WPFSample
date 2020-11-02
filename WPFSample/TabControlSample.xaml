@@ -19,6 +19,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -28,6 +29,22 @@
                         <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center" />
                         <Label Grid.Row="1" Grid.Column="0" Content="年齢" />
                         <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Age}" VerticalAlignment="Center" />
+                        <ListBox Grid.Row="2" Grid.Column="0" Height="100" ItemsSource="{Binding Fruits}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="3*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+                                        <Rectangle Grid.Column="1" Width="40"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding Count}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </Grid>
                 </DataTemplate>
             </TabControl.ContentTemplate>
