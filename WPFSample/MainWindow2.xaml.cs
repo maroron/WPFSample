@@ -32,7 +32,8 @@ namespace WPFSample
 
         private void Sample2_Click(object sender, RoutedEventArgs e)
         {
-
+            var sample = new FileDialogTest();
+            sample.ShowDialog();
         }
 
         private void Sample3_Click(object sender, RoutedEventArgs e)
