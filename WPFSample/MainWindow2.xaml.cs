@@ -38,7 +38,8 @@ namespace WPFSample
 
         private void Sample3_Click(object sender, RoutedEventArgs e)
         {
-
+            var sample = new DisplayInfoControlTest();
+            sample.ShowDialog();
         }
 
         private void Sample4_Click(object sender, RoutedEventArgs e)

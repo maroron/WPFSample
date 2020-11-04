@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DisplayInfoControlTest.xaml.cs">
+      <DependentUpon>DisplayInfoControlTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FileDialogTest.xaml.cs">
       <DependentUpon>FileDialogTest.xaml</DependentUpon>
     </Compile>
@@ -139,6 +142,10 @@
       <DependentUpon>TabControlSample.xaml</DependentUpon>
     </Compile>
     <Compile Include="TabControlViewModel.cs" />
+    <Page Include="DisplayInfoControlTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FileDialogTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
