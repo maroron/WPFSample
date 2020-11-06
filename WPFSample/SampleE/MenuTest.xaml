@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFSample.SampleE"
         mc:Ignorable="d"
-        Title="MenuTest" Height="450" Width="800">
+        Title="MenuTest" Height="500" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition />
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Menu Grid.Row="0">
@@ -95,5 +96,18 @@
             </StackPanel>
 
         </DockPanel>
+
+        <StatusBar Grid.Row="3">
+            <StatusBarItem>
+                <TextBlock Text="ステータスバーのサンプル" />
+            </StatusBarItem>
+            <Separator />
+            <StatusBarItem>
+                <ProgressBar IsIndeterminate="True" Width="150" Height="10"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="情報表示に使用します" />
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </Window>
