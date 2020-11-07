@@ -1,0 +1,26 @@
+﻿<Window x:Class="WPFSample.PopupTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSample"
+        mc:Ignorable="d"
+        Title="PopupTest" Height="450" Width="800">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="popup button" Click="Button_Click"/>
+            <Popup x:Name="popup1">
+                <TextBlock Background="LightGray" Text="Bottom(Default)" />
+            </Popup>
+            <Popup x:Name="popup2" Placement="Left">
+                <TextBlock Background="LightGray" Text="Left" />
+            </Popup>
+            <Popup x:Name="popup3" Placement="Top">
+                <TextBlock Background="LightGray" Text="Top" />
+            </Popup>
+            <Popup x:Name="popup4" Placement="Right">
+                <TextBlock Background="LightGray" Text="Right" />
+            </Popup>
+        </StackPanel>
+    </Grid>
+</Window>

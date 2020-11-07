@@ -44,7 +44,8 @@ namespace WPFSample
 
         private void Sample4_Click(object sender, RoutedEventArgs e)
         {
-
+            var sample = new PopupTest();
+            sample.ShowDialog();
         }
 
         private void Sample5_Click(object sender, RoutedEventArgs e)

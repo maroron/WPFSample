@@ -64,6 +64,9 @@
     <Compile Include="MainWindow2.xaml.cs">
       <DependentUpon>MainWindow2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PopupTest.xaml.cs">
+      <DependentUpon>PopupTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sample1\ProgressTest.xaml.cs">
       <DependentUpon>ProgressTest.xaml</DependentUpon>
     </Compile>
@@ -163,6 +166,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MainWindow2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PopupTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
