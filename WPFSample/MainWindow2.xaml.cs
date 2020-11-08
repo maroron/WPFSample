@@ -19,93 +19,29 @@ namespace WPFSample
     /// </summary>
     public partial class MainWindow2 : Window
     {
+        private Dictionary<string, Window> sampleList = new Dictionary<string, Window>
+        {
+            { "Sample1", new TabControlSample() },
+            { "Sample2", new FileDialogTest() },
+            { "Sample3", new DisplayInfoControlTest() },
+            { "Sample4", new PopupTest() },
+        };
+
         public MainWindow2()
         {
             InitializeComponent();
         }
 
-        private void Sample1_Click(object sender, RoutedEventArgs e)
+        private void Sample_Click(object sender, RoutedEventArgs e)
         {
-            var sample = new TabControlSample();
-            sample.ShowDialog();
-        }
+            var clickedButton = sender as Button;
 
-        private void Sample2_Click(object sender, RoutedEventArgs e)
-        {
-            var sample = new FileDialogTest();
-            sample.ShowDialog();
-        }
-
-        private void Sample3_Click(object sender, RoutedEventArgs e)
-        {
-            var sample = new DisplayInfoControlTest();
-            sample.ShowDialog();
-        }
-
-        private void Sample4_Click(object sender, RoutedEventArgs e)
-        {
-            var sample = new PopupTest();
-            sample.ShowDialog();
-        }
-
-        private void Sample5_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Sample6_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Sample7_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Sample8_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Sample9_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Sample10_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Sample11_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Sample12_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Sample13_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Sample14_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Sample15_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Sample16_Click(object sender, RoutedEventArgs e)
-        {
-
+            var isExist = sampleList.Keys.Contains(clickedButton.Name);
+            if (isExist)
+            {
+                var window = sampleList[clickedButton.Name];
+                window.ShowDialog();
+            }
         }
     }
 }
