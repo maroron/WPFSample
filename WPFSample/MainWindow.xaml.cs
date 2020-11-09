@@ -36,106 +36,41 @@ namespace WPFSample
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Dictionary<string, Window> sampleList = new Dictionary<string, Window>
+        {
+            { "Sample1", new ProgressTest() },
+            { "Sample2", new CanvasTest() },
+            { "Sample3", new HowToUseList() },
+            { "Sample4", new DialogTest() },
+            { "Sample5", new WindowLifeTime() },
+            { "Sample6", new ControlTest() },
+            { "Sample7", new DataBindingTest() },
+            { "Sample8", new RooutedEventHandledTest() },
+            { "Sample9", new DataGridTest() },
+            { "Sample10", new OOPTest() },
+            { "Sample11", new HttpReader() },
+            { "Sample12", new TreeViewTest() },
+            { "Sample13", new CalendarTest() },
+            { "Sample14", new MenuTest() },
+            { "Sample15", new SelectControlTest() },
+            { "Sample16", new MainWindow2() },
+        };
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Sample1_Click(object sender, RoutedEventArgs e)
+        private void Sample_Click(object sender, RoutedEventArgs e)
         {
-            var sample = new ProgressTest();
-            sample.ShowDialog();
-        }
+            var clickedButton = sender as Button;
 
-        private void Sample2_Click(object sender, RoutedEventArgs e)
-        {
-            var sample = new CanvasTest();
-            sample.ShowDialog();
-        }
-
-        private void Sample3_Click(object sender, RoutedEventArgs e)
-        {
-            var sample = new HowToUseList();
-            sample.ShowDialog();
-        }
-
-        private void Sample4_Click(object sender, RoutedEventArgs e)
-        {
-            var sample = new DialogTest();
-            sample.ShowDialog();
-        }
-
-        private void Sample5_Click(object sender, RoutedEventArgs e)
-        {
-            var sample = new WindowLifeTime();
-            sample.ShowDialog();
-        }
-
-        private void Sample6_Click(object sender, RoutedEventArgs e)
-        {
-            var sample = new ControlTest();
-            sample.ShowDialog();
-        }
-
-        private void Sample7_Click(object sender, RoutedEventArgs e)
-        {
-            var sample = new DataBindingTest();
-            sample.ShowDialog();
-
-        }
-
-        private void Sample8_Click(object sender, RoutedEventArgs e)
-        {
-            var sample = new RooutedEventHandledTest();
-            sample.ShowDialog();
-        }
-
-        private void Sample9_Click(object sender, RoutedEventArgs e)
-        {
-            var sample = new DataGridTest();
-            sample.ShowDialog();
-        }
-
-        private void Sample10_Click(object sender, RoutedEventArgs e)
-        {
-            var sample = new OOPTest();
-            sample.ShowDialog();
-        }
-
-        private void Sample11_Click(object sender, RoutedEventArgs e)
-        {
-            var sample = new HttpReader();
-            sample.ShowDialog();
-        }
-
-        private void Sample12_Click(object sender, RoutedEventArgs e)
-        {
-            var sample = new TreeViewTest();
-            sample.ShowDialog();
-        }
-
-        private void Sample13_Click(object sender, RoutedEventArgs e)
-        {
-            var sample = new CalendarTest();
-            sample.ShowDialog();
-        }
-
-        private void Sample14_Click(object sender, RoutedEventArgs e)
-        {
-            var sample = new MenuTest();
-            sample.ShowDialog();
-        }
-
-        private void Sample15_Click(object sender, RoutedEventArgs e)
-        {
-            var sample = new SelectControlTest();
-            sample.ShowDialog();
-        }
-
-        private void Sample16_Click(object sender, RoutedEventArgs e)
-        {
-            var secondePage = new MainWindow2();
-            secondePage.ShowDialog();
+            var isExist = sampleList.Keys.Contains(clickedButton.Name);
+            if (isExist)
+            {
+                var window = sampleList[clickedButton.Name];
+                window.ShowDialog();
+            }
         }
     }
 }
