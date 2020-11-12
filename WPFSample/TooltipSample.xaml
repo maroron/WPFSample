@@ -1,0 +1,27 @@
+﻿<Window x:Class="WPFSample.TooltipSample"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSample"
+        mc:Ignorable="d"
+        Title="TooltipSample" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="10">
+            <Button Content="Button" ToolTip="ツールチップ"/>
+
+            <Rectangle Height="100"/>
+
+            <Button Content="Button">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="test1.png" Height="100" />
+                            <TextBlock Text="画像" />
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+        </StackPanel> 
+    </Grid>
+</Window>
