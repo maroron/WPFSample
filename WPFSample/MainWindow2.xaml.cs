@@ -36,6 +36,7 @@ namespace WPFSample
                 { "Sample3", new DisplayInfoControlTest() },
                 { "Sample4", new PopupTest() },
                 { "Sample5", new TooltipSample() },
+                { "Sample6", new MediaSample() },
             };
         }
 
