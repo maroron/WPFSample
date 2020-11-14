@@ -5,9 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFSample"
         mc:Ignorable="d"
-        Title="MediaSample" Height="450" Width="800">
-    <Grid>
-        <Image Source="test1.png" Stretch="UniformToFill"/>
+        Title="MediaSample" Height="800" Width="1000">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="800"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="0" Name="displayImage"
+               Source="test1.png" Stretch="UniformToFill"/>
+
+        <StackPanel Grid.Column="1" Margin="10"
+                    Orientation="Vertical"
+                    VerticalAlignment="Center">
+            <Button Content="Read Image"
+                    Height="100"
+                    Click="Button_Click"/>
+        </StackPanel>
 
     </Grid>
 </Window>

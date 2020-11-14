@@ -23,5 +23,25 @@ namespace WPFSample
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            float[] data = new float[512 * 512];
+
+            System.Random random = new System.Random();
+            for (int vertex = 0; vertex < 512; ++vertex)
+            {
+                for (int horizon = 0; horizon < 512; ++horizon)
+                {
+                    double randnum = random.NextDouble();
+                    data[vertex * 512 + horizon] = (float)randnum * 2.0f - 1.0f;
+                }
+            }
+
+            int stride = 512 * PixelFormats.Gray32Float.BitsPerPixel / 8;
+            BitmapSource bitmap = BitmapSource.Create(512, 512, 96, 96, PixelFormats.Gray32Float, null, data, stride);
+            this.displayImage.Source = bitmap;
+        }
+
     }
 }
