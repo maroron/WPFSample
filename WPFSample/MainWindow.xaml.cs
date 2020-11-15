@@ -36,16 +36,7 @@ namespace WPFSample
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Dictionary<string, Window> sampleList;
-
-        public MainWindow()
-        {
-            InitializeComponent();
-            InitializeWindow();
-        }
-
-        private void InitializeWindow()
-        {
+        private Dictionary<string, Window> 
             sampleList = new Dictionary<string, Window>
             {
                 { "Sample1", new ProgressTest() },
@@ -65,6 +56,10 @@ namespace WPFSample
                 { "Sample15", new SelectControlTest() },
                 { "Sample16", new MainWindow2() },
             };
+
+        public MainWindow()
+        {
+            InitializeComponent();
         }
 
         private void Sample_Click(object sender, RoutedEventArgs e)
@@ -75,8 +70,24 @@ namespace WPFSample
             if (isExist)
             {
                 var window = sampleList[clickedButton.Name];
-                window.Closed += (s, ev) => InitializeWindow();
+                // WPFでは、子ウィンドウでClosedイベントが走るとインスタンスが破棄される。
+                // 保持しているインスタンスを使いまわす場合は、
+                // ClosingイベントでCancel = trueとしClosedイベントを呼ばないようにした上で
+                // VisibilityでCollapsedにする(Hiddenでも可)
+                window.Closing += (s, ev) =>
+                {
+                    ev.Cancel = true;
+                    window.Visibility = Visibility.Collapsed;
+                };
                 window.ShowDialog();
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            foreach (var w in sampleList.Values)
+            {
+                w.Close();
             }
         }
     }
