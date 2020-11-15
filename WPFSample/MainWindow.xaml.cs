@@ -84,8 +84,8 @@ namespace WPFSample
 
         /// <summary>アプリケーション終了時に子ウィンドウを破棄する</summary>
         /// <remarks>
-        /// 子ウィンドウのインスタンスを保持しているため、MainWindow終了時にこれらを
-        /// 明示的に破棄する必要がある。
+        /// 子ウィンドウのインスタンスを保持しているため、MainWindow終了時に
+        /// これらを明示的に破棄する必要がある。
         /// しない場合はMainWindowを終了してもAppは終了しない。
         /// </remarks>
         /// <param name="sender"></param>
