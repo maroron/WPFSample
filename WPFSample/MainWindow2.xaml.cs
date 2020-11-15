@@ -19,16 +19,15 @@ namespace WPFSample
     /// </summary>
     public partial class MainWindow2 : Window
     {
-        private Dictionary<string, Window> sampleList
-            = new Dictionary<string, Window>
-            {
-                { "Sample1", new TabControlSample() },
-                { "Sample2", new FileDialogTest() },
-                { "Sample3", new DisplayInfoControlTest() },
-                { "Sample4", new PopupTest() },
-                { "Sample5", new TooltipSample() },
-                { "Sample6", new MediaSample() },
-            };
+        private Dictionary<string, Window> sampleList = new Dictionary<string, Window>
+        {
+            { "Sample1", new TabControlSample() },
+            { "Sample2", new FileDialogTest() },
+            { "Sample3", new DisplayInfoControlTest() },
+            { "Sample4", new PopupTest() },
+            { "Sample5", new TooltipSample() },
+            { "Sample6", new MediaSample() },
+        };
 
         public MainWindow2()
         {

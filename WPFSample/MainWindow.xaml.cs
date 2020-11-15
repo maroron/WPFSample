@@ -36,26 +36,25 @@ namespace WPFSample
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Dictionary<string, Window> 
-            sampleList = new Dictionary<string, Window>
-            {
-                { "Sample1", new ProgressTest() },
-                { "Sample2", new CanvasTest() },
-                { "Sample3", new HowToUseList() },
-                { "Sample4", new DialogTest() },
-                { "Sample5", new WindowLifeTime() },
-                { "Sample6", new ControlTest() },
-                { "Sample7", new DataBindingTest() },
-                { "Sample8", new RooutedEventHandledTest() },
-                { "Sample9", new DataGridTest() },
-                { "Sample10", new OOPTest() },
-                { "Sample11", new HttpReader() },
-                { "Sample12", new TreeViewTest() },
-                { "Sample13", new CalendarTest() },
-                { "Sample14", new MenuTest() },
-                { "Sample15", new SelectControlTest() },
-                { "Sample16", new MainWindow2() },
-            };
+        private Dictionary<string, Window> sampleList = new Dictionary<string, Window>
+        {
+            { "Sample1", new ProgressTest() },
+            { "Sample2", new CanvasTest() },
+            { "Sample3", new HowToUseList() },
+            { "Sample4", new DialogTest() },
+            { "Sample5", new WindowLifeTime() },
+            { "Sample6", new ControlTest() },
+            { "Sample7", new DataBindingTest() },
+            { "Sample8", new RooutedEventHandledTest() },
+            { "Sample9", new DataGridTest() },
+            { "Sample10", new OOPTest() },
+            { "Sample11", new HttpReader() },
+            { "Sample12", new TreeViewTest() },
+            { "Sample13", new CalendarTest() },
+            { "Sample14", new MenuTest() },
+            { "Sample15", new SelectControlTest() },
+            { "Sample16", new MainWindow2() },
+        };
 
         public MainWindow()
         {
