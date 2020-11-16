@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,16 +48,20 @@ namespace WPFSample
                 // 保持しているインスタンスを使いまわす場合は、
                 // ClosingイベントでCancel = trueとしClosedイベントを呼ばないようにした上で
                 // VisibilityでCollapsedにする(Hiddenでも可)
-                window.Closing += (s, ev) =>
-                {
-                    ev.Cancel = true;
-                    window.Visibility = Visibility.Collapsed;
-                };
+                window.Closing += ChildWindow_Closing;
                 window.ShowDialog();
             }
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void ChildWindow_Closing(object sender, CancelEventArgs e)
+        {
+            var w = sender as Window;
+            e.Cancel = true;
+            w.Visibility = Visibility.Collapsed;
+            w.Closing -= ChildWindow_Closing; // 二重登録防止のため、呼び出し後にイベントを解除する
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
             foreach (var w in sampleList.Values)
             {
