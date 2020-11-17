@@ -55,10 +55,31 @@ namespace WPFSample
 
         }
 
-        //private float[] Filter2D(FilterType type, float[] src, int kernelSize)
-        //{
-        //    float[] dst = new float[;
-        //    return dst;
-        //}
+        private ImageData Filter2D(FilterType type, ImageData src, int kernelSize)
+        {
+            var dst = new ImageData(src);
+            return dst;
+        }
+    }
+
+    class ImageData
+    {
+        private float[] data;
+        public int Width { get; set; }
+        public int Height { get; set; }
+
+        public ImageData(int width, int height)
+        {
+            this.data = new float[width * height];
+            this.Width = width;
+            this.Height = height;
+        }
+
+        public ImageData(ImageData data)
+        {
+            this.data = new float[data.Width * data.Height];
+            this.Width = data.Width;
+            this.Height = data.Height;
+        }
     }
 }
