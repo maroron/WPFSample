@@ -18,8 +18,13 @@
                     Orientation="Vertical"
                     VerticalAlignment="Center">
             <Button Content="Read Image"
-                    Height="100"
+                    Margin="10"
+                    Height="40"
                     Click="Button_Click"/>
+            <Button Content="Gauusian Blur"
+                    Margin="10"
+                    Height="40"
+                    Click="Gaussian_Button_Click"/>
         </StackPanel>
 
     </Grid>

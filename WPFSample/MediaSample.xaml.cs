@@ -19,6 +19,13 @@ namespace WPFSample
     /// </summary>
     public partial class MediaSample : Window
     {
+        private enum FilterType
+        {
+            Mean,
+            Gauss,
+            Median,
+        }
+
         public MediaSample()
         {
             InitializeComponent();
@@ -43,5 +50,15 @@ namespace WPFSample
             this.displayImage.Source = bitmap;
         }
 
+        private void Gaussian_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        //private float[] Filter2D(FilterType type, float[] src, int kernelSize)
+        //{
+        //    float[] dst = new float[;
+        //    return dst;
+        //}
     }
 }
