@@ -52,32 +52,51 @@ namespace WPFSample
 
         private void Gaussian_Button_Click(object sender, RoutedEventArgs e)
         {
+            this.displayImage.Source = CreateBitMapsource();
+        }
 
+        private BitmapSource CreateBitMapsource()
+        {
+            var image = new ImageData(512, 512);
+            var outImage = Filter2D(FilterType.Gauss, image, 5);
+
+            int stride = outImage.Width * PixelFormats.Gray32Float.BitsPerPixel / 8;
+            BitmapSource bitmap = BitmapSource.Create(512, 512, 96, 96, PixelFormats.Gray32Float, null, outImage.Data, stride);
+            return bitmap;
         }
 
         private ImageData Filter2D(FilterType type, ImageData src, int kernelSize)
         {
             var dst = new ImageData(src);
+
+            for (int h = 0; h < src.Height; h++)
+            {
+                for (int w = 0; w < src.Width; w++)
+                {
+                    dst.Data[h * src.Width + w] = (float)h / (float)src.Height;
+                }
+            }
             return dst;
         }
     }
 
     class ImageData
     {
-        private float[] data;
+        public float[] Data { get; set; }
+
         public int Width { get; set; }
         public int Height { get; set; }
 
         public ImageData(int width, int height)
         {
-            this.data = new float[width * height];
+            this.Data = new float[width * height];
             this.Width = width;
             this.Height = height;
         }
 
         public ImageData(ImageData data)
         {
-            this.data = new float[data.Width * data.Height];
+            this.Data = new float[data.Width * data.Height];
             this.Width = data.Width;
             this.Height = data.Height;
         }
