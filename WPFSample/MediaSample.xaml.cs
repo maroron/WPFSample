@@ -26,27 +26,29 @@ namespace WPFSample
             Median,
         }
 
+        private ImageData imageData { get; set; }
+
         public MediaSample()
         {
             InitializeComponent();
+
+            this.imageData = new ImageData(512, 512);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            float[] data = new float[512 * 512];
-
             System.Random random = new System.Random();
-            for (int vertex = 0; vertex < 512; ++vertex)
+            for (int vertex = 0; vertex < imageData.Height; ++vertex)
             {
-                for (int horizon = 0; horizon < 512; ++horizon)
+                for (int horizon = 0; horizon < imageData.Width; ++horizon)
                 {
                     double randnum = random.NextDouble();
-                    data[vertex * 512 + horizon] = (float)randnum * 2.0f - 1.0f;
+                    this.imageData.Data[vertex * imageData.Height + horizon] = (float)randnum * 2.0f - 1.0f;
                 }
             }
 
             int stride = 512 * PixelFormats.Gray32Float.BitsPerPixel / 8;
-            BitmapSource bitmap = BitmapSource.Create(512, 512, 96, 96, PixelFormats.Gray32Float, null, data, stride);
+            var bitmap = BitmapSource.Create(512, 512, 96, 96, PixelFormats.Gray32Float, null, this.imageData.Data, stride);
             this.displayImage.Source = bitmap;
         }
 
@@ -90,6 +92,21 @@ namespace WPFSample
         public ImageData(int width, int height)
         {
             this.Data = new float[width * height];
+            this.Width = width;
+            this.Height = height;
+
+            for (int h = 0; h < this.Height; h++)
+            {
+                for (int w = 0; w < this.Width; w++)
+                {
+                    this.Data[h * Width + w] = (float)h / (float)this.Height;
+                }
+            }
+        }
+
+        public ImageData(int width, int height, float[] data)
+        {
+            this.Data = data;
             this.Width = width;
             this.Height = height;
         }
