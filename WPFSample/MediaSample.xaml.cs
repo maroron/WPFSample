@@ -47,35 +47,43 @@ namespace WPFSample
                 }
             }
 
-            int stride = 512 * PixelFormats.Gray32Float.BitsPerPixel / 8;
-            var bitmap = BitmapSource.Create(512, 512, 96, 96, PixelFormats.Gray32Float, null, this.imageData.Data, stride);
-            this.displayImage.Source = bitmap;
+            this.displayImage.Source = CreateBitMapsource(this.imageData);
         }
 
         private void Gaussian_Button_Click(object sender, RoutedEventArgs e)
         {
-            this.displayImage.Source = CreateBitMapsource();
+            var filterdImage = Filter2D(FilterType.Gauss, this.imageData, 5);
+            this.displayImage.Source = CreateBitMapsource(filterdImage);
         }
 
-        private BitmapSource CreateBitMapsource()
+        private BitmapSource CreateBitMapsource(ImageData image)
         {
-            var image = new ImageData(512, 512);
-            var outImage = Filter2D(FilterType.Gauss, image, 5);
-
-            int stride = outImage.Width * PixelFormats.Gray32Float.BitsPerPixel / 8;
-            BitmapSource bitmap = BitmapSource.Create(512, 512, 96, 96, PixelFormats.Gray32Float, null, outImage.Data, stride);
+            int stride = image.Width * PixelFormats.Gray32Float.BitsPerPixel / 8;
+            BitmapSource bitmap = BitmapSource.Create(512, 512, 96, 96, PixelFormats.Gray32Float, null, image.Data, stride);
             return bitmap;
         }
 
         private ImageData Filter2D(FilterType type, ImageData src, int kernelSize)
         {
-            var dst = new ImageData(src);
+            var dst = new ImageData(512, 512);
+            int radius = (kernelSize - 1) / 2;
 
-            for (int h = 0; h < src.Height; h++)
+            for (int h = radius; h < src.Height - radius; h++)
             {
-                for (int w = 0; w < src.Width; w++)
+                for (int w = radius; w < src.Width - radius; w++)
                 {
-                    dst.Data[h * src.Width + w] = (float)h / (float)src.Height;
+                    float sum = 0.0f;
+                    for (int kH = h - radius; kH < kernelSize; kH++)
+                    {
+                        for (int kW = w - radius; kW < kernelSize; kW++)
+                        {
+                            var testt = src.Data[kH * kernelSize + kW];
+                            sum += testt;
+                        }
+                    }
+                    float test = sum / (kernelSize * kernelSize);
+
+                    dst.Data[h * src.Width + w] = 1.0f;
                 }
             }
             return dst;
