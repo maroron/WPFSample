@@ -43,7 +43,7 @@ namespace WPFSample
                 for (int horizon = 0; horizon < imageData.Width; ++horizon)
                 {
                     double randnum = random.NextDouble();
-                    this.imageData.Data[vertex * imageData.Height + horizon] = (float)randnum * 2.0f - 1.0f;
+                    this.imageData.Data[vertex * imageData.Height + horizon] = (float)randnum;// * 2.0f - 1.0f;
                 }
             }
 
@@ -77,13 +77,13 @@ namespace WPFSample
                     {
                         for (int kW = w - radius; kW < kernelSize; kW++)
                         {
-                            var testt = src.Data[kH * kernelSize + kW];
+                            float testt = src.Data[kH * kernelSize + kW];
                             sum += testt;
                         }
                     }
                     float test = sum / (kernelSize * kernelSize);
 
-                    dst.Data[h * src.Width + w] = 1.0f;
+                    dst.Data[h * src.Width + w] = test; 
                 }
             }
             return dst;
