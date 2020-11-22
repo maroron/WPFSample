@@ -43,7 +43,8 @@ namespace WPFSample
                 for (int horizon = 0; horizon < imageData.Width; ++horizon)
                 {
                     double randnum = random.NextDouble();
-                    this.imageData.Data[vertex * imageData.Height + horizon] = (float)randnum;// * 2.0f - 1.0f;
+                    this.imageData.Data[vertex * imageData.Height + horizon] = (float)randnum;
+                    //this.imageData.Data[vertex * imageData.Height + horizon] = (float)horizon / (float)imageData.Width;
                 }
             }
 
@@ -52,7 +53,7 @@ namespace WPFSample
 
         private void Gaussian_Button_Click(object sender, RoutedEventArgs e)
         {
-            var filterdImage = Filter2D(FilterType.Gauss, this.imageData, 5);
+            var filterdImage = Filter2D(FilterType.Gauss, this.imageData, 3);
             this.displayImage.Source = CreateBitMapsource(filterdImage);
         }
 
@@ -67,6 +68,7 @@ namespace WPFSample
         {
             var dst = new ImageData(512, 512);
             int radius = (kernelSize - 1) / 2;
+            float N = kernelSize * kernelSize;
 
             for (int h = radius; h < src.Height - radius; h++)
             {
@@ -77,12 +79,12 @@ namespace WPFSample
                     {
                         for (int kW = w - radius; kW < kernelSize; kW++)
                         {
-                            float testt = src.Data[kH * kernelSize + kW];
+                            var temp = kH * src.Width + kW;
+                            float testt = src.Data[temp];
                             sum += testt;
                         }
                     }
-                    float test = sum / (kernelSize * kernelSize);
-
+                    float test = sum / N;
                     dst.Data[h * src.Width + w] = test; 
                 }
             }
