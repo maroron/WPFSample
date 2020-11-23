@@ -75,9 +75,9 @@ namespace WPFSample
                 for (int w = radius; w < src.Width - radius; w++)
                 {
                     float sum = 0.0f;
-                    for (int kH = h - radius; kH < kernelSize; kH++)
+                    for (int kH = h - radius; kH < h - radius + kernelSize; kH++)
                     {
-                        for (int kW = w - radius; kW < kernelSize; kW++)
+                        for (int kW = w - radius; kW < w - radius + kernelSize; kW++)
                         {
                             var temp = kH * src.Width + kW;
                             float testt = src.Data[temp];
