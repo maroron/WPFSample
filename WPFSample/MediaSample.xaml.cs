@@ -52,7 +52,13 @@ namespace WPFSample
 
         private void Gaussian_Button_Click(object sender, RoutedEventArgs e)
         {
-            var filterdImage = Filter2D(FilterType.Gauss, this.imageData, 3);
+            float[,] gauss = {
+                { 1/16, 1/8, 1/16},
+                { 1/8,  1/4, 1/8 },
+                { 1/16, 1/8, 1/16},
+            };
+
+            var filterdImage = Filter2D(FilterType.Gauss, this.imageData, gauss);
             this.displayImage.Source = CreateBitMapsource(filterdImage);
         }
 
@@ -63,27 +69,28 @@ namespace WPFSample
             return bitmap;
         }
 
-        private ImageData Filter2D(FilterType type, ImageData src, int kernelSize)
+        private ImageData Filter2D(FilterType type, ImageData src, float[,] kernel)
         {
             var dst = new ImageData(512, 512);
-            int radius = (kernelSize - 1) / 2;
-            float N = kernelSize * kernelSize;
+            int kernelW = kernel.GetLength(0);
+            int kernelH = kernel.GetLength(1);
+            int radius = (kernelH - 1) / 2;
 
             for (int h = radius; h < src.Height - radius; h++)
             {
                 for (int w = radius; w < src.Width - radius; w++)
                 {
                     float sum = 0.0f;
-                    for (int kH = h - radius; kH < h - radius + kernelSize; kH++)
+                    for (int kH = h - radius; kH < h - radius + kernelH; kH++)
                     {
-                        for (int kW = w - radius; kW < w - radius + kernelSize; kW++)
+                        for (int kW = w - radius; kW < w - radius + kernelW; kW++)
                         {
                             var temp = kH * src.Width + kW;
                             float testt = src.Data[temp];
                             sum += testt;
                         }
                     }
-                    float test = sum / N;
+                    float test = sum / kernel.Length;
                     dst.Data[h * src.Width + w] = test; 
                 }
             }
