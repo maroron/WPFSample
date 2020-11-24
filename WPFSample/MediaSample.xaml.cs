@@ -44,7 +44,6 @@ namespace WPFSample
                 {
                     double randnum = random.NextDouble();
                     this.imageData.Data[vertex * imageData.Height + horizon] = (float)randnum;
-                    //this.imageData.Data[vertex * imageData.Height + horizon] = (float)horizon / (float)imageData.Width;
                 }
             }
 
