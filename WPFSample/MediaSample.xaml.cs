@@ -53,9 +53,9 @@ namespace WPFSample
         private void Gaussian_Button_Click(object sender, RoutedEventArgs e)
         {
             float[,] gauss = {
-                { 1/16, 1/8, 1/16},
-                { 1/8,  1/4, 1/8 },
-                { 1/16, 1/8, 1/16},
+                { 1.0f/16.0f, 1.0f/8.0f, 1.0f/16.0f},
+                { 1.0f/8.0f,  1.0f/4.0f, 1.0f/8.0f },
+                { 1.0f/16.0f, 1.0f/8.0f, 1.0f/16.0f},
             };
 
             var filterdImage = Filter2D(FilterType.Gauss, this.imageData, gauss);
@@ -81,17 +81,14 @@ namespace WPFSample
                 for (int w = radius; w < src.Width - radius; w++)
                 {
                     float sum = 0.0f;
-                    for (int kH = h - radius; kH < h - radius + kernelH; kH++)
+                    for (int kH = h - radius, ky = 0; kH < h - radius + kernelH; kH++, ky++)
                     {
-                        for (int kW = w - radius; kW < w - radius + kernelW; kW++)
+                        for (int kW = w - radius, kx = 0; kW < w - radius + kernelW; kW++, kx++)
                         {
-                            var temp = kH * src.Width + kW;
-                            float testt = src.Data[temp];
-                            sum += testt;
+                            sum += src.Data[kH * src.Width + kW] * kernel[ky, kx];
                         }
                     }
-                    float test = sum / kernel.Length;
-                    dst.Data[h * src.Width + w] = test; 
+                    dst.Data[h * src.Width + w] = sum; 
                 }
             }
             return dst;
