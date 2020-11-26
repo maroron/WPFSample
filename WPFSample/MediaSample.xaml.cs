@@ -52,13 +52,7 @@ namespace WPFSample
 
         private void Gaussian_Button_Click(object sender, RoutedEventArgs e)
         {
-            float[,] gauss = {
-                { 1.0f/16.0f, 1.0f/8.0f, 1.0f/16.0f},
-                { 1.0f/8.0f,  1.0f/4.0f, 1.0f/8.0f },
-                { 1.0f/16.0f, 1.0f/8.0f, 1.0f/16.0f},
-            };
-
-            var filterdImage = Filter2D(FilterType.Gauss, this.imageData, gauss);
+            var filterdImage = Filter2D(FilterType.Gauss, this.imageData);
             this.displayImage.Source = CreateBitMapsource(filterdImage);
         }
 
@@ -69,8 +63,9 @@ namespace WPFSample
             return bitmap;
         }
 
-        private ImageData Filter2D(FilterType type, ImageData src, float[,] kernel)
+        private ImageData Filter2D(FilterType type, ImageData src)
         {
+            float[,] kernel = GetFilter(type);
             var dst = new ImageData(512, 512);
             int kernelW = kernel.GetLength(0);
             int kernelH = kernel.GetLength(1);
@@ -92,6 +87,49 @@ namespace WPFSample
                 }
             }
             return dst;
+        }
+
+        private float[,] GetFilter(FilterType type)
+        {
+            float[,] filter;
+
+            switch (type)
+            {
+                case FilterType.Mean:
+                    float[,] mean = {
+                        { 1.0f/9.0f, 1.0f/9.0f, 1.0f/9.0f},
+                        { 1.0f/9.0f, 1.0f/9.0f, 1.0f/9.0f },
+                        { 1.0f/9.0f, 1.0f/9.0f, 1.0f/9.0f},
+                    };
+                    filter = mean;
+                    break;
+                case FilterType.Gauss:
+                    float[,] gauss = {
+                        { 1.0f/16.0f, 1.0f/8.0f, 1.0f/16.0f},
+                        { 1.0f/8.0f,  1.0f/4.0f, 1.0f/8.0f },
+                        { 1.0f/16.0f, 1.0f/8.0f, 1.0f/16.0f},
+                    };
+                    filter = gauss;
+                    break;
+                case FilterType.Median:
+                    float[,] median = {
+                        { 1.0f/16.0f, 1.0f/8.0f, 1.0f/16.0f},
+                        { 1.0f/8.0f,  1.0f/4.0f, 1.0f/8.0f },
+                        { 1.0f/16.0f, 1.0f/8.0f, 1.0f/16.0f},
+                    };
+                    filter = median;
+                    break;
+                default:
+                    float[,] none = {
+                        { 1.0f/16.0f, 1.0f/8.0f, 1.0f/16.0f},
+                        { 1.0f/8.0f,  1.0f/4.0f, 1.0f/8.0f },
+                        { 1.0f/16.0f, 1.0f/8.0f, 1.0f/16.0f},
+                    };
+                    filter = none;
+                    break;
+            }
+
+            return filter;
         }
     }
 
