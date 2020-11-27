@@ -52,8 +52,8 @@ namespace WPFSample
 
         private void Gaussian_Button_Click(object sender, RoutedEventArgs e)
         {
-            var filterdImage = Filter2D(FilterType.Gauss, this.imageData);
-            this.displayImage.Source = CreateBitMapsource(filterdImage);
+            this.imageData = Filter2D(FilterType.Gauss, this.imageData);
+            this.displayImage.Source = CreateBitMapsource(this.imageData);
         }
 
         private BitmapSource CreateBitMapsource(ImageData image)
