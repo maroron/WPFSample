@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -130,6 +132,31 @@ namespace WPFSample
             }
 
             return filter;
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // 画像を開く
+            var dialog = new OpenFileDialog();
+            dialog.Filter = "画像|*.jpg;*.jpeg;*.png;*.bmp";
+            if (dialog.ShowDialog() != true)
+            {
+                return;
+            }
+            // ファイルをメモリにコピー
+            var ms = new MemoryStream();
+            using (var s = new FileStream(dialog.FileName, FileMode.Open))
+            { s.CopyTo(ms); }
+            // ストリームの位置をリセット
+            ms.Seek(0, SeekOrigin.Begin);
+            // ストリームをもとにBitmapImageを作成 
+            var bmp = new BitmapImage();
+            bmp.BeginInit();
+            bmp.StreamSource = ms;
+            bmp.EndInit();
+            // BitmapImageをSourceに指定して画面に表示する
+            this.displayImage.Source = bmp;
+
         }
     }
 
