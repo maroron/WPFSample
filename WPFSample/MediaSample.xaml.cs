@@ -154,9 +154,12 @@ namespace WPFSample
             bmp.BeginInit();
             bmp.StreamSource = ms;
             bmp.EndInit();
+
+            int stride = bmp.PixelWidth * PixelFormats.Gray32Float.BitsPerPixel / 8;
+            bmp.CopyPixels(this.imageData.Data, stride, 0);
+
             // BitmapImageをSourceに指定して画面に表示する
             this.displayImage.Source = bmp;
-
         }
     }
 
