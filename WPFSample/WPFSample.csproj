@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DispatcherObjectTest.xaml.cs">
+      <DependentUpon>DispatcherObjectTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DisplayInfoControlTest.xaml.cs">
       <DependentUpon>DisplayInfoControlTest.xaml</DependentUpon>
     </Compile>
@@ -151,6 +154,10 @@
     <Compile Include="TooltipSample.xaml.cs">
       <DependentUpon>TooltipSample.xaml</DependentUpon>
     </Compile>
+    <Page Include="DispatcherObjectTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DisplayInfoControlTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

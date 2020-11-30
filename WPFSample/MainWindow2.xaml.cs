@@ -28,6 +28,7 @@ namespace WPFSample
             { "Sample4", new PopupTest() },
             { "Sample5", new TooltipSample() },
             { "Sample6", new MediaSample() },
+            { "Sample7", new DispatcherObjectTest() },
         };
 
         public MainWindow2()
