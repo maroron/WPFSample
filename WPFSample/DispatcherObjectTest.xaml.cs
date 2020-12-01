@@ -36,6 +36,15 @@ namespace WPFSample
             Console.WriteLine(p.Name);
             p.Name = "personB";
             Console.WriteLine(p.Name);
+
+            // メタデータが共有されることの確認
+            var p1 = new PersonObject();
+            var p2 = new PersonObject();
+            p1.Children.Add(new PersonObject());
+            p2.Children.Add(new PersonObject());
+
+            Console.WriteLine("p1.Children.Count = {0}", p1.Children.Count);
+            Console.WriteLine("p2.Children.Count = {0}", p2.Children.Count);
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
