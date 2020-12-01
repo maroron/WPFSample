@@ -24,6 +24,11 @@ namespace WPFSample
         public DispatcherObjectTest()
         {
             InitializeComponent();
+
+            var p = new PersonObject();
+            Console.WriteLine(p.GetValue(PersonObject.NameProperty));
+            p.SetValue(PersonObject.NameProperty, "personA");
+            Console.WriteLine(p.GetValue(PersonObject.NameProperty));
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
@@ -69,5 +74,15 @@ namespace WPFSample
             this.VerifyAccess();
             Debug.WriteLine("DoSomething"); 
         }
+    }
+
+    public class PersonObject : DependencyObject
+    {
+        public static readonly DependencyProperty NameProperty =
+            DependencyProperty.Register(
+                "Name",                                 // プロパティ名
+                typeof(string),                         // プロパティの型
+                typeof(PersonObject),                   // プロパティを所有する型
+                new PropertyMetadata("defalut name"));  // メタデータ　ここではデフォルト値を設定
     }
 }
