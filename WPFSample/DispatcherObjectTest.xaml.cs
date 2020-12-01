@@ -98,5 +98,15 @@ namespace WPFSample
             get { return (string)GetValue(NameProperty); }
             set { SetValue(NameProperty, value); }
         }
+
+        public static readonly DependencyProperty ChildrenProperty =
+            DependencyProperty.Register("Children", typeof(List<PersonObject>),
+                typeof(PersonObject), new PropertyMetadata(new List<PersonObject>()));
+
+        public List<PersonObject> Children 
+        {
+            get { return (List<PersonObject>)GetValue(ChildrenProperty); }
+            set { SetValue(ChildrenProperty, value); }
+        }
     }
 }
