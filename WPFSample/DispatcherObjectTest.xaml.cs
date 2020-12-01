@@ -26,9 +26,16 @@ namespace WPFSample
             InitializeComponent();
 
             var p = new PersonObject();
+
+            // 冗長な書き方
             Console.WriteLine(p.GetValue(PersonObject.NameProperty));
             p.SetValue(PersonObject.NameProperty, "personA");
             Console.WriteLine(p.GetValue(PersonObject.NameProperty));
+
+            // C#らしいプロパティの使用方法にカスタマイズしたやり方
+            Console.WriteLine(p.Name);
+            p.Name = "personB";
+            Console.WriteLine(p.Name);
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
