@@ -92,6 +92,7 @@ namespace WPFSample
                 typeof(PersonObject),                   // プロパティを所有する型
                 new PropertyMetadata("defalut name"));  // メタデータ　ここではデフォルト値を設定
 
+        // 依存関係プロパティのCLRのプロパティのラッパー
         public string Name 
         {
             get { return (string)GetValue(NameProperty); }
