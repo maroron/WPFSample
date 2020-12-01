@@ -84,5 +84,11 @@ namespace WPFSample
                 typeof(string),                         // プロパティの型
                 typeof(PersonObject),                   // プロパティを所有する型
                 new PropertyMetadata("defalut name"));  // メタデータ　ここではデフォルト値を設定
+
+        public string Name 
+        {
+            get { return (string)GetValue(NameProperty); }
+            set { SetValue(NameProperty, value); }
+        }
     }
 }
