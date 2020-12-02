@@ -94,6 +94,13 @@ namespace WPFSample
 
     public class PersonObject : DependencyObject
     {
+        public PersonObject()
+        {
+            // デフォルト値をコンストラクタで指定するようにする
+            // こうすることでメタデータが共有されることを防げる
+            this.Children = new List<PersonObject>();
+        }
+
         public static readonly DependencyProperty NameProperty =
             DependencyProperty.Register(
                 "Name",                                 // プロパティ名
