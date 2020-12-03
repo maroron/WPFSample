@@ -106,7 +106,8 @@ namespace WPFSample
                 "Name",                                 // プロパティ名
                 typeof(string),                         // プロパティの型
                 typeof(PersonObject),                   // プロパティを所有する型
-                new PropertyMetadata("defalut name"));  // メタデータ　ここではデフォルト値を設定
+                new PropertyMetadata("defalut name",    // メタデータ　ここではデフォルト値を設定
+                                     NamePropertyChanged)); // メタデータ　プロパティの変更時に呼ばれるコールバック
 
         // 依存関係プロパティのCLRのプロパティのラッパー
         public string Name 
@@ -123,6 +124,11 @@ namespace WPFSample
         {
             get { return (List<PersonObject>)GetValue(ChildrenProperty); }
             set { SetValue(ChildrenProperty, value); }
+        }
+
+        private static void NamePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            Console.WriteLine("Nameプロパティが{0}から{1}に変わりました", e.OldValue, e.NewValue);
         }
     }
 }
