@@ -114,6 +114,11 @@ namespace WPFSample
                 new PropertyMetadata("defalut name",    // メタデータ　ここではデフォルト値を設定
                                      NamePropertyChanged)); // メタデータ　プロパティの変更時に呼ばれるコールバック
 
+        private static void NamePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            Console.WriteLine("Nameプロパティが{0}から{1}に変わりました", e.OldValue, e.NewValue);
+        }
+
         // 依存関係プロパティのCLRのプロパティのラッパー
         public string Name 
         {
@@ -131,11 +136,6 @@ namespace WPFSample
             set { SetValue(ChildrenProperty, value); }
         }
 
-        private static void AgePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            Console.WriteLine("Ageプロパティが{0}から{1}に変わりました。", e.OldValue, e.NewValue);
-        }
-
         public static readonly DependencyProperty AgeProperty =
             DependencyProperty.Register(
                 "Age",                                 // プロパティ名
@@ -146,15 +146,9 @@ namespace WPFSample
                                      CoerceAgeValue     // メタデータ　データのバリデーション
                     )); 
 
-        public int Age
+        private static void AgePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            get { return (int)GetValue(AgeProperty); }
-            set { SetValue(AgeProperty, value); }
-        }
-
-        private static void NamePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            Console.WriteLine("Nameプロパティが{0}から{1}に変わりました", e.OldValue, e.NewValue);
+            Console.WriteLine("Ageプロパティが{0}から{1}に変わりました。", e.OldValue, e.NewValue);
         }
 
         private static object CoerceAgeValue(DependencyObject d, object baseValue)
@@ -170,6 +164,12 @@ namespace WPFSample
                 return 120;
             }
             return value;
+        }
+
+        public int Age
+        {
+            get { return (int)GetValue(AgeProperty); }
+            set { SetValue(AgeProperty, value); }
         }
     }
 }
