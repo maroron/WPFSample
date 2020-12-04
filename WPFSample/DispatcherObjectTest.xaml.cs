@@ -45,6 +45,11 @@ namespace WPFSample
 
             Console.WriteLine("p1.Children.Count = {0}", p1.Children.Count);
             Console.WriteLine("p2.Children.Count = {0}", p2.Children.Count);
+
+            var pValueCheck = new PersonObject();
+            pValueCheck.Age = 10;
+            pValueCheck.Age = -10;
+            pValueCheck.Age = 150;
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
@@ -126,9 +131,45 @@ namespace WPFSample
             set { SetValue(ChildrenProperty, value); }
         }
 
+        private static void AgePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            Console.WriteLine("Ageプロパティが{0}から{1}に変わりました。", e.OldValue, e.NewValue);
+        }
+
+        public static readonly DependencyProperty AgeProperty =
+            DependencyProperty.Register(
+                "Age",                                 // プロパティ名
+                typeof(int),                         // プロパティの型
+                typeof(PersonObject),                   // プロパティを所有する型
+                new PropertyMetadata(0,    // メタデータ　ここではデフォルト値を設定
+                                     AgePropertyChanged, // メタデータ　プロパティの変更時に呼ばれるコールバック
+                                     CoerceAgeValue     // メタデータ　データのバリデーション
+                    )); 
+
+        public int Age
+        {
+            get { return (int)GetValue(AgeProperty); }
+            set { SetValue(AgeProperty, value); }
+        }
+
         private static void NamePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             Console.WriteLine("Nameプロパティが{0}から{1}に変わりました", e.OldValue, e.NewValue);
+        }
+
+        private static object CoerceAgeValue(DependencyObject d, object baseValue)
+        {
+            // 年齢は0-120の間
+            var value = (int)baseValue;
+            if (value < 0)
+            {
+                return 0;
+            }
+            if (value > 120)
+            {
+                return 120;
+            }
+            return value;
         }
     }
 }
