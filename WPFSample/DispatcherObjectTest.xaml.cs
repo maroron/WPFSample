@@ -138,12 +138,12 @@ namespace WPFSample
 
         public static readonly DependencyProperty AgeProperty =
             DependencyProperty.Register(
-                "Age",                                 // プロパティ名
-                typeof(int),                         // プロパティの型
-                typeof(PersonObject),                   // プロパティを所有する型
-                new PropertyMetadata(0,    // メタデータ　ここではデフォルト値を設定
-                                     AgePropertyChanged, // メタデータ　プロパティの変更時に呼ばれるコールバック
-                                     CoerceAgeValue     // メタデータ　データのバリデーション
+                "Age",                                      // プロパティ名
+                typeof(int),                                // プロパティの型
+                typeof(PersonObject),                       // プロパティを所有する型
+                new PropertyMetadata(0,                     // メタデータ　ここではデフォルト値を設定
+                                     AgePropertyChanged,    // メタデータ　プロパティの変更時に呼ばれるコールバック
+                                     CoerceAgeValue         // メタデータ　データのバリデーション
                     )); 
 
         private static void AgePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
