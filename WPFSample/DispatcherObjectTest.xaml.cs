@@ -108,10 +108,10 @@ namespace WPFSample
 
         public static readonly DependencyProperty NameProperty =
             DependencyProperty.Register(
-                "Name",                                 // プロパティ名
-                typeof(string),                         // プロパティの型
-                typeof(PersonObject),                   // プロパティを所有する型
-                new PropertyMetadata("defalut name",    // メタデータ　ここではデフォルト値を設定
+                "Name",                                     // プロパティ名
+                typeof(string),                             // プロパティの型
+                typeof(PersonObject),                       // プロパティを所有する型
+                new PropertyMetadata("defalut name",        // メタデータ　ここではデフォルト値を設定
                                      NamePropertyChanged)); // メタデータ　プロパティの変更時に呼ばれるコールバック
 
         private static void NamePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
