@@ -50,6 +50,14 @@ namespace WPFSample
             pValueCheck.Age = 10;
             pValueCheck.Age = -10;
             pValueCheck.Age = 150;
+            try
+            {
+                pValueCheck.Age = int.MaxValue;
+            }
+            catch(ArgumentException e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
@@ -144,7 +152,9 @@ namespace WPFSample
                 new PropertyMetadata(0,                     // メタデータ　ここではデフォルト値を設定
                                      AgePropertyChanged,    // メタデータ　プロパティの変更時に呼ばれるコールバック
                                      CoerceAgeValue         // メタデータ　データのバリデーション
-                    )); 
+                    ),
+                ValidateAgeValue
+                ); 
 
         private static void AgePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -164,6 +174,12 @@ namespace WPFSample
                 return 120;
             }
             return value;
+        }
+
+        private static bool ValidateAgeValue(object value)
+        {
+            int age = (int)value;
+            return age != int.MaxValue && age != int.MinValue;
         }
 
         public int Age
