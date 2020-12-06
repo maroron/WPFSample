@@ -187,5 +187,24 @@ namespace WPFSample
             get { return (int)GetValue(AgeProperty); }
             set { SetValue(AgeProperty, value); }
         }
-    }
+
+        // 読込専用のDependencyProperty
+        private static readonly DependencyPropertyKey BirthdayPropertyKey =
+            DependencyProperty.RegisterReadOnly(
+                "Birthday",
+                typeof(DateTime),
+                typeof(Person),
+                new PropertyMetadata(DateTime.Now));
+
+        // DependencyPropertyは、DependencyPropertyKeyから取得する
+        public static readonly DependencyProperty BirthdayProperty = BirthdayPropertyKey.DependencyProperty;
+
+        public DateTime Birthday
+        {
+            // getは従来通り
+            get { return (DateTime)GetValue(BirthdayProperty); }
+
+            // setはDependencyPropertyKeyを使って行う
+            private set { SetValue(BirthdayPropertyKey, value); } }
+        }
 }
