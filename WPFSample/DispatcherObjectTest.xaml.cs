@@ -205,6 +205,18 @@ namespace WPFSample
             get { return (DateTime)GetValue(BirthdayProperty); }
 
             // setはDependencyPropertyKeyを使って行う
-            private set { SetValue(BirthdayPropertyKey, value); } }
+            private set { SetValue(BirthdayPropertyKey, value); }
         }
+
+
+        public static readonly DependencyProperty FirstNameProperty = 
+            DependencyProperty.Register("FirstName", typeof(string),
+                typeof(Person), new FrameworkPropertyMetadata(null));
+
+        public string FirstName 
+        {
+            get { return (string)GetValue(FirstNameProperty); }
+            set { SetValue(FirstNameProperty, value); }
+        }
+    }
 }
