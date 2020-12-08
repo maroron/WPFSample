@@ -218,5 +218,19 @@ namespace WPFSample
             get { return (string)GetValue(FirstNameProperty); }
             set { SetValue(FirstNameProperty, value); }
         }
+
+        public static readonly DependencyProperty LastNameProperty =
+            DependencyProperty.Register(
+                "LastName",
+                typeof(string),
+                typeof(Person),
+                new FrameworkPropertyMetadata(null,
+                    FrameworkPropertyMetadataOptions.Inherits)); // 子要素へ継承するプロパティ
+
+        public string LastName
+        {
+            get { return (string)GetValue(LastNameProperty); }
+            set { SetValue(LastNameProperty, value); }
+        }
     }
 }
