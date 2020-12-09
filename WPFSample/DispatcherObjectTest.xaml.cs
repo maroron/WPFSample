@@ -193,7 +193,7 @@ namespace WPFSample
             DependencyProperty.RegisterReadOnly(
                 "Birthday",
                 typeof(DateTime),
-                typeof(Person),
+                typeof(PersonObject),
                 new PropertyMetadata(DateTime.Now));
 
         // DependencyPropertyは、DependencyPropertyKeyから取得する
@@ -211,7 +211,7 @@ namespace WPFSample
 
         public static readonly DependencyProperty FirstNameProperty = 
             DependencyProperty.Register("FirstName", typeof(string),
-                typeof(Person), new FrameworkPropertyMetadata(null));
+                typeof(PersonObject), new FrameworkPropertyMetadata(null));
 
         public string FirstName 
         {
@@ -223,7 +223,7 @@ namespace WPFSample
             DependencyProperty.Register(
                 "LastName",
                 typeof(string),
-                typeof(Person),
+                typeof(PersonObject),
                 new FrameworkPropertyMetadata(null,
                     FrameworkPropertyMetadataOptions.Inherits)); // 子要素へ継承するプロパティ
 
