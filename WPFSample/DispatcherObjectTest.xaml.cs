@@ -58,6 +58,9 @@ namespace WPFSample
             {
                 Console.WriteLine(e);
             }
+            var attachedPerson = new PersonObject();
+            attachedPerson.SetValue(SamplePerson.BirthdayProperty, DateTime.Now);
+            Console.WriteLine(attachedPerson.GetValue(SamplePerson.BirthdayProperty));
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
@@ -232,5 +235,15 @@ namespace WPFSample
             get { return (string)GetValue(LastNameProperty); }
             set { SetValue(LastNameProperty, value); }
         }
+    }
+
+    public static class SamplePerson
+    {
+        public static readonly DependencyProperty BirthdayProperty =
+            DependencyProperty.RegisterAttached(
+                "Birthday",
+                typeof(DateTime),
+                typeof(SamplePerson),
+                new PropertyMetadata(DateTime.MinValue));
     }
 }
