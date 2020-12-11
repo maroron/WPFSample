@@ -245,5 +245,16 @@ namespace WPFSample
                 typeof(DateTime),
                 typeof(SamplePerson),
                 new PropertyMetadata(DateTime.MinValue));
+
+        // プログラムからアクセスするための添付プロパティのラッパー
+        public static DateTime GetBirthday(DependencyObject obj)
+        {
+            return (DateTime)obj.GetValue(BirthdayProperty);
+        }
+
+        public static void SetBirthday(DependencyObject obj, DateTime value)
+        {
+            obj.SetValue(BirthdayProperty, value);
+        }
     }
 }
