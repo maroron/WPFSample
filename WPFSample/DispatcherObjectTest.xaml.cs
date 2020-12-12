@@ -61,6 +61,10 @@ namespace WPFSample
             var attachedPerson = new PersonObject();
             attachedPerson.SetValue(SamplePerson.BirthdayProperty, DateTime.Now);
             Console.WriteLine(attachedPerson.GetValue(SamplePerson.BirthdayProperty));
+
+            var attachedPerson2 = new PersonObject();
+            SamplePerson.SetBirthday(attachedPerson2, DateTime.Now);
+            Console.WriteLine(SamplePerson.GetBirthday(attachedPerson2));
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
