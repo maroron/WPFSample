@@ -31,7 +31,6 @@ namespace WPFSample.Sample4
             // プログラムで表示する場合はメソッドが必要となる。
             // ShowDialog() はモーダルウィンドウを表示する。
 
-
             Button button = sender as Button;
             if (button.Name == "show_button")
             {
