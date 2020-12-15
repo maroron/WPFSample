@@ -95,4 +95,27 @@ namespace WPFSample.Sample8
         }
         #endregion
     }
+
+    class Person : FrameworkElement
+    {
+        // イベント名Eventの命名規約のstaticフィールドに格納する
+        public static RoutedEvent ToAgeEvent = EventManager.RegisterRoutedEvent(
+            "ToAge", // イベント名
+            RoutingStrategy.Tunnel, // イベントタイプ
+            typeof(RoutedEventHandler), // イベントハンドラの型
+            typeof(Person)); // イベントのオーナー
+
+        // CLRのイベントのラッパー
+        public event RoutedEventHandler ToAge 
+        {
+            add { this.AddHandler(ToAgeEvent, value); }
+            remove { this.RemoveHandler(ToAgeEvent, value); }
+        }
+
+        // 子を追加するメソッド
+        public void AddChild(Person child)
+        {
+            this.AddLogicalChild(child);
+        }
+    }
 }
