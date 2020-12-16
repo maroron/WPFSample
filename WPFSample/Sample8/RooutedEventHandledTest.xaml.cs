@@ -22,6 +22,15 @@ namespace WPFSample.Sample8
         public RooutedEventHandledTest()
         {
             InitializeComponent();
+            var parent = new RoutedEventPerson { Name = "parent" };
+            var child = new RoutedEventPerson { Name = "child" };
+            parent.AddChild(child);
+            parent.ToAge += (object s, RoutedEventArgs e) =>
+            {
+                Console.WriteLine(((RoutedEventPerson)e.Source).Name);
+            };
+            parent.RaiseEvent(new RoutedEventArgs(RoutedEventPerson.ToAgeEvent));
+            child.RaiseEvent(new RoutedEventArgs(RoutedEventPerson.ToAgeEvent));
         }
 
         #region Right mouse down
