@@ -103,6 +103,11 @@ namespace WPFSample.Sample8
             Console.WriteLine("DockPanel_MouseLeftButtonDown");
         }
         #endregion
+
+        private void StackPanel_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("StackPanel_ClickEvent");
+        }
     }
 
     class Person : FrameworkElement
