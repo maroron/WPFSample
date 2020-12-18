@@ -31,6 +31,8 @@ namespace WPFSample.Sample8
             };
             parent.RaiseEvent(new RoutedEventArgs(RoutedEventPerson.ToAgeEvent));
             child.RaiseEvent(new RoutedEventArgs(RoutedEventPerson.ToAgeEvent));
+
+            this.stackPanel.AddHandler(Button.ClickEvent, new RoutedEventHandler(this.StackPanel_Click));
         }
 
         #region Right mouse down

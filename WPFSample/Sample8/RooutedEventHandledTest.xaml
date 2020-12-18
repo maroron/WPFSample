@@ -11,7 +11,7 @@
                    MouseRightButtonDown="DockPanel_MouseRightButtonDown"
                    PreviewMouseLeftButtonDown="DockPanel_PreviewMouseLeftButtonDown"
                    MouseLeftButtonDown="DockPanel_MouseLeftButtonDown">
-            <StackPanel DockPanel.Dock="Top" Button.Click="StackPanel_Click">
+            <StackPanel DockPanel.Dock="Top" Button.Click="StackPanel_Click" Name="stackPanel">
                 <Button Content="Button1" />
             </StackPanel>
             <TextBlock DockPanel.Dock="Top" Margin="10, 50, 10, 0" MinHeight="60"
