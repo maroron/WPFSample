@@ -100,7 +100,7 @@ namespace WPFSample
                 case FilterType.Mean:
                     float[,] mean = {
                         { 1.0f/9.0f, 1.0f/9.0f, 1.0f/9.0f},
-                        { 1.0f/9.0f, 1.0f/9.0f, 1.0f/9.0f },
+                        { 1.0f/9.0f, 1.0f/9.0f, 1.0f/9.0f},
                         { 1.0f/9.0f, 1.0f/9.0f, 1.0f/9.0f},
                     };
                     filter = mean;
@@ -108,7 +108,7 @@ namespace WPFSample
                 case FilterType.Gauss:
                     float[,] gauss = {
                         { 1.0f/16.0f, 1.0f/8.0f, 1.0f/16.0f},
-                        { 1.0f/8.0f,  1.0f/4.0f, 1.0f/8.0f },
+                        { 1.0f/ 8.0f, 1.0f/4.0f, 1.0f/ 8.0f},
                         { 1.0f/16.0f, 1.0f/8.0f, 1.0f/16.0f},
                     };
                     filter = gauss;
@@ -116,7 +116,7 @@ namespace WPFSample
                 case FilterType.Median:
                     float[,] median = {
                         { 1.0f/16.0f, 1.0f/8.0f, 1.0f/16.0f},
-                        { 1.0f/8.0f,  1.0f/4.0f, 1.0f/8.0f },
+                        { 1.0f/ 8.0f, 1.0f/4.0f, 1.0f/ 8.0f},
                         { 1.0f/16.0f, 1.0f/8.0f, 1.0f/16.0f},
                     };
                     filter = median;
@@ -124,7 +124,7 @@ namespace WPFSample
                 default:
                     float[,] none = {
                         { 1.0f/16.0f, 1.0f/8.0f, 1.0f/16.0f},
-                        { 1.0f/8.0f,  1.0f/4.0f, 1.0f/8.0f },
+                        { 1.0f/ 8.0f, 1.0f/4.0f, 1.0f/ 8.0f},
                         { 1.0f/16.0f, 1.0f/8.0f, 1.0f/16.0f},
                     };
                     filter = none;
