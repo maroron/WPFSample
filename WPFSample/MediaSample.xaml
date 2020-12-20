@@ -16,7 +16,10 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Menu Grid.Row="0" Grid.ColumnSpan="2">
-            <MenuItem Header="開く(_O)" Click="MenuItem_Click" />
+            <MenuItem Header="ファイル(_F)">
+                <MenuItem Header="開く(_O)" Click="OpenFile_Click" />
+                <MenuItem Header="保存(_S)" Click="SaveFile_Click" />
+            </MenuItem>
         </Menu>
         <Image Grid.Row="1" Grid.Column="0" Name="displayImage"
                Source="test1.png" Stretch="UniformToFill"

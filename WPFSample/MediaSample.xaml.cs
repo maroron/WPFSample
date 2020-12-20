@@ -134,7 +134,7 @@ namespace WPFSample
             return filter;
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void OpenFile_Click(object sender, RoutedEventArgs e)
         {
             // 画像を開く
             var dialog = new OpenFileDialog();
@@ -160,6 +160,11 @@ namespace WPFSample
 
             // BitmapImageをSourceに指定して画面に表示する
             this.displayImage.Source = bmp;
+        }
+
+        private void SaveFile_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 
