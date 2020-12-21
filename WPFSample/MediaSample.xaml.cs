@@ -166,7 +166,7 @@ namespace WPFSample
 
         private void SaveFile_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new OpenFileDialog();
+            var dialog = new SaveFileDialog();
             dialog.Filter = "画像|*.jpg;*.jpeg;*.png;*.bmp";
             if (dialog.ShowDialog() != true)
             {
