@@ -13,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace WPFSample
 {
@@ -164,7 +166,33 @@ namespace WPFSample
 
         private void SaveFile_Click(object sender, RoutedEventArgs e)
         {
+            var dialog = new OpenFileDialog();
+            dialog.Filter = "画像|*.jpg;*.jpeg;*.png;*.bmp";
+            if (dialog.ShowDialog() != true)
+            {
+                return;
+            }
 
+            //var bmp = new Bitmap(@"C:\Temp\Mandrill.bmp");
+
+            //bmp.Save(
+            //    @"Mandrill.jpg",
+            //    System.Drawing.Imaging.ImageFormat.Jpeg
+            //    );
+
+            var width = this.imageData.Width;
+            var height = this.imageData.Height;
+            using (Bitmap saveImg = new Bitmap(width, height))
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                        saveImg.SetPixel(x, y, System.Drawing.Color.Blue);
+                    }
+                }
+                saveImg.Save(dialog.FileName, ImageFormat.Jpeg);
+            }
         }
     }
 
