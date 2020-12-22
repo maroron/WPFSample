@@ -188,7 +188,8 @@ namespace WPFSample
                 {
                     for (int x = 0; x < width; x++)
                     {
-                        saveImg.SetPixel(x, y, System.Drawing.Color.Blue);
+                        var pixel = (int)(this.imageData.Data[width * y + x] * 255);
+                        saveImg.SetPixel(x, y, System.Drawing.Color.FromArgb(pixel, pixel, pixel));
                     }
                 }
                 saveImg.Save(dialog.FileName, ImageFormat.Jpeg);
