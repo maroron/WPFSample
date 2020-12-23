@@ -173,13 +173,6 @@ namespace WPFSample
                 return;
             }
 
-            //var bmp = new Bitmap(@"C:\Temp\Mandrill.bmp");
-
-            //bmp.Save(
-            //    @"Mandrill.jpg",
-            //    System.Drawing.Imaging.ImageFormat.Jpeg
-            //    );
-
             var width = this.imageData.Width;
             var height = this.imageData.Height;
             using (Bitmap saveImg = new Bitmap(width, height))
