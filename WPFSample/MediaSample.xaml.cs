@@ -145,12 +145,17 @@ namespace WPFSample
             {
                 return;
             }
+
             // ファイルをメモリにコピー
             var ms = new MemoryStream();
             using (var s = new FileStream(dialog.FileName, FileMode.Open))
-            { s.CopyTo(ms); }
+            {
+                s.CopyTo(ms);
+            }
+
             // ストリームの位置をリセット
             ms.Seek(0, SeekOrigin.Begin);
+
             // ストリームをもとにBitmapImageを作成 
             var bmp = new BitmapImage();
             bmp.BeginInit();
