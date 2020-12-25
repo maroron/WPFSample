@@ -147,26 +147,33 @@ namespace WPFSample
             }
 
             // ファイルをメモリにコピー
-            var ms = new MemoryStream();
-            using (var s = new FileStream(dialog.FileName, FileMode.Open))
+            try
             {
-                s.CopyTo(ms);
+                var ms = new MemoryStream();
+                using (var s = new FileStream(dialog.FileName, FileMode.Open))
+                {
+                    s.CopyTo(ms);
+                }
+
+                // ストリームの位置をリセット
+                ms.Seek(0, SeekOrigin.Begin);
+
+                // ストリームをもとにBitmapImageを作成 
+                var bmp = new BitmapImage();
+                bmp.BeginInit();
+                bmp.StreamSource = ms;
+                bmp.EndInit();
+
+                int stride = bmp.PixelWidth * PixelFormats.Gray32Float.BitsPerPixel / 8;
+                bmp.CopyPixels(this.imageData.Data, stride, 0);
+
+                // BitmapImageをSourceに指定して画面に表示する
+                this.displayImage.Source = bmp;
             }
-
-            // ストリームの位置をリセット
-            ms.Seek(0, SeekOrigin.Begin);
-
-            // ストリームをもとにBitmapImageを作成 
-            var bmp = new BitmapImage();
-            bmp.BeginInit();
-            bmp.StreamSource = ms;
-            bmp.EndInit();
-
-            int stride = bmp.PixelWidth * PixelFormats.Gray32Float.BitsPerPixel / 8;
-            bmp.CopyPixels(this.imageData.Data, stride, 0);
-
-            // BitmapImageをSourceに指定して画面に表示する
-            this.displayImage.Source = bmp;
+            catch
+            {
+                MessageBox.Show("Invalid Format");
+            }
         }
 
         private void SaveFile_Click(object sender, RoutedEventArgs e)
