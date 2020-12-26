@@ -162,6 +162,7 @@ namespace WPFSample
                 var bmp = new BitmapImage();
                 bmp.BeginInit();
                 bmp.StreamSource = ms;
+                bmp.Rotation = Rotation.Rotate90; // rotateをプロパティで設定するには、BeginInitとEndInitの間で行う必要があるみたい。
                 bmp.EndInit();
 
                 int stride = bmp.PixelWidth * PixelFormats.Gray32Float.BitsPerPixel / 8;
