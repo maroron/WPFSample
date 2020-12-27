@@ -201,6 +201,76 @@ namespace WPFSample
                 saveImg.Save(dialog.FileName, ImageFormat.Jpeg);
             }
         }
+
+        private RotateFlipType nowRotate = RotateFlipType.RotateNoneFlipNone;
+
+        private void RotateButton_Click(object sender, RoutedEventArgs e)
+        {
+            var width = this.imageData.Width;
+            var height = this.imageData.Height;
+            using (Bitmap bitmap = new Bitmap(width, height))
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                        var pixel = (int)(this.imageData.Data[width * y + x] * 255);
+                        bitmap.SetPixel(x, y, System.Drawing.Color.FromArgb(pixel, pixel, pixel));
+                    }
+                }
+                bitmap.RotateFlip(NextRotateFlipType());
+
+                // BitmapImageをSourceに指定して画面に表示する
+                this.displayImage.Source = ConvertBitmapSource(bitmap);
+            }
+        }
+
+        private RotateFlipType NextRotateFlipType()
+        {
+            switch (nowRotate)
+            {
+                case RotateFlipType.RotateNoneFlipNone:
+                    nowRotate = RotateFlipType.Rotate90FlipNone;
+                    break;
+                case RotateFlipType.Rotate90FlipNone:
+                    nowRotate = RotateFlipType.Rotate180FlipNone;
+                    break;
+                case RotateFlipType.Rotate180FlipNone:
+                    nowRotate = RotateFlipType.Rotate270FlipNone;
+                    break;
+                case RotateFlipType.Rotate270FlipNone:
+                    nowRotate = RotateFlipType.RotateNoneFlipNone;
+                    break;
+                default:
+                    nowRotate = RotateFlipType.RotateNoneFlipNone;
+                    break;
+            }
+            return nowRotate;
+        }
+
+        private BitmapSource ConvertBitmapSource(Bitmap bitmap)
+        {
+            BitmapSource bitmapSource;
+
+            // MemoryStreamを利用した変換処理
+            using (var ms = new System.IO.MemoryStream())
+            {
+                // MemoryStreamに書き出す
+                bitmap.Save(ms, ImageFormat.Bmp);
+
+                // MemoryStreamをシーク
+                ms.Seek(0, SeekOrigin.Begin);
+
+                // MemoryStreamからBitmapFrameを作成
+                bitmapSource =
+                    BitmapFrame.Create(
+                        ms,
+                        System.Windows.Media.Imaging.BitmapCreateOptions.None,
+                        System.Windows.Media.Imaging.BitmapCacheOption.OnLoad
+                    );
+            }
+            return bitmapSource;
+        }
     }
 
     class ImageData

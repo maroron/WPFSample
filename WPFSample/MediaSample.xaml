@@ -28,6 +28,11 @@
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="10"
                     Orientation="Vertical"
                     VerticalAlignment="Center">
+            <Label FontSize="16">Rotate</Label>
+            <Button Content="Rotate"
+                    Margin="10"
+                    Height="40"
+                    Click="RotateButton_Click"/>
             <Button Content="Read Image"
                     Margin="10"
                     Height="40"
