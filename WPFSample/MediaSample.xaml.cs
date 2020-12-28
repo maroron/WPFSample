@@ -163,7 +163,7 @@ namespace WPFSample
             bmp.Rotation = Rotation.Rotate90; // rotateをプロパティで設定するには、BeginInitとEndInitの間で行う必要があるみたい。
             bmp.EndInit();
 
-            if (bmp.PixelWidth < 512 && bmp.PixelHeight < 512) // 512 しか許可してない
+            if (bmp.PixelWidth < 512 && bmp.PixelHeight < 512) // 512 までしか許可してない
             {
                 int stride = bmp.PixelWidth * PixelFormats.Gray32Float.BitsPerPixel / 8;
                 bmp.CopyPixels(this.imageData.Data, stride, 0);
