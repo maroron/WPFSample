@@ -147,31 +147,31 @@ namespace WPFSample
             }
 
             // ファイルをメモリにコピー
-            try
+            var ms = new MemoryStream();
+            using (var s = new FileStream(dialog.FileName, FileMode.Open))
             {
-                var ms = new MemoryStream();
-                using (var s = new FileStream(dialog.FileName, FileMode.Open))
-                {
-                    s.CopyTo(ms);
-                }
+                s.CopyTo(ms);
+            }
 
-                // ストリームの位置をリセット
-                ms.Seek(0, SeekOrigin.Begin);
+            // ストリームの位置をリセット
+            ms.Seek(0, SeekOrigin.Begin);
 
-                // ストリームをもとにBitmapImageを作成 
-                var bmp = new BitmapImage();
-                bmp.BeginInit();
-                bmp.StreamSource = ms;
-                bmp.Rotation = Rotation.Rotate90; // rotateをプロパティで設定するには、BeginInitとEndInitの間で行う必要があるみたい。
-                bmp.EndInit();
+            // ストリームをもとにBitmapImageを作成 
+            var bmp = new BitmapImage();
+            bmp.BeginInit();
+            bmp.StreamSource = ms;
+            bmp.Rotation = Rotation.Rotate90; // rotateをプロパティで設定するには、BeginInitとEndInitの間で行う必要があるみたい。
+            bmp.EndInit();
 
+            if (bmp.PixelWidth < 512 && bmp.PixelHeight < 512) // 512 しか許可してない
+            {
                 int stride = bmp.PixelWidth * PixelFormats.Gray32Float.BitsPerPixel / 8;
                 bmp.CopyPixels(this.imageData.Data, stride, 0);
 
                 // BitmapImageをSourceに指定して画面に表示する
                 this.displayImage.Source = bmp;
             }
-            catch
+            else
             {
                 MessageBox.Show("Invalid Format");
             }
