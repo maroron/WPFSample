@@ -30,13 +30,13 @@ namespace WPFSample
             Median,
         }
 
-        private ImageData imageData { get; set; }
+        private ImageData32 imageData { get; set; }
 
         public MediaSample()
         {
             InitializeComponent();
 
-            this.imageData = new ImageData(512, 512);
+            this.imageData = new ImageData32(512, 512);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -60,17 +60,17 @@ namespace WPFSample
             this.displayImage.Source = CreateBitMapsource(this.imageData);
         }
 
-        private BitmapSource CreateBitMapsource(ImageData image)
+        private BitmapSource CreateBitMapsource(ImageData32 image)
         {
             int stride = image.Width * PixelFormats.Gray32Float.BitsPerPixel / 8;
             BitmapSource bitmap = BitmapSource.Create(512, 512, 96, 96, PixelFormats.Gray32Float, null, image.Data, stride);
             return bitmap;
         }
 
-        private ImageData Filter2D(FilterType type, ImageData src)
+        private ImageData32 Filter2D(FilterType type, ImageData32 src)
         {
             float[,] kernel = GetFilter(type);
-            var dst = new ImageData(512, 512);
+            var dst = new ImageData32(512, 512);
             int kernelW = kernel.GetLength(0);
             int kernelH = kernel.GetLength(1);
             int radius = (kernelH - 1) / 2;
@@ -273,14 +273,14 @@ namespace WPFSample
         }
     }
 
-    class ImageData
+    class ImageData32
     {
         public float[] Data { get; set; }
 
         public int Width { get; set; }
         public int Height { get; set; }
 
-        public ImageData(int width, int height)
+        public ImageData32(int width, int height)
         {
             this.Data = new float[width * height];
             this.Width = width;
@@ -295,14 +295,14 @@ namespace WPFSample
             }
         }
 
-        public ImageData(int width, int height, float[] data)
+        public ImageData32(int width, int height, float[] data)
         {
             this.Data = data;
             this.Width = width;
             this.Height = height;
         }
 
-        public ImageData(ImageData data)
+        public ImageData32(ImageData32 data)
         {
             this.Data = new float[data.Width * data.Height];
             this.Width = data.Width;
