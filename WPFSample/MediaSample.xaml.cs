@@ -309,4 +309,41 @@ namespace WPFSample
             this.Height = data.Height;
         }
     }
+
+    class ImageData16
+    {
+        public ushort[] Data { get; set; }
+
+        public int Width { get; set; }
+        public int Height { get; set; }
+
+        public ImageData16(int width, int height)
+        {
+            this.Data = new ushort[width * height];
+            this.Width = width;
+            this.Height = height;
+
+            for (int h = 0; h < this.Height; h++)
+            {
+                for (int w = 0; w < this.Width; w++)
+                {
+                    this.Data[h * Width + w] = (ushort)(h / this.Height);
+                }
+            }
+        }
+
+        public ImageData16(int width, int height, ushort[] data)
+        {
+            this.Data = data;
+            this.Width = width;
+            this.Height = height;
+        }
+
+        public ImageData16(ImageData16 data)
+        {
+            this.Data = new ushort[data.Width * data.Height];
+            this.Width = data.Width;
+            this.Height = data.Height;
+        }
+    }
 }
